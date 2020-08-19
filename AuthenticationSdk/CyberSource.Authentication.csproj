@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Dev\GitHub\cybersource-rest-client-dotnet\packages\CyberSource.Authentication.0.0.0.7\lib\AuthenticationSdk.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{767DAA26-D9E5-42A1-80BA-8667101EF97F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>AuthenticationSdk</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <ApplicationVersion>0.0.0.7</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>AuthenticationSdk</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="jose-jwt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="util\Cache.cs" />
+    <Compile Include="util\Enumerations.cs" />
+    <Compile Include="util\ExceptionUtility.cs" />
+    <Compile Include="util\Constants.cs" />
+    <Compile Include="util\LogUtility.cs" />
+    <Compile Include="core\Authorize.cs" />
+    <Compile Include="core\ITokenGenerator.cs" />
+    <Compile Include="core\MerchantConfig.cs" />
+    <Compile Include="core\Token.cs" />
+    <Compile Include="authentication\jwt\JwtToken.cs" />
+    <Compile Include="authentication\jwt\JwtTokenGenerator.cs" />
+    <Compile Include="authentication\http\HttpToken.cs" />
+    <Compile Include="authentication\http\HttpTokenGenerator.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
