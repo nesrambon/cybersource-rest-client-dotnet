@@ -3,7 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Company>CyberSource</Company>
-    <Version>0.0.1.5</Version>
+    <Version>0.0.1.5</Version>    
+    <PublishSingleFile>true</PublishSingleFile>
   </PropertyGroup>
 
   <ItemGroup>
