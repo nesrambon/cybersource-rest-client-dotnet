@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Company>CyberSource</Company>
+    <Version>0.0.1.5</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="AuthenticationSdk\**" />
+    <Compile Remove="packages\**" />
+    <Compile Remove="test\**" />
+    <EmbeddedResource Remove="AuthenticationSdk\**" />
+    <EmbeddedResource Remove="packages\**" />
+    <EmbeddedResource Remove="test\**" />
+    <None Remove="AuthenticationSdk\**" />
+    <None Remove="packages\**" />
+    <None Remove="test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="jose-jwt" Version="2.5.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="RestSharp" Version="106.11.4" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Runtime.Caching" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="AuthenticationSdk\CyberSource.Authentication.Core.csproj" />
+  </ItemGroup>
+
+</Project>
