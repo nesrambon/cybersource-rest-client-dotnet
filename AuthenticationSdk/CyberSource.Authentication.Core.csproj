@@ -2,9 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Company>CyberSource</Company>
+    <Company>CyberSource (released by BrutalDev)</Company>
     <Version>0.0.0.7</Version>
     <PublishSingleFile>true</PublishSingleFile>
+    <Description>.NET Core port of the official CyberSource.Authentication package.
+https://github.com/CyberSource/cybersource-rest-client-dotnet/issues/14</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>CyberSource</Copyright>
+    <PackageProjectUrl>https://github.com/brutaldev/cybersource-rest-client-dotnet</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -193,7 +193,7 @@ namespace AuthenticationSdk.core
           return;
         this.ProxyPassword = merchantConfigDictionary["proxyPassword"];
       }
-      catch (KeyNotFoundException ex)
+      catch (KeyNotFoundException)
       {
         throw new Exception(Constants.ErrorPrefix + " Mandatory Key (" + key + ") Missing in the Configuration Dictionary Object Passed to the instance of MerchantConfig");
       }

@@ -2,9 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Company>CyberSource</Company>
-    <Version>0.0.1.5</Version>    
-    <PublishSingleFile>true</PublishSingleFile>
+    <Company>CyberSource (released by BrutalDev)</Company>
+    <Version>0.0.1.6</Version>    
+    <PublishSingleFile>true</PublishSingleFile>    
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>    
+    <Description>.NET Core port of the official CyberSource.Rest.Client package.
+https://github.com/CyberSource/cybersource-rest-client-dotnet/issues/14</Description>    
+    <Copyright>CyberSource</Copyright>    
+    <PackageProjectUrl>https://github.com/brutaldev/cybersource-rest-client-dotnet</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
