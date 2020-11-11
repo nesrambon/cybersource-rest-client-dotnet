@@ -10,12 +10,21 @@ https://github.com/CyberSource/cybersource-rest-client-dotnet/issues/14</Descrip
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright>CyberSource</Copyright>
     <PackageProjectUrl>https://github.com/brutaldev/cybersource-rest-client-dotnet</PackageProjectUrl>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>license.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="jose-jwt" Version="2.5.0" />
+    <PackageReference Include="jose-jwt" Version="2.6.1" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
     <PackageReference Include="System.Runtime.Caching" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\license.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

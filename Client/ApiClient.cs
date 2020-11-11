@@ -727,7 +727,7 @@ namespace CyberSource.Client
             }
         }
         
-        /// Calling the Authentication SDK to Generate Request Headers necessary for Authentication        
+        // Calling the Authentication SDK to Generate Request Headers necessary for Authentication
         public void CallAuthenticationHeaders(string requestType, string requestTarget, string requestJsonData = null)
         {
             requestTarget = Uri.EscapeUriString(requestTarget);

@@ -4,14 +4,14 @@ The CyberSource .NET client provides convenient access to the [CyberSource REST 
 
 ## Requirements
 
-* .NET Framework 4.6.1
+* .NET Standard 2.0
 
 ## Installation
 
 * Nuget Package Manager
 
 ```
-PM>  Install-Package CyberSource.Rest.Client
+PM>  Install-Package CyberSource.Rest.Client.Core
 ```
 
 ## Registration & Configuration
