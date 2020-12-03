@@ -1,7 +1,7 @@
 ﻿// Decompiled with JetBrains decompiler
 // Type: AuthenticationSdk.core.MerchantConfig
-// Assembly: AuthenticationSdk, Version=0.0.0.7, Culture=neutral, PublicKeyToken=null
-// MVID: 51F37287-3D9C-4D24-9C5B-42A967D1065C
+// Assembly: AuthenticationSdk, Version=0.0.0.8, Culture=neutral, PublicKeyToken=null
+// MVID: 7CF009B5-7313-471B-83F8-D22556D92815
 
 
 using AuthenticationSdk.util;
@@ -38,9 +38,13 @@ namespace AuthenticationSdk.core
 
     public string MerchantId { get; set; }
 
+    public string PortfolioId { get; set; }
+
     public string MerchantSecretKey { get; set; }
 
     public string MerchantKeyId { get; set; }
+
+    public string UseMetaKey { get; set; }
 
     public string AuthenticationType { get; set; }
 
@@ -107,7 +111,7 @@ namespace AuthenticationSdk.core
       foreach (PropertyInfo property in typeof (MerchantConfig).GetProperties())
       {
         if (!((IEnumerable<string>) strArray).Any<string>(new Func<string, bool>(property.Name.Contains)))
-          str = str + property.Name + " " + property.GetValue((object) obj) + ", ";
+          str = str + property.Name + " " + property.GetValue(obj)?.ToString() + ", ";
       }
       return str;
     }
@@ -116,8 +120,10 @@ namespace AuthenticationSdk.core
     {
       this._propertiesSetUsing = "App.Config File";
       this.MerchantId = merchantConfigSection["merchantID"];
+      this.PortfolioId = merchantConfigSection["portfolioID"];
       this.MerchantSecretKey = merchantConfigSection["merchantsecretKey"];
       this.MerchantKeyId = merchantConfigSection["merchantKeyId"];
+      this.UseMetaKey = merchantConfigSection["useMetaKey"];
       this.AuthenticationType = merchantConfigSection["authenticationType"];
       this.KeyDirectory = merchantConfigSection["keysDirectory"];
       this.KeyfileName = merchantConfigSection["keyFilename"];
@@ -151,6 +157,10 @@ namespace AuthenticationSdk.core
         this.RunEnvironment = merchantConfigDictionary[key];
         key = "authenticationType";
         this.AuthenticationType = merchantConfigDictionary[key];
+        key = "useMetaKey";
+        this.UseMetaKey = merchantConfigDictionary[key];
+        if (string.IsNullOrEmpty(this.UseMetaKey))
+          this.UseMetaKey = "false";
         Enumerations.AuthenticationType result;
         Enum.TryParse<Enumerations.AuthenticationType>(this.AuthenticationType.ToUpper(), out result);
         if (object.Equals((object) result, (object) Enumerations.AuthenticationType.HTTP_SIGNATURE))
@@ -159,6 +169,13 @@ namespace AuthenticationSdk.core
           this.MerchantSecretKey = merchantConfigDictionary[key];
           key = "merchantKeyId";
           this.MerchantKeyId = merchantConfigDictionary[key];
+        }
+        if (object.Equals((object) bool.Parse(this.UseMetaKey.ToString()), (object) true))
+        {
+          key = "portfolioID";
+          this.PortfolioId = merchantConfigDictionary[key];
+          if (object.Equals((object) this.PortfolioId, (object) string.Empty))
+            throw new KeyNotFoundException();
         }
         if (object.Equals((object) result, (object) Enumerations.AuthenticationType.JWT))
         {
@@ -237,22 +254,27 @@ namespace AuthenticationSdk.core
         if (string.IsNullOrEmpty(this.KeyAlias))
         {
           this.KeyAlias = this.MerchantId;
+          throw new Exception(Constants.WarningPrefix + " KeyAlias not provided. Assigning the value of: [MerchantID]");
         }
         if (!string.Equals(this.KeyAlias, this.MerchantId))
         {
           this.KeyAlias = this.MerchantId;
+          throw new Exception(Constants.WarningPrefix + " Incorrect value of KeyAlias provided. Assigning the value of: [MerchantID]");
         }
         if (string.IsNullOrEmpty(this.KeyPass))
         {
           this.KeyPass = this.MerchantId;
+          throw new Exception(Constants.WarningPrefix + " KeyPassword not provided. Assigning the value of: [MerchantID]");
         }
         if (string.IsNullOrEmpty(this.KeyDirectory))
         {
           this.KeyDirectory = Constants.P12FileDirectory;
+          throw new Exception(Constants.WarningPrefix + " KeysDirectory not provided. Using Default Path: " + this.KeyDirectory);
         }
         if (string.IsNullOrEmpty(this.KeyfileName))
         {
           this.KeyfileName = this.MerchantId;
+          throw new Exception(Constants.WarningPrefix + " KeyfileName not provided. Assigning the value of: [MerchantId]");
         }
         this.P12Keyfilepath = this.KeyDirectory + "\\" + this.KeyfileName + ".p12";
       }

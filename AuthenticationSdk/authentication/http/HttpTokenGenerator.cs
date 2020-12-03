@@ -1,7 +1,7 @@
 ﻿// Decompiled with JetBrains decompiler
 // Type: AuthenticationSdk.authentication.http.HttpTokenGenerator
-// Assembly: AuthenticationSdk, Version=0.0.0.7, Culture=neutral, PublicKeyToken=null
-// MVID: 51F37287-3D9C-4D24-9C5B-42A967D1065C
+// Assembly: AuthenticationSdk, Version=0.0.0.8, Culture=neutral, PublicKeyToken=null
+// MVID: 7CF009B5-7313-471B-83F8-D22556D92815
 
 
 using AuthenticationSdk.core;
@@ -57,7 +57,10 @@ namespace AuthenticationSdk.authentication.http
       stringBuilder1.Append('\n');
       stringBuilder1.Append("v-c-merchant-id");
       stringBuilder1.Append(": ");
-      stringBuilder1.Append(this._httpToken.MerchantId);
+      if (this._httpToken.UseMetaKey)
+        stringBuilder1.Append(this._httpToken.PortfolioId);
+      else
+        stringBuilder1.Append(this._httpToken.MerchantId);
       stringBuilder1.Remove(0, 1);
       byte[] bytes = Encoding.UTF8.GetBytes(stringBuilder1.ToString());
       string base64String = Convert.ToBase64String(new HMACSHA256(Convert.FromBase64String(this._httpToken.MerchantSecretKey)).ComputeHash(bytes));
@@ -92,7 +95,10 @@ namespace AuthenticationSdk.authentication.http
       stringBuilder1.Append('\n');
       stringBuilder1.Append("v-c-merchant-id");
       stringBuilder1.Append(": ");
-      stringBuilder1.Append(this._httpToken.MerchantId);
+      if (this._httpToken.UseMetaKey)
+        stringBuilder1.Append(this._httpToken.PortfolioId);
+      else
+        stringBuilder1.Append(this._httpToken.MerchantId);
       stringBuilder1.Remove(0, 1);
       byte[] bytes = Encoding.UTF8.GetBytes(stringBuilder1.ToString());
       string base64String = Convert.ToBase64String(new HMACSHA256(Convert.FromBase64String(this._httpToken.MerchantSecretKey)).ComputeHash(bytes));

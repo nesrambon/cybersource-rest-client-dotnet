@@ -1,21 +1,22 @@
 ﻿// Decompiled with JetBrains decompiler
 // Type: AuthenticationSdk.util.ExceptionUtility
-// Assembly: AuthenticationSdk, Version=0.0.0.7, Culture=neutral, PublicKeyToken=null
-// MVID: 51F37287-3D9C-4D24-9C5B-42A967D1065C
+// Assembly: AuthenticationSdk, Version=0.0.0.8, Culture=neutral, PublicKeyToken=null
+// MVID: 7CF009B5-7313-471B-83F8-D22556D92815
+
 
 
 namespace AuthenticationSdk.util
 {
-  public class ExceptionUtility
+  public static class ExceptionUtility
   {
     private static bool _exceptionIsCaughtAlready;
 
     public static void Exception(string exceptionMessage, string stackTrace)
     {
-      if (ExceptionUtility._exceptionIsCaughtAlready)
+      if (_exceptionIsCaughtAlready)
         return;
 
-      ExceptionUtility._exceptionIsCaughtAlready = true;
+      _exceptionIsCaughtAlready = true;
     }
   }
 }

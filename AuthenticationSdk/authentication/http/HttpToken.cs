@@ -1,7 +1,7 @@
 ﻿// Decompiled with JetBrains decompiler
 // Type: AuthenticationSdk.authentication.http.HttpToken
-// Assembly: AuthenticationSdk, Version=0.0.0.7, Culture=neutral, PublicKeyToken=null
-// MVID: 51F37287-3D9C-4D24-9C5B-42A967D1065C
+// Assembly: AuthenticationSdk, Version=0.0.0.8, Culture=neutral, PublicKeyToken=null
+// MVID: 7CF009B5-7313-471B-83F8-D22556D92815
 
 
 using AuthenticationSdk.core;
@@ -24,6 +24,12 @@ namespace AuthenticationSdk.authentication.http
       this.MerchantSecretKey = merchantConfig.MerchantSecretKey;
       this.MerchantKeyId = merchantConfig.MerchantKeyId;
       this.HttpSignRequestTarget = merchantConfig.RequestType.ToLower() + " " + merchantConfig.RequestTarget;
+      bool result;
+      bool.TryParse(merchantConfig.UseMetaKey, out result);
+      this.UseMetaKey = result;
+      if (!this.UseMetaKey)
+        return;
+      this.PortfolioId = merchantConfig.PortfolioId;
     }
 
     public string SignatureAlgorithm { get; set; }
@@ -31,6 +37,10 @@ namespace AuthenticationSdk.authentication.http
     public string GmtDateTime { get; set; }
 
     public string MerchantId { get; set; }
+
+    public string PortfolioId { get; set; }
+
+    public bool UseMetaKey { get; set; }
 
     public string MerchantSecretKey { get; set; }
 
