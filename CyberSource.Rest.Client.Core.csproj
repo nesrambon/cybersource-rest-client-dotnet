@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Company>CyberSource (released by BrutalDev)</Company>
-    <Version>0.0.1.7</Version>    
+    <Version>0.0.1.8</Version>    
     <PublishSingleFile>true</PublishSingleFile>    
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>    
     <Description>.NET Core port of the official CyberSource.Rest.Client package.
