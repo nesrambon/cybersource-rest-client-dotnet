@@ -1,11 +1,11 @@
 ﻿// Decompiled with JetBrains decompiler
 // Type: AuthenticationSdk.core.Authorize
-// Assembly: AuthenticationSdk, Version=0.0.0.8, Culture=neutral, PublicKeyToken=null
-// MVID: 7CF009B5-7313-471B-83F8-D22556D92815
-
+// Assembly: AuthenticationSdk, Version=0.0.0.9, Culture=neutral, PublicKeyToken=null
+// MVID: B31F8FE4-8578-4DB7-AA70-B490E8CCC72C
 
 using AuthenticationSdk.authentication.http;
 using AuthenticationSdk.authentication.jwt;
+using AuthenticationSdk.authentication.oauth;
 using AuthenticationSdk.util;
 using System;
 
@@ -60,5 +60,21 @@ namespace AuthenticationSdk.core
       }
     }
 
+    public OAuthToken GetOAuthToken()
+    {
+      try
+      {
+        if (this._merchantConfig == null)
+          return (OAuthToken) null;
+        Enumerations.ValidateRequestType(this._merchantConfig.RequestType);
+        OAuthToken token = (OAuthToken) new OAuthTokenGenerator(this._merchantConfig).GetToken();
+        return token;
+      }
+      catch (Exception ex)
+      {
+        ExceptionUtility.Exception(ex.Message, ex.StackTrace);
+        return (OAuthToken) null;
+      }
+    }
   }
 }

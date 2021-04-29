@@ -1,8 +1,7 @@
 ﻿// Decompiled with JetBrains decompiler
 // Type: AuthenticationSdk.authentication.jwt.JwtToken
-// Assembly: AuthenticationSdk, Version=0.0.0.8, Culture=neutral, PublicKeyToken=null
-// MVID: 7CF009B5-7313-471B-83F8-D22556D92815
-
+// Assembly: AuthenticationSdk, Version=0.0.0.9, Culture=neutral, PublicKeyToken=null
+// MVID: B31F8FE4-8578-4DB7-AA70-B490E8CCC72C
 
 using AuthenticationSdk.core;
 using AuthenticationSdk.util;

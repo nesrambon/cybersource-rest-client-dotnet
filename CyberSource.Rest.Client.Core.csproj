@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Company>CyberSource (released by BrutalDev)</Company>
-    <Version>0.0.1.8</Version>    
+    <Version>0.0.1.11</Version>    
     <PublishSingleFile>true</PublishSingleFile>    
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>    
     <Description>.NET Core port of the official CyberSource.Rest.Client package.
@@ -35,13 +35,13 @@ https://github.com/CyberSource/cybersource-rest-client-dotnet/issues/14</Descrip
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="jose-jwt" Version="2.6.1" />
+    <PackageReference Include="jose-jwt" Version="3.1.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharp" Version="106.11.7" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
-    <PackageReference Include="System.Runtime.Caching" Version="4.7.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+    <PackageReference Include="System.Runtime.Caching" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>

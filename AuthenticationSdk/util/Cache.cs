@@ -1,8 +1,7 @@
 ﻿// Decompiled with JetBrains decompiler
 // Type: AuthenticationSdk.util.Cache
-// Assembly: AuthenticationSdk, Version=0.0.0.8, Culture=neutral, PublicKeyToken=null
-// MVID: 7CF009B5-7313-471B-83F8-D22556D92815
-
+// Assembly: AuthenticationSdk, Version=0.0.0.9, Culture=neutral, PublicKeyToken=null
+// MVID: B31F8FE4-8578-4DB7-AA70-B490E8CCC72C
 
 using System;
 using System.Collections.Generic;
@@ -22,16 +21,16 @@ namespace AuthenticationSdk.util
       try
       {
         ObjectCache objectCache = (ObjectCache) MemoryCache.Default;
-        if (objectCache["certiFromP12File"] is X509Certificate2 x509Certificate2)
-          return x509Certificate2;
+        if (objectCache["certiFromP12File"] is X509Certificate2 x509Certificate2_4)
+          return x509Certificate2_4;
         CacheItemPolicy policy = new CacheItemPolicy();
         policy.ChangeMonitors.Add((ChangeMonitor) new HostFileChangeMonitor((IList<string>) new List<string>()
         {
           Path.GetFullPath(p12FilePath)
         }));
-        X509Certificate2 x509Certificate2_1 = new X509Certificate2(p12FilePath, keyPassword);
-        objectCache.Set("certiFromP12File", (object) x509Certificate2_1, policy);
-        return x509Certificate2_1;
+        X509Certificate2 x509Certificate2_2 = new X509Certificate2(p12FilePath, keyPassword);
+        objectCache.Set("certiFromP12File", (object) x509Certificate2_2, policy);
+        return x509Certificate2_2;
       }
       catch (CryptographicException ex)
       {

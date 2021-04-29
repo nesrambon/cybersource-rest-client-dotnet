@@ -1,4 +1,4 @@
-# .NET Client SDK for the CyberSource REST API
+# .NET Core Client SDK for the CyberSource REST API
 
 The CyberSource .NET client provides convenient access to the [CyberSource REST API](https://developer.cybersource.com/api/reference/api-reference.html) from your .NET application.
 
