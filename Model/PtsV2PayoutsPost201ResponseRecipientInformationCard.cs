@@ -33,7 +33,7 @@ namespace CyberSource.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PtsV2PayoutsPost201ResponseRecipientInformationCard" /> class.
         /// </summary>
-        /// <param name="Balance">This field shows the available balance in the prepaid account.  Acquirers always receive the available balance in the transaction currency. .</param>
+        /// <param name="Balance">This field shows the available balance in the prepaid account. Acquirers always receive the available balance in the transaction currency. .</param>
         /// <param name="Currency">This is a multicurrency-only field. It contains a 3-digit numeric code that identifies the currency used by the issuer. .</param>
         public PtsV2PayoutsPost201ResponseRecipientInformationCard(string Balance = default(string), string Currency = default(string))
         {
@@ -42,9 +42,9 @@ namespace CyberSource.Model
         }
         
         /// <summary>
-        /// This field shows the available balance in the prepaid account.  Acquirers always receive the available balance in the transaction currency. 
+        /// This field shows the available balance in the prepaid account. Acquirers always receive the available balance in the transaction currency. 
         /// </summary>
-        /// <value>This field shows the available balance in the prepaid account.  Acquirers always receive the available balance in the transaction currency. </value>
+        /// <value>This field shows the available balance in the prepaid account. Acquirers always receive the available balance in the transaction currency. </value>
         [DataMember(Name="balance", EmitDefaultValue=false)]
         public string Balance { get; set; }
 
@@ -139,18 +139,6 @@ namespace CyberSource.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Balance (string) maxLength
-            if(this.Balance != null && this.Balance.Length >= 12)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Balance, length must be less than or equal to 12.", new [] { "Balance" });
-            }
-
-            // Currency (string) maxLength
-            if(this.Currency != null && this.Currency.Length >= 3)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Currency, length must be less than or equal to 3.", new [] { "Currency" });
-            }
-
             yield break;
         }
     }

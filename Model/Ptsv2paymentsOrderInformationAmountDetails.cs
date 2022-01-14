@@ -49,8 +49,8 @@ namespace CyberSource.Model
         /// <param name="ExchangeRate">Exchange rate returned by the DCC service. Includes a decimal point and a maximum of 4 decimal places.  For details, see &#x60;exchange_rate&#x60; request-level field description in the [Dynamic Currency Conversion For First Data Using the SCMP API](http://apps.cybersource.com/library/documentation/dev_guides/DCC_FirstData_SCMP/DCC_FirstData_SCMP_API.pdf) .</param>
         /// <param name="ExchangeRateTimeStamp">Time stamp for the exchange rate. This value is returned by the DCC service.  Format: &#x60;YYYYMMDD~HH:MM&#x60;  where ~ denotes a space. .</param>
         /// <param name="Surcharge">Surcharge.</param>
-        /// <param name="SettlementAmount">This is a multicurrency field. It contains the transaction amount (field 4), converted to the Currency used to bill the cardholder’s account. .</param>
-        /// <param name="SettlementCurrency">This is a multicurrency-only field. It contains a 3-digit numeric code that identifies the currency used by the issuer to bill the cardholder&#39;s account. .</param>
+        /// <param name="SettlementAmount">This is a multicurrency field. It contains the transaction amount (field 4), converted to the Currency used to bill the cardholder’s account. This field is returned for OCT transactions. .</param>
+        /// <param name="SettlementCurrency">This is a multicurrency-only field. It contains a 3-digit numeric code that identifies the currency used by the issuer to bill the cardholder&#39;s account. This field is returned for OCT transactions. .</param>
         /// <param name="AmexAdditionalAmounts">AmexAdditionalAmounts.</param>
         /// <param name="TaxDetails">TaxDetails.</param>
         /// <param name="ServiceFeeAmount">Service fee. Required for service fee transactions. .</param>
@@ -199,16 +199,16 @@ namespace CyberSource.Model
         public Ptsv2paymentsOrderInformationAmountDetailsSurcharge Surcharge { get; set; }
 
         /// <summary>
-        /// This is a multicurrency field. It contains the transaction amount (field 4), converted to the Currency used to bill the cardholder’s account. 
+        /// This is a multicurrency field. It contains the transaction amount (field 4), converted to the Currency used to bill the cardholder’s account. This field is returned for OCT transactions. 
         /// </summary>
-        /// <value>This is a multicurrency field. It contains the transaction amount (field 4), converted to the Currency used to bill the cardholder’s account. </value>
+        /// <value>This is a multicurrency field. It contains the transaction amount (field 4), converted to the Currency used to bill the cardholder’s account. This field is returned for OCT transactions. </value>
         [DataMember(Name="settlementAmount", EmitDefaultValue=false)]
         public string SettlementAmount { get; set; }
 
         /// <summary>
-        /// This is a multicurrency-only field. It contains a 3-digit numeric code that identifies the currency used by the issuer to bill the cardholder&#39;s account. 
+        /// This is a multicurrency-only field. It contains a 3-digit numeric code that identifies the currency used by the issuer to bill the cardholder&#39;s account. This field is returned for OCT transactions. 
         /// </summary>
-        /// <value>This is a multicurrency-only field. It contains a 3-digit numeric code that identifies the currency used by the issuer to bill the cardholder&#39;s account. </value>
+        /// <value>This is a multicurrency-only field. It contains a 3-digit numeric code that identifies the currency used by the issuer to bill the cardholder&#39;s account. This field is returned for OCT transactions. </value>
         [DataMember(Name="settlementCurrency", EmitDefaultValue=false)]
         public string SettlementCurrency { get; set; }
 
@@ -526,132 +526,6 @@ namespace CyberSource.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // TotalAmount (string) maxLength
-            if(this.TotalAmount != null && this.TotalAmount.Length >= 19)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TotalAmount, length must be less than or equal to 19.", new [] { "TotalAmount" });
-            }
-
-            // Currency (string) maxLength
-            if(this.Currency != null && this.Currency.Length >= 3)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Currency, length must be less than or equal to 3.", new [] { "Currency" });
-            }
-
-            // DiscountAmount (string) maxLength
-            if(this.DiscountAmount != null && this.DiscountAmount.Length >= 15)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DiscountAmount, length must be less than or equal to 15.", new [] { "DiscountAmount" });
-            }
-
-            // DutyAmount (string) maxLength
-            if(this.DutyAmount != null && this.DutyAmount.Length >= 15)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DutyAmount, length must be less than or equal to 15.", new [] { "DutyAmount" });
-            }
-
-            // GratuityAmount (string) maxLength
-            if(this.GratuityAmount != null && this.GratuityAmount.Length >= 13)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for GratuityAmount, length must be less than or equal to 13.", new [] { "GratuityAmount" });
-            }
-
-            // TaxAmount (string) maxLength
-            if(this.TaxAmount != null && this.TaxAmount.Length >= 12)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaxAmount, length must be less than or equal to 12.", new [] { "TaxAmount" });
-            }
-
-            // NationalTaxIncluded (string) maxLength
-            if(this.NationalTaxIncluded != null && this.NationalTaxIncluded.Length >= 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for NationalTaxIncluded, length must be less than or equal to 1.", new [] { "NationalTaxIncluded" });
-            }
-
-            // TaxAppliedAfterDiscount (string) maxLength
-            if(this.TaxAppliedAfterDiscount != null && this.TaxAppliedAfterDiscount.Length >= 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaxAppliedAfterDiscount, length must be less than or equal to 1.", new [] { "TaxAppliedAfterDiscount" });
-            }
-
-            // TaxAppliedLevel (string) maxLength
-            if(this.TaxAppliedLevel != null && this.TaxAppliedLevel.Length >= 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaxAppliedLevel, length must be less than or equal to 1.", new [] { "TaxAppliedLevel" });
-            }
-
-            // TaxTypeCode (string) maxLength
-            if(this.TaxTypeCode != null && this.TaxTypeCode.Length >= 3)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaxTypeCode, length must be less than or equal to 3.", new [] { "TaxTypeCode" });
-            }
-
-            // FreightAmount (string) maxLength
-            if(this.FreightAmount != null && this.FreightAmount.Length >= 13)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FreightAmount, length must be less than or equal to 13.", new [] { "FreightAmount" });
-            }
-
-            // ForeignAmount (string) maxLength
-            if(this.ForeignAmount != null && this.ForeignAmount.Length >= 15)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ForeignAmount, length must be less than or equal to 15.", new [] { "ForeignAmount" });
-            }
-
-            // ForeignCurrency (string) maxLength
-            if(this.ForeignCurrency != null && this.ForeignCurrency.Length >= 5)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ForeignCurrency, length must be less than or equal to 5.", new [] { "ForeignCurrency" });
-            }
-
-            // ExchangeRate (string) maxLength
-            if(this.ExchangeRate != null && this.ExchangeRate.Length >= 13)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ExchangeRate, length must be less than or equal to 13.", new [] { "ExchangeRate" });
-            }
-
-            // ExchangeRateTimeStamp (string) maxLength
-            if(this.ExchangeRateTimeStamp != null && this.ExchangeRateTimeStamp.Length >= 14)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ExchangeRateTimeStamp, length must be less than or equal to 14.", new [] { "ExchangeRateTimeStamp" });
-            }
-
-            // SettlementAmount (string) maxLength
-            if(this.SettlementAmount != null && this.SettlementAmount.Length >= 12)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SettlementAmount, length must be less than or equal to 12.", new [] { "SettlementAmount" });
-            }
-
-            // SettlementCurrency (string) maxLength
-            if(this.SettlementCurrency != null && this.SettlementCurrency.Length >= 3)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SettlementCurrency, length must be less than or equal to 3.", new [] { "SettlementCurrency" });
-            }
-
-            // ServiceFeeAmount (string) maxLength
-            if(this.ServiceFeeAmount != null && this.ServiceFeeAmount.Length >= 15)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ServiceFeeAmount, length must be less than or equal to 15.", new [] { "ServiceFeeAmount" });
-            }
-
-            // OriginalAmount (string) maxLength
-            if(this.OriginalAmount != null && this.OriginalAmount.Length >= 15)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for OriginalAmount, length must be less than or equal to 15.", new [] { "OriginalAmount" });
-            }
-
-            // OriginalCurrency (string) maxLength
-            if(this.OriginalCurrency != null && this.OriginalCurrency.Length >= 15)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for OriginalCurrency, length must be less than or equal to 15.", new [] { "OriginalCurrency" });
-            }
-
-            // CashbackAmount (string) maxLength
-            if(this.CashbackAmount != null && this.CashbackAmount.Length >= 13)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CashbackAmount, length must be less than or equal to 13.", new [] { "CashbackAmount" });
-            }
-
             yield break;
         }
     }

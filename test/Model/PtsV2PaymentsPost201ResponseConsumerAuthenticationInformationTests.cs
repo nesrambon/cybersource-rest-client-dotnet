@@ -65,6 +65,14 @@ namespace CyberSource.Test
         }
 
         /// <summary>
+        /// Test the property 'AccessToken'
+        /// </summary>
+        [Test]
+        public void AccessTokenTest()
+        {
+            // TODO unit test for the property 'AccessToken'
+        }
+        /// <summary>
         /// Test the property 'AcsRenderingType'
         /// </summary>
         [Test]
@@ -215,6 +223,14 @@ namespace CyberSource.Test
         public void IvrTest()
         {
             // TODO unit test for the property 'Ivr'
+        }
+        /// <summary>
+        /// Test the property 'StrongAuthentication'
+        /// </summary>
+        [Test]
+        public void StrongAuthenticationTest()
+        {
+            // TODO unit test for the property 'StrongAuthentication'
         }
         /// <summary>
         /// Test the property 'NetworkScore'

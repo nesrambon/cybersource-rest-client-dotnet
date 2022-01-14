@@ -145,6 +145,14 @@ namespace CyberSource.Test
             // TODO unit test for the property 'IssuerInformation'
         }
         /// <summary>
+        /// Test the property 'PaymentAccountInformation'
+        /// </summary>
+        [Test]
+        public void PaymentAccountInformationTest()
+        {
+            // TODO unit test for the property 'PaymentAccountInformation'
+        }
+        /// <summary>
         /// Test the property 'PaymentInformation'
         /// </summary>
         [Test]
@@ -183,6 +191,14 @@ namespace CyberSource.Test
         public void TokenInformationTest()
         {
             // TODO unit test for the property 'TokenInformation'
+        }
+        /// <summary>
+        /// Test the property 'BuyerInformation'
+        /// </summary>
+        [Test]
+        public void BuyerInformationTest()
+        {
+            // TODO unit test for the property 'BuyerInformation'
         }
         /// <summary>
         /// Test the property 'RiskInformation'
