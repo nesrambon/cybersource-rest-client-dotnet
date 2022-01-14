@@ -14,7 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using CyberSource.Client;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -77,7 +77,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class DownloadDTDApi : IDownloadDTDApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -96,9 +96,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -119,9 +119,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -159,8 +159,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -197,8 +196,7 @@ namespace CyberSource.Api
         /// <returns></returns>
         public void GetDTDV2 (string reportDefinitionNameVersion)
         {
-            logger.Debug("CALLING API \"GetDTDV2\" STARTED");
-            GetDTDV2WithHttpInfo(reportDefinitionNameVersion);
+                         GetDTDV2WithHttpInfo(reportDefinitionNameVersion);
         }
 
         /// <summary>
@@ -212,8 +210,7 @@ namespace CyberSource.Api
             // verify the required parameter 'reportDefinitionNameVersion' is set
             if (reportDefinitionNameVersion == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportDefinitionNameVersion' when calling DownloadDTDApi->GetDTDV2");
-                throw new ApiException(400, "Missing required parameter 'reportDefinitionNameVersion' when calling DownloadDTDApi->GetDTDV2");
+                                 throw new ApiException(400, "Missing required parameter 'reportDefinitionNameVersion' when calling DownloadDTDApi->GetDTDV2");
             }
 
             var localVarPath = $"/reporting/v3/dtds/{reportDefinitionNameVersion}";
@@ -244,8 +241,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("reportDefinitionNameVersion", Configuration.ApiClient.ParameterToString(reportDefinitionNameVersion)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -259,8 +255,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetDTDV2", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -277,8 +272,7 @@ namespace CyberSource.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task GetDTDV2Async (string reportDefinitionNameVersion)
         {
-            logger.Debug("CALLING API \"GetDTDV2Async\" STARTED");
-            await GetDTDV2AsyncWithHttpInfo(reportDefinitionNameVersion);
+                         await GetDTDV2AsyncWithHttpInfo(reportDefinitionNameVersion);
 
         }
 
@@ -293,8 +287,7 @@ namespace CyberSource.Api
             // verify the required parameter 'reportDefinitionNameVersion' is set
             if (reportDefinitionNameVersion == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportDefinitionNameVersion' when calling DownloadDTDApi->GetDTDV2");
-                throw new ApiException(400, "Missing required parameter 'reportDefinitionNameVersion' when calling DownloadDTDApi->GetDTDV2");
+                                 throw new ApiException(400, "Missing required parameter 'reportDefinitionNameVersion' when calling DownloadDTDApi->GetDTDV2");
             }
 
             var localVarPath = $"/reporting/v3/dtds/{reportDefinitionNameVersion}";
@@ -325,8 +318,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("reportDefinitionNameVersion", Configuration.ApiClient.ParameterToString(reportDefinitionNameVersion)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -340,8 +332,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetDTDV2", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -300,7 +300,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class InvoicesApi : IInvoicesApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -319,9 +319,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -342,9 +342,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -382,8 +382,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -420,10 +419,8 @@ namespace CyberSource.Api
         /// <returns>InvoicingV2InvoicesPost201Response</returns>
         public InvoicingV2InvoicesPost201Response CreateInvoice (CreateInvoiceRequest createInvoiceRequest)
         {
-            logger.Debug("CALLING API \"CreateInvoice\" STARTED");
-            ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = CreateInvoiceWithHttpInfo(createInvoiceRequest);
-            logger.Debug("CALLING API \"CreateInvoice\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = CreateInvoiceWithHttpInfo(createInvoiceRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -437,8 +434,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createInvoiceRequest' is set
             if (createInvoiceRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createInvoiceRequest' when calling InvoicesApi->CreateInvoice");
-                throw new ApiException(400, "Missing required parameter 'createInvoiceRequest' when calling InvoicesApi->CreateInvoice");
+                                 throw new ApiException(400, "Missing required parameter 'createInvoiceRequest' when calling InvoicesApi->CreateInvoice");
             }
 
             var localVarPath = $"/invoicing/v2/invoices";
@@ -474,14 +470,12 @@ namespace CyberSource.Api
                 localVarPostBody = createInvoiceRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -496,8 +490,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateInvoice", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -514,10 +507,8 @@ namespace CyberSource.Api
         /// <returns>Task of InvoicingV2InvoicesPost201Response</returns>
         public async System.Threading.Tasks.Task<InvoicingV2InvoicesPost201Response> CreateInvoiceAsync (CreateInvoiceRequest createInvoiceRequest)
         {
-            logger.Debug("CALLING API \"CreateInvoiceAsync\" STARTED");
-            ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = await CreateInvoiceAsyncWithHttpInfo(createInvoiceRequest);
-            logger.Debug("CALLING API \"CreateInvoiceAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = await CreateInvoiceAsyncWithHttpInfo(createInvoiceRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -532,8 +523,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createInvoiceRequest' is set
             if (createInvoiceRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createInvoiceRequest' when calling InvoicesApi->CreateInvoice");
-                throw new ApiException(400, "Missing required parameter 'createInvoiceRequest' when calling InvoicesApi->CreateInvoice");
+                                 throw new ApiException(400, "Missing required parameter 'createInvoiceRequest' when calling InvoicesApi->CreateInvoice");
             }
 
             var localVarPath = $"/invoicing/v2/invoices";
@@ -569,14 +559,12 @@ namespace CyberSource.Api
                 localVarPostBody = createInvoiceRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -591,8 +579,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateInvoice", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -610,10 +597,8 @@ namespace CyberSource.Api
         /// <returns>InvoicingV2InvoicesAllGet200Response</returns>
         public InvoicingV2InvoicesAllGet200Response GetAllInvoices (int? offset, int? limit, string status = null)
         {
-            logger.Debug("CALLING API \"GetAllInvoices\" STARTED");
-            ApiResponse<InvoicingV2InvoicesAllGet200Response> localVarResponse = GetAllInvoicesWithHttpInfo(offset, limit, status);
-            logger.Debug("CALLING API \"GetAllInvoices\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoicesAllGet200Response> localVarResponse = GetAllInvoicesWithHttpInfo(offset, limit, status);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -629,14 +614,12 @@ namespace CyberSource.Api
             // verify the required parameter 'offset' is set
             if (offset == null)
             {
-                logger.Error("ApiException : Missing required parameter 'offset' when calling InvoicesApi->GetAllInvoices");
-                throw new ApiException(400, "Missing required parameter 'offset' when calling InvoicesApi->GetAllInvoices");
+                                 throw new ApiException(400, "Missing required parameter 'offset' when calling InvoicesApi->GetAllInvoices");
             }
             // verify the required parameter 'limit' is set
             if (limit == null)
             {
-                logger.Error("ApiException : Missing required parameter 'limit' when calling InvoicesApi->GetAllInvoices");
-                throw new ApiException(400, "Missing required parameter 'limit' when calling InvoicesApi->GetAllInvoices");
+                                 throw new ApiException(400, "Missing required parameter 'limit' when calling InvoicesApi->GetAllInvoices");
             }
 
             var localVarPath = $"/invoicing/v2/invoices";
@@ -675,10 +658,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("status", Configuration.ApiClient.ParameterToString(status)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                       
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -692,8 +672,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetAllInvoices", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -712,10 +691,8 @@ namespace CyberSource.Api
         /// <returns>Task of InvoicingV2InvoicesAllGet200Response</returns>
         public async System.Threading.Tasks.Task<InvoicingV2InvoicesAllGet200Response> GetAllInvoicesAsync (int? offset, int? limit, string status = null)
         {
-            logger.Debug("CALLING API \"GetAllInvoicesAsync\" STARTED");
-            ApiResponse<InvoicingV2InvoicesAllGet200Response> localVarResponse = await GetAllInvoicesAsyncWithHttpInfo(offset, limit, status);
-            logger.Debug("CALLING API \"GetAllInvoicesAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoicesAllGet200Response> localVarResponse = await GetAllInvoicesAsyncWithHttpInfo(offset, limit, status);
+                         return localVarResponse.Data;
 
         }
 
@@ -732,14 +709,12 @@ namespace CyberSource.Api
             // verify the required parameter 'offset' is set
             if (offset == null)
             {
-                logger.Error("ApiException : Missing required parameter 'offset' when calling InvoicesApi->GetAllInvoices");
-                throw new ApiException(400, "Missing required parameter 'offset' when calling InvoicesApi->GetAllInvoices");
+                                 throw new ApiException(400, "Missing required parameter 'offset' when calling InvoicesApi->GetAllInvoices");
             }
             // verify the required parameter 'limit' is set
             if (limit == null)
             {
-                logger.Error("ApiException : Missing required parameter 'limit' when calling InvoicesApi->GetAllInvoices");
-                throw new ApiException(400, "Missing required parameter 'limit' when calling InvoicesApi->GetAllInvoices");
+                                 throw new ApiException(400, "Missing required parameter 'limit' when calling InvoicesApi->GetAllInvoices");
             }
 
             var localVarPath = $"/invoicing/v2/invoices";
@@ -778,10 +753,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("status", Configuration.ApiClient.ParameterToString(status)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                       
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -795,8 +767,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetAllInvoices", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -812,10 +783,8 @@ namespace CyberSource.Api
         /// <returns>InvoicingV2InvoicesGet200Response</returns>
         public InvoicingV2InvoicesGet200Response GetInvoice (string id)
         {
-            logger.Debug("CALLING API \"GetInvoice\" STARTED");
-            ApiResponse<InvoicingV2InvoicesGet200Response> localVarResponse = GetInvoiceWithHttpInfo(id);
-            logger.Debug("CALLING API \"GetInvoice\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoicesGet200Response> localVarResponse = GetInvoiceWithHttpInfo(id);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -829,8 +798,7 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling InvoicesApi->GetInvoice");
-                throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->GetInvoice");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->GetInvoice");
             }
 
             var localVarPath = $"/invoicing/v2/invoices/{id}";
@@ -861,8 +829,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -876,8 +843,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetInvoice", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -894,10 +860,8 @@ namespace CyberSource.Api
         /// <returns>Task of InvoicingV2InvoicesGet200Response</returns>
         public async System.Threading.Tasks.Task<InvoicingV2InvoicesGet200Response> GetInvoiceAsync (string id)
         {
-            logger.Debug("CALLING API \"GetInvoiceAsync\" STARTED");
-            ApiResponse<InvoicingV2InvoicesGet200Response> localVarResponse = await GetInvoiceAsyncWithHttpInfo(id);
-            logger.Debug("CALLING API \"GetInvoiceAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoicesGet200Response> localVarResponse = await GetInvoiceAsyncWithHttpInfo(id);
+                         return localVarResponse.Data;
 
         }
 
@@ -912,8 +876,7 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling InvoicesApi->GetInvoice");
-                throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->GetInvoice");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->GetInvoice");
             }
 
             var localVarPath = $"/invoicing/v2/invoices/{id}";
@@ -944,8 +907,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -959,8 +921,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetInvoice", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -976,10 +937,8 @@ namespace CyberSource.Api
         /// <returns>InvoicingV2InvoicesPost201Response</returns>
         public InvoicingV2InvoicesPost201Response PerformCancelAction (string id)
         {
-            logger.Debug("CALLING API \"PerformCancelAction\" STARTED");
-            ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = PerformCancelActionWithHttpInfo(id);
-            logger.Debug("CALLING API \"PerformCancelAction\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = PerformCancelActionWithHttpInfo(id);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -993,8 +952,7 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling InvoicesApi->PerformCancelAction");
-                throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->PerformCancelAction");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->PerformCancelAction");
             }
 
             var localVarPath = $"/invoicing/v2/invoices/{id}/cancelation";
@@ -1025,8 +983,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -1040,8 +997,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PerformCancelAction", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1058,10 +1014,8 @@ namespace CyberSource.Api
         /// <returns>Task of InvoicingV2InvoicesPost201Response</returns>
         public async System.Threading.Tasks.Task<InvoicingV2InvoicesPost201Response> PerformCancelActionAsync (string id)
         {
-            logger.Debug("CALLING API \"PerformCancelActionAsync\" STARTED");
-            ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = await PerformCancelActionAsyncWithHttpInfo(id);
-            logger.Debug("CALLING API \"PerformCancelActionAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = await PerformCancelActionAsyncWithHttpInfo(id);
+                         return localVarResponse.Data;
 
         }
 
@@ -1076,8 +1030,7 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling InvoicesApi->PerformCancelAction");
-                throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->PerformCancelAction");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->PerformCancelAction");
             }
 
             var localVarPath = $"/invoicing/v2/invoices/{id}/cancelation";
@@ -1108,8 +1061,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -1123,8 +1075,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PerformCancelAction", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1140,10 +1091,8 @@ namespace CyberSource.Api
         /// <returns>InvoicingV2InvoicesPost201Response</returns>
         public InvoicingV2InvoicesPost201Response PerformSendAction (string id)
         {
-            logger.Debug("CALLING API \"PerformSendAction\" STARTED");
-            ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = PerformSendActionWithHttpInfo(id);
-            logger.Debug("CALLING API \"PerformSendAction\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = PerformSendActionWithHttpInfo(id);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1157,8 +1106,7 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling InvoicesApi->PerformSendAction");
-                throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->PerformSendAction");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->PerformSendAction");
             }
 
             var localVarPath = $"/invoicing/v2/invoices/{id}/delivery";
@@ -1189,8 +1137,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -1204,8 +1151,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PerformSendAction", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1222,10 +1168,8 @@ namespace CyberSource.Api
         /// <returns>Task of InvoicingV2InvoicesPost201Response</returns>
         public async System.Threading.Tasks.Task<InvoicingV2InvoicesPost201Response> PerformSendActionAsync (string id)
         {
-            logger.Debug("CALLING API \"PerformSendActionAsync\" STARTED");
-            ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = await PerformSendActionAsyncWithHttpInfo(id);
-            logger.Debug("CALLING API \"PerformSendActionAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = await PerformSendActionAsyncWithHttpInfo(id);
+                         return localVarResponse.Data;
 
         }
 
@@ -1240,8 +1184,7 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling InvoicesApi->PerformSendAction");
-                throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->PerformSendAction");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->PerformSendAction");
             }
 
             var localVarPath = $"/invoicing/v2/invoices/{id}/delivery";
@@ -1272,8 +1215,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -1287,8 +1229,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PerformSendAction", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1305,10 +1246,8 @@ namespace CyberSource.Api
         /// <returns>InvoicingV2InvoicesPost201Response</returns>
         public InvoicingV2InvoicesPost201Response UpdateInvoice (string id, UpdateInvoiceRequest updateInvoiceRequest)
         {
-            logger.Debug("CALLING API \"UpdateInvoice\" STARTED");
-            ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = UpdateInvoiceWithHttpInfo(id, updateInvoiceRequest);
-            logger.Debug("CALLING API \"UpdateInvoice\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = UpdateInvoiceWithHttpInfo(id, updateInvoiceRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1323,14 +1262,12 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling InvoicesApi->UpdateInvoice");
-                throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->UpdateInvoice");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->UpdateInvoice");
             }
             // verify the required parameter 'updateInvoiceRequest' is set
             if (updateInvoiceRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'updateInvoiceRequest' when calling InvoicesApi->UpdateInvoice");
-                throw new ApiException(400, "Missing required parameter 'updateInvoiceRequest' when calling InvoicesApi->UpdateInvoice");
+                                 throw new ApiException(400, "Missing required parameter 'updateInvoiceRequest' when calling InvoicesApi->UpdateInvoice");
             }
 
             var localVarPath = $"/invoicing/v2/invoices/{id}";
@@ -1361,8 +1298,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (updateInvoiceRequest != null && updateInvoiceRequest.GetType() != typeof(byte[]))
+                         if (updateInvoiceRequest != null && updateInvoiceRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(updateInvoiceRequest); // http body (model) parameter
             }
@@ -1371,14 +1307,12 @@ namespace CyberSource.Api
                 localVarPostBody = updateInvoiceRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1393,8 +1327,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("UpdateInvoice", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1412,10 +1345,8 @@ namespace CyberSource.Api
         /// <returns>Task of InvoicingV2InvoicesPost201Response</returns>
         public async System.Threading.Tasks.Task<InvoicingV2InvoicesPost201Response> UpdateInvoiceAsync (string id, UpdateInvoiceRequest updateInvoiceRequest)
         {
-            logger.Debug("CALLING API \"UpdateInvoiceAsync\" STARTED");
-            ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = await UpdateInvoiceAsyncWithHttpInfo(id, updateInvoiceRequest);
-            logger.Debug("CALLING API \"UpdateInvoiceAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoicesPost201Response> localVarResponse = await UpdateInvoiceAsyncWithHttpInfo(id, updateInvoiceRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -1431,14 +1362,12 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling InvoicesApi->UpdateInvoice");
-                throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->UpdateInvoice");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling InvoicesApi->UpdateInvoice");
             }
             // verify the required parameter 'updateInvoiceRequest' is set
             if (updateInvoiceRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'updateInvoiceRequest' when calling InvoicesApi->UpdateInvoice");
-                throw new ApiException(400, "Missing required parameter 'updateInvoiceRequest' when calling InvoicesApi->UpdateInvoice");
+                                 throw new ApiException(400, "Missing required parameter 'updateInvoiceRequest' when calling InvoicesApi->UpdateInvoice");
             }
 
             var localVarPath = $"/invoicing/v2/invoices/{id}";
@@ -1469,8 +1398,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (updateInvoiceRequest != null && updateInvoiceRequest.GetType() != typeof(byte[]))
+                         if (updateInvoiceRequest != null && updateInvoiceRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(updateInvoiceRequest); // http body (model) parameter
             }
@@ -1479,14 +1407,12 @@ namespace CyberSource.Api
                 localVarPostBody = updateInvoiceRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1501,8 +1427,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("UpdateInvoice", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

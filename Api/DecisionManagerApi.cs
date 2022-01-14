@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -170,7 +170,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class DecisionManagerApi : IDecisionManagerApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -189,9 +189,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -212,9 +212,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -252,8 +252,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -291,10 +290,8 @@ namespace CyberSource.Api
         /// <returns>RiskV1UpdatePost201Response</returns>
         public RiskV1UpdatePost201Response AddNegative (string type, AddNegativeListRequest addNegativeListRequest)
         {
-            logger.Debug("CALLING API \"AddNegative\" STARTED");
-            ApiResponse<RiskV1UpdatePost201Response> localVarResponse = AddNegativeWithHttpInfo(type, addNegativeListRequest);
-            logger.Debug("CALLING API \"AddNegative\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1UpdatePost201Response> localVarResponse = AddNegativeWithHttpInfo(type, addNegativeListRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -309,14 +306,12 @@ namespace CyberSource.Api
             // verify the required parameter 'type' is set
             if (type == null)
             {
-                logger.Error("ApiException : Missing required parameter 'type' when calling DecisionManagerApi->AddNegative");
-                throw new ApiException(400, "Missing required parameter 'type' when calling DecisionManagerApi->AddNegative");
+                                 throw new ApiException(400, "Missing required parameter 'type' when calling DecisionManagerApi->AddNegative");
             }
             // verify the required parameter 'addNegativeListRequest' is set
             if (addNegativeListRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'addNegativeListRequest' when calling DecisionManagerApi->AddNegative");
-                throw new ApiException(400, "Missing required parameter 'addNegativeListRequest' when calling DecisionManagerApi->AddNegative");
+                                 throw new ApiException(400, "Missing required parameter 'addNegativeListRequest' when calling DecisionManagerApi->AddNegative");
             }
 
             var localVarPath = $"/risk/v1/lists/{type}/entries";
@@ -347,8 +342,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("type", Configuration.ApiClient.ParameterToString(type)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (addNegativeListRequest != null && addNegativeListRequest.GetType() != typeof(byte[]))
+                         if (addNegativeListRequest != null && addNegativeListRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(addNegativeListRequest); // http body (model) parameter
             }
@@ -357,14 +351,12 @@ namespace CyberSource.Api
                 localVarPostBody = addNegativeListRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -379,8 +371,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("AddNegative", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -398,10 +389,8 @@ namespace CyberSource.Api
         /// <returns>Task of RiskV1UpdatePost201Response</returns>
         public async System.Threading.Tasks.Task<RiskV1UpdatePost201Response> AddNegativeAsync (string type, AddNegativeListRequest addNegativeListRequest)
         {
-            logger.Debug("CALLING API \"AddNegativeAsync\" STARTED");
-            ApiResponse<RiskV1UpdatePost201Response> localVarResponse = await AddNegativeAsyncWithHttpInfo(type, addNegativeListRequest);
-            logger.Debug("CALLING API \"AddNegativeAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1UpdatePost201Response> localVarResponse = await AddNegativeAsyncWithHttpInfo(type, addNegativeListRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -417,14 +406,12 @@ namespace CyberSource.Api
             // verify the required parameter 'type' is set
             if (type == null)
             {
-                logger.Error("ApiException : Missing required parameter 'type' when calling DecisionManagerApi->AddNegative");
-                throw new ApiException(400, "Missing required parameter 'type' when calling DecisionManagerApi->AddNegative");
+                                 throw new ApiException(400, "Missing required parameter 'type' when calling DecisionManagerApi->AddNegative");
             }
             // verify the required parameter 'addNegativeListRequest' is set
             if (addNegativeListRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'addNegativeListRequest' when calling DecisionManagerApi->AddNegative");
-                throw new ApiException(400, "Missing required parameter 'addNegativeListRequest' when calling DecisionManagerApi->AddNegative");
+                                 throw new ApiException(400, "Missing required parameter 'addNegativeListRequest' when calling DecisionManagerApi->AddNegative");
             }
 
             var localVarPath = $"/risk/v1/lists/{type}/entries";
@@ -455,8 +442,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("type", Configuration.ApiClient.ParameterToString(type)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (addNegativeListRequest != null && addNegativeListRequest.GetType() != typeof(byte[]))
+                         if (addNegativeListRequest != null && addNegativeListRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(addNegativeListRequest); // http body (model) parameter
             }
@@ -465,14 +451,12 @@ namespace CyberSource.Api
                 localVarPostBody = addNegativeListRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -487,8 +471,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("AddNegative", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -504,10 +487,8 @@ namespace CyberSource.Api
         /// <returns>RiskV1DecisionsPost201Response</returns>
         public RiskV1DecisionsPost201Response CreateBundledDecisionManagerCase (CreateBundledDecisionManagerCaseRequest createBundledDecisionManagerCaseRequest)
         {
-            logger.Debug("CALLING API \"CreateBundledDecisionManagerCase\" STARTED");
-            ApiResponse<RiskV1DecisionsPost201Response> localVarResponse = CreateBundledDecisionManagerCaseWithHttpInfo(createBundledDecisionManagerCaseRequest);
-            logger.Debug("CALLING API \"CreateBundledDecisionManagerCase\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1DecisionsPost201Response> localVarResponse = CreateBundledDecisionManagerCaseWithHttpInfo(createBundledDecisionManagerCaseRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -521,8 +502,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createBundledDecisionManagerCaseRequest' is set
             if (createBundledDecisionManagerCaseRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createBundledDecisionManagerCaseRequest' when calling DecisionManagerApi->CreateBundledDecisionManagerCase");
-                throw new ApiException(400, "Missing required parameter 'createBundledDecisionManagerCaseRequest' when calling DecisionManagerApi->CreateBundledDecisionManagerCase");
+                                 throw new ApiException(400, "Missing required parameter 'createBundledDecisionManagerCaseRequest' when calling DecisionManagerApi->CreateBundledDecisionManagerCase");
             }
 
             var localVarPath = $"/risk/v1/decisions";
@@ -558,14 +538,12 @@ namespace CyberSource.Api
                 localVarPostBody = createBundledDecisionManagerCaseRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -580,8 +558,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateBundledDecisionManagerCase", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -598,10 +575,8 @@ namespace CyberSource.Api
         /// <returns>Task of RiskV1DecisionsPost201Response</returns>
         public async System.Threading.Tasks.Task<RiskV1DecisionsPost201Response> CreateBundledDecisionManagerCaseAsync (CreateBundledDecisionManagerCaseRequest createBundledDecisionManagerCaseRequest)
         {
-            logger.Debug("CALLING API \"CreateBundledDecisionManagerCaseAsync\" STARTED");
-            ApiResponse<RiskV1DecisionsPost201Response> localVarResponse = await CreateBundledDecisionManagerCaseAsyncWithHttpInfo(createBundledDecisionManagerCaseRequest);
-            logger.Debug("CALLING API \"CreateBundledDecisionManagerCaseAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1DecisionsPost201Response> localVarResponse = await CreateBundledDecisionManagerCaseAsyncWithHttpInfo(createBundledDecisionManagerCaseRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -616,8 +591,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createBundledDecisionManagerCaseRequest' is set
             if (createBundledDecisionManagerCaseRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createBundledDecisionManagerCaseRequest' when calling DecisionManagerApi->CreateBundledDecisionManagerCase");
-                throw new ApiException(400, "Missing required parameter 'createBundledDecisionManagerCaseRequest' when calling DecisionManagerApi->CreateBundledDecisionManagerCase");
+                                 throw new ApiException(400, "Missing required parameter 'createBundledDecisionManagerCaseRequest' when calling DecisionManagerApi->CreateBundledDecisionManagerCase");
             }
 
             var localVarPath = $"/risk/v1/decisions";
@@ -653,14 +627,12 @@ namespace CyberSource.Api
                 localVarPostBody = createBundledDecisionManagerCaseRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -675,8 +647,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateBundledDecisionManagerCase", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -693,10 +664,8 @@ namespace CyberSource.Api
         /// <returns>RiskV1UpdatePost201Response</returns>
         public RiskV1UpdatePost201Response FraudUpdate (string id, FraudMarkingActionRequest fraudMarkingActionRequest)
         {
-            logger.Debug("CALLING API \"FraudUpdate\" STARTED");
-            ApiResponse<RiskV1UpdatePost201Response> localVarResponse = FraudUpdateWithHttpInfo(id, fraudMarkingActionRequest);
-            logger.Debug("CALLING API \"FraudUpdate\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1UpdatePost201Response> localVarResponse = FraudUpdateWithHttpInfo(id, fraudMarkingActionRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -711,14 +680,12 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling DecisionManagerApi->FraudUpdate");
-                throw new ApiException(400, "Missing required parameter 'id' when calling DecisionManagerApi->FraudUpdate");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling DecisionManagerApi->FraudUpdate");
             }
             // verify the required parameter 'fraudMarkingActionRequest' is set
             if (fraudMarkingActionRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'fraudMarkingActionRequest' when calling DecisionManagerApi->FraudUpdate");
-                throw new ApiException(400, "Missing required parameter 'fraudMarkingActionRequest' when calling DecisionManagerApi->FraudUpdate");
+                                 throw new ApiException(400, "Missing required parameter 'fraudMarkingActionRequest' when calling DecisionManagerApi->FraudUpdate");
             }
 
             var localVarPath = $"/risk/v1/decisions/{id}/marking";
@@ -749,8 +716,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (fraudMarkingActionRequest != null && fraudMarkingActionRequest.GetType() != typeof(byte[]))
+                         if (fraudMarkingActionRequest != null && fraudMarkingActionRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(fraudMarkingActionRequest); // http body (model) parameter
             }
@@ -759,14 +725,12 @@ namespace CyberSource.Api
                 localVarPostBody = fraudMarkingActionRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -781,8 +745,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("FraudUpdate", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -800,10 +763,8 @@ namespace CyberSource.Api
         /// <returns>Task of RiskV1UpdatePost201Response</returns>
         public async System.Threading.Tasks.Task<RiskV1UpdatePost201Response> FraudUpdateAsync (string id, FraudMarkingActionRequest fraudMarkingActionRequest)
         {
-            logger.Debug("CALLING API \"FraudUpdateAsync\" STARTED");
-            ApiResponse<RiskV1UpdatePost201Response> localVarResponse = await FraudUpdateAsyncWithHttpInfo(id, fraudMarkingActionRequest);
-            logger.Debug("CALLING API \"FraudUpdateAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1UpdatePost201Response> localVarResponse = await FraudUpdateAsyncWithHttpInfo(id, fraudMarkingActionRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -819,14 +780,12 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling DecisionManagerApi->FraudUpdate");
-                throw new ApiException(400, "Missing required parameter 'id' when calling DecisionManagerApi->FraudUpdate");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling DecisionManagerApi->FraudUpdate");
             }
             // verify the required parameter 'fraudMarkingActionRequest' is set
             if (fraudMarkingActionRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'fraudMarkingActionRequest' when calling DecisionManagerApi->FraudUpdate");
-                throw new ApiException(400, "Missing required parameter 'fraudMarkingActionRequest' when calling DecisionManagerApi->FraudUpdate");
+                                 throw new ApiException(400, "Missing required parameter 'fraudMarkingActionRequest' when calling DecisionManagerApi->FraudUpdate");
             }
 
             var localVarPath = $"/risk/v1/decisions/{id}/marking";
@@ -857,8 +816,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (fraudMarkingActionRequest != null && fraudMarkingActionRequest.GetType() != typeof(byte[]))
+                         if (fraudMarkingActionRequest != null && fraudMarkingActionRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(fraudMarkingActionRequest); // http body (model) parameter
             }
@@ -867,14 +825,12 @@ namespace CyberSource.Api
                 localVarPostBody = fraudMarkingActionRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -889,8 +845,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("FraudUpdate", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

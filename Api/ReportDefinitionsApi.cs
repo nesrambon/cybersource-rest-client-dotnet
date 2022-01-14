@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -136,7 +136,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class ReportDefinitionsApi : IReportDefinitionsApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -155,9 +155,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -178,9 +178,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -218,8 +218,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -259,10 +258,8 @@ namespace CyberSource.Api
         /// <returns>ReportingV3ReportDefinitionsNameGet200Response</returns>
         public ReportingV3ReportDefinitionsNameGet200Response GetResourceInfoByReportDefinition (string reportDefinitionName, string subscriptionType = null, string reportMimeType = null, string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetResourceInfoByReportDefinition\" STARTED");
-            ApiResponse<ReportingV3ReportDefinitionsNameGet200Response> localVarResponse = GetResourceInfoByReportDefinitionWithHttpInfo(reportDefinitionName, subscriptionType, reportMimeType, organizationId);
-            logger.Debug("CALLING API \"GetResourceInfoByReportDefinition\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ReportDefinitionsNameGet200Response> localVarResponse = GetResourceInfoByReportDefinitionWithHttpInfo(reportDefinitionName, subscriptionType, reportMimeType, organizationId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -279,8 +276,7 @@ namespace CyberSource.Api
             // verify the required parameter 'reportDefinitionName' is set
             if (reportDefinitionName == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportDefinitionName' when calling ReportDefinitionsApi->GetResourceInfoByReportDefinition");
-                throw new ApiException(400, "Missing required parameter 'reportDefinitionName' when calling ReportDefinitionsApi->GetResourceInfoByReportDefinition");
+                                 throw new ApiException(400, "Missing required parameter 'reportDefinitionName' when calling ReportDefinitionsApi->GetResourceInfoByReportDefinition");
             }
 
             var localVarPath = $"/reporting/v3/report-definitions/{reportDefinitionName}";
@@ -311,8 +307,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("reportDefinitionName", Configuration.ApiClient.ParameterToString(reportDefinitionName)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (subscriptionType != null)
+                         if (subscriptionType != null)
             {
                 localVarQueryParams.Add("subscriptionType", Configuration.ApiClient.ParameterToString(subscriptionType)); // query parameter
             }
@@ -324,10 +319,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                       
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -341,8 +333,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetResourceInfoByReportDefinition", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -362,10 +353,8 @@ namespace CyberSource.Api
         /// <returns>Task of ReportingV3ReportDefinitionsNameGet200Response</returns>
         public async System.Threading.Tasks.Task<ReportingV3ReportDefinitionsNameGet200Response> GetResourceInfoByReportDefinitionAsync (string reportDefinitionName, string subscriptionType = null, string reportMimeType = null, string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetResourceInfoByReportDefinitionAsync\" STARTED");
-            ApiResponse<ReportingV3ReportDefinitionsNameGet200Response> localVarResponse = await GetResourceInfoByReportDefinitionAsyncWithHttpInfo(reportDefinitionName, subscriptionType, reportMimeType, organizationId);
-            logger.Debug("CALLING API \"GetResourceInfoByReportDefinitionAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ReportDefinitionsNameGet200Response> localVarResponse = await GetResourceInfoByReportDefinitionAsyncWithHttpInfo(reportDefinitionName, subscriptionType, reportMimeType, organizationId);
+                         return localVarResponse.Data;
 
         }
 
@@ -383,8 +372,7 @@ namespace CyberSource.Api
             // verify the required parameter 'reportDefinitionName' is set
             if (reportDefinitionName == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportDefinitionName' when calling ReportDefinitionsApi->GetResourceInfoByReportDefinition");
-                throw new ApiException(400, "Missing required parameter 'reportDefinitionName' when calling ReportDefinitionsApi->GetResourceInfoByReportDefinition");
+                                 throw new ApiException(400, "Missing required parameter 'reportDefinitionName' when calling ReportDefinitionsApi->GetResourceInfoByReportDefinition");
             }
 
             var localVarPath = $"/reporting/v3/report-definitions/{reportDefinitionName}";
@@ -415,8 +403,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("reportDefinitionName", Configuration.ApiClient.ParameterToString(reportDefinitionName)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (subscriptionType != null)
+                         if (subscriptionType != null)
             {
                 localVarQueryParams.Add("subscriptionType", Configuration.ApiClient.ParameterToString(subscriptionType)); // query parameter
             }
@@ -428,10 +415,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                       
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -445,8 +429,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetResourceInfoByReportDefinition", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -463,10 +446,8 @@ namespace CyberSource.Api
         /// <returns>ReportingV3ReportDefinitionsGet200Response</returns>
         public ReportingV3ReportDefinitionsGet200Response GetResourceV2Info (string subscriptionType = null, string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetResourceV2Info\" STARTED");
-            ApiResponse<ReportingV3ReportDefinitionsGet200Response> localVarResponse = GetResourceV2InfoWithHttpInfo(subscriptionType, organizationId);
-            logger.Debug("CALLING API \"GetResourceV2Info\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ReportDefinitionsGet200Response> localVarResponse = GetResourceV2InfoWithHttpInfo(subscriptionType, organizationId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -511,9 +492,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                          
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -527,8 +506,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetResourceV2Info", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -546,10 +524,8 @@ namespace CyberSource.Api
         /// <returns>Task of ReportingV3ReportDefinitionsGet200Response</returns>
         public async System.Threading.Tasks.Task<ReportingV3ReportDefinitionsGet200Response> GetResourceV2InfoAsync (string subscriptionType = null, string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetResourceV2InfoAsync\" STARTED");
-            ApiResponse<ReportingV3ReportDefinitionsGet200Response> localVarResponse = await GetResourceV2InfoAsyncWithHttpInfo(subscriptionType, organizationId);
-            logger.Debug("CALLING API \"GetResourceV2InfoAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ReportDefinitionsGet200Response> localVarResponse = await GetResourceV2InfoAsyncWithHttpInfo(subscriptionType, organizationId);
+                         return localVarResponse.Data;
 
         }
 
@@ -595,9 +571,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                          
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -611,8 +585,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetResourceV2Info", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

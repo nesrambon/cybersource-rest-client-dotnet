@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -120,7 +120,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class SearchTransactionsApi : ISearchTransactionsApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -139,9 +139,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -162,9 +162,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -202,8 +202,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -240,10 +239,8 @@ namespace CyberSource.Api
         /// <returns>TssV2TransactionsPost201Response</returns>
         public TssV2TransactionsPost201Response CreateSearch (CreateSearchRequest createSearchRequest)
         {
-            logger.Debug("CALLING API \"CreateSearch\" STARTED");
-            ApiResponse<TssV2TransactionsPost201Response> localVarResponse = CreateSearchWithHttpInfo(createSearchRequest);
-            logger.Debug("CALLING API \"CreateSearch\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<TssV2TransactionsPost201Response> localVarResponse = CreateSearchWithHttpInfo(createSearchRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -257,8 +254,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createSearchRequest' is set
             if (createSearchRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createSearchRequest' when calling SearchTransactionsApi->CreateSearch");
-                throw new ApiException(400, "Missing required parameter 'createSearchRequest' when calling SearchTransactionsApi->CreateSearch");
+                                 throw new ApiException(400, "Missing required parameter 'createSearchRequest' when calling SearchTransactionsApi->CreateSearch");
             }
 
             var localVarPath = $"/tss/v2/searches";
@@ -294,14 +290,12 @@ namespace CyberSource.Api
                 localVarPostBody = createSearchRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -316,8 +310,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateSearch", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -334,10 +327,8 @@ namespace CyberSource.Api
         /// <returns>Task of TssV2TransactionsPost201Response</returns>
         public async System.Threading.Tasks.Task<TssV2TransactionsPost201Response> CreateSearchAsync (CreateSearchRequest createSearchRequest)
         {
-            logger.Debug("CALLING API \"CreateSearchAsync\" STARTED");
-            ApiResponse<TssV2TransactionsPost201Response> localVarResponse = await CreateSearchAsyncWithHttpInfo(createSearchRequest);
-            logger.Debug("CALLING API \"CreateSearchAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<TssV2TransactionsPost201Response> localVarResponse = await CreateSearchAsyncWithHttpInfo(createSearchRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -352,8 +343,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createSearchRequest' is set
             if (createSearchRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createSearchRequest' when calling SearchTransactionsApi->CreateSearch");
-                throw new ApiException(400, "Missing required parameter 'createSearchRequest' when calling SearchTransactionsApi->CreateSearch");
+                                 throw new ApiException(400, "Missing required parameter 'createSearchRequest' when calling SearchTransactionsApi->CreateSearch");
             }
 
             var localVarPath = $"/tss/v2/searches";
@@ -389,14 +379,12 @@ namespace CyberSource.Api
                 localVarPostBody = createSearchRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -411,8 +399,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateSearch", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -428,10 +415,8 @@ namespace CyberSource.Api
         /// <returns>TssV2TransactionsPost201Response</returns>
         public TssV2TransactionsPost201Response GetSearch (string searchId)
         {
-            logger.Debug("CALLING API \"GetSearch\" STARTED");
-            ApiResponse<TssV2TransactionsPost201Response> localVarResponse = GetSearchWithHttpInfo(searchId);
-            logger.Debug("CALLING API \"GetSearch\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<TssV2TransactionsPost201Response> localVarResponse = GetSearchWithHttpInfo(searchId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -445,8 +430,7 @@ namespace CyberSource.Api
             // verify the required parameter 'searchId' is set
             if (searchId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'searchId' when calling SearchTransactionsApi->GetSearch");
-                throw new ApiException(400, "Missing required parameter 'searchId' when calling SearchTransactionsApi->GetSearch");
+                                 throw new ApiException(400, "Missing required parameter 'searchId' when calling SearchTransactionsApi->GetSearch");
             }
 
             var localVarPath = $"/tss/v2/searches/{searchId}";
@@ -477,8 +461,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("searchId", Configuration.ApiClient.ParameterToString(searchId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -492,8 +475,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetSearch", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -510,10 +492,8 @@ namespace CyberSource.Api
         /// <returns>Task of TssV2TransactionsPost201Response</returns>
         public async System.Threading.Tasks.Task<TssV2TransactionsPost201Response> GetSearchAsync (string searchId)
         {
-            logger.Debug("CALLING API \"GetSearchAsync\" STARTED");
-            ApiResponse<TssV2TransactionsPost201Response> localVarResponse = await GetSearchAsyncWithHttpInfo(searchId);
-            logger.Debug("CALLING API \"GetSearchAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<TssV2TransactionsPost201Response> localVarResponse = await GetSearchAsyncWithHttpInfo(searchId);
+                         return localVarResponse.Data;
 
         }
 
@@ -528,8 +508,7 @@ namespace CyberSource.Api
             // verify the required parameter 'searchId' is set
             if (searchId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'searchId' when calling SearchTransactionsApi->GetSearch");
-                throw new ApiException(400, "Missing required parameter 'searchId' when calling SearchTransactionsApi->GetSearch");
+                                 throw new ApiException(400, "Missing required parameter 'searchId' when calling SearchTransactionsApi->GetSearch");
             }
 
             var localVarPath = $"/tss/v2/searches/{searchId}";
@@ -560,8 +539,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("searchId", Configuration.ApiClient.ParameterToString(searchId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -575,8 +553,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetSearch", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

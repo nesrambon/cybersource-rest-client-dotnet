@@ -23,7 +23,7 @@ using RestSharp;
 using AuthenticationSdk.core;
 using AuthenticationSdk.util;
 using System.Security.Cryptography.X509Certificates;
-using NLog;
+
 
 namespace CyberSource.Client
 {
@@ -58,9 +58,9 @@ namespace CyberSource.Client
         {
             Configuration = Configuration.Default;
             RestClient = new RestClient("https://apitest.cybersource.com");
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -127,7 +127,7 @@ namespace CyberSource.Client
         /// <summary>
         /// Internal class logger
         /// </summary>
-        private static Logger logger;
+        
 
         // Creates and sets up a RestRequest prior to a call.
         private RestRequest PrepareRequest(
@@ -388,14 +388,12 @@ namespace CyberSource.Client
                     }
                 }
 
-                if (LogUtility.IsMaskingEnabled(logger))
+                if (false)
                 {
-                    logger.Debug($"HTTP Request Headers :\n{LogUtility.MaskSensitiveData(headerPrintOutput.ToString())}");
-                }
+                                     }
                 else
                 {
-                    logger.Debug($"HTTP Request Headers :\n{headerPrintOutput}");
-                }
+                                     }
 
                 InterceptRequest(request);
                 response = (RestResponse) RestClient.Execute(request);
@@ -422,14 +420,12 @@ namespace CyberSource.Client
                     headerPrintOutput.Append($"{stringBuilder.ToString().Remove(stringBuilder.Length - 2)}\n");
                 }
 
-                if (LogUtility.IsMaskingEnabled(logger))
+                if (false)
                 {
-                    logger.Debug($"HTTP Request Headers :\n{LogUtility.MaskSensitiveData(headerPrintOutput.ToString())}");
-                }
+                                     }
                 else
                 {
-                    logger.Debug($"HTTP Request Headers :\n{headerPrintOutput.ToString()}");
-                }
+                                     }
 
                 //getting the response stream using httpwebrequest
                 HttpWebResponse responseT = (HttpWebResponse)requestT.GetResponse();
@@ -453,8 +449,7 @@ namespace CyberSource.Client
                     }
                     catch (Exception err)
                     {
-                        logger.Error($"ApiException : Error writing to path {DownloadResponseFileName}");
-                        throw new ApiException(-1, $"Error writing to path : {DownloadResponseFileName}");
+                                                 throw new ApiException(-1, $"Error writing to path : {DownloadResponseFileName}");
                     }
                 }
 
@@ -487,33 +482,28 @@ namespace CyberSource.Client
             httpResponseHeaders = response.Headers;
             httpResponseData = response.Content;
 
-            logger.Debug($"HTTP Response Status Code: {httpResponseStatusCode}");
-
+             
             var responseHeadersBuilder = new StringBuilder();
             foreach (var header in httpResponseHeaders)
             {
                 responseHeadersBuilder.Append($"{header}\n");
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Response Headers :\n{LogUtility.MaskSensitiveData(responseHeadersBuilder.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Response Headers :\n{responseHeadersBuilder.ToString()}");
-            }
+                             }
 
             if (!string.IsNullOrEmpty(httpResponseData))
             {
-                if (LogUtility.IsMaskingEnabled(logger))
+                if (false)
                 {
-                    logger.Debug($"HTTP Response Body :\n{LogUtility.MaskSensitiveData(httpResponseData)}");
-                }
+                                     }
                 else
                 {
-                    logger.Debug($"HTTP Response Body :\n{httpResponseData}");
-                }
+                                     }
             }
 
             return response;
@@ -552,14 +542,12 @@ namespace CyberSource.Client
                 }
             }
 
-                if (LogUtility.IsMaskingEnabled(logger))
+                if (false)
                 {
-                    logger.Debug($"HTTP Request Headers :\n{LogUtility.MaskSensitiveData(headerPrintOutput.ToString())}");
-                }
+                                     }
                 else
                 {
-                    logger.Debug($"HTTP Request Headers :\n{headerPrintOutput.ToString()}");
-                }
+                                     }
 
             InterceptRequest(request);
             var response = await RestClient.ExecuteTaskAsync(request);
@@ -570,33 +558,28 @@ namespace CyberSource.Client
             var httpResponseHeaders = response.Headers;
             var httpResponseData = response.Content;
 
-            logger.Debug($"HTTP Response Status Code: {httpResponseStatusCode}");
-
+             
             var responseHeadersBuilder = new StringBuilder();
             foreach (var header in httpResponseHeaders)
             {
                 responseHeadersBuilder.Append($"{header}\n");
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Response Headers :\n{LogUtility.MaskSensitiveData(responseHeadersBuilder.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Response Headers :\n{responseHeadersBuilder.ToString()}");
-            }
+                             }
 
             if (!string.IsNullOrEmpty(httpResponseData))
             {
-                if (LogUtility.IsMaskingEnabled(logger))
+                if (false)
                 {
-                    logger.Debug($"HTTP Response Body :\n{LogUtility.MaskSensitiveData(httpResponseData)}");
-                }
+                                     }
                 else
                 {
-                    logger.Debug($"HTTP Response Body :\n{httpResponseData}");
-                }
+                                     }
             }
 
             return response;
@@ -720,8 +703,7 @@ namespace CyberSource.Client
             }
             catch (Exception e)
             {
-                logger.Error($"JSON Deserialization Exception : {e.Message}");
-                throw new ApiException(500, e.Message);
+                                 throw new ApiException(500, e.Message);
             }
         }
 
@@ -738,8 +720,7 @@ namespace CyberSource.Client
             }
             catch (Exception e)
             {
-                logger.Error($"JSON Serialization Exception : {e.Message}");
-                throw new ApiException(500, e.Message);
+                                 throw new ApiException(500, e.Message);
             }
         }
 
@@ -833,8 +814,7 @@ namespace CyberSource.Client
 
             if (input == null)
             {
-                logger.Error("ArgumentNullException : URL to encode is null");
-                throw new ArgumentNullException("URL to encode is null.");
+                                 throw new ArgumentNullException("URL to encode is null.");
             }
 
             if (input.Length <= maxLength)

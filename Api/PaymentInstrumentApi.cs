@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -228,7 +228,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class PaymentInstrumentApi : IPaymentInstrumentApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -247,9 +247,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -270,9 +270,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -310,8 +310,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -349,8 +348,7 @@ namespace CyberSource.Api
         /// <returns></returns>
         public void DeletePaymentInstrument (string paymentInstrumentTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"DeletePaymentInstrument\" STARTED");
-            DeletePaymentInstrumentWithHttpInfo(paymentInstrumentTokenId, profileId);
+                         DeletePaymentInstrumentWithHttpInfo(paymentInstrumentTokenId, profileId);
         }
 
         /// <summary>
@@ -365,8 +363,7 @@ namespace CyberSource.Api
             // verify the required parameter 'paymentInstrumentTokenId' is set
             if (paymentInstrumentTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->DeletePaymentInstrument");
-                throw new ApiException(400, "Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->DeletePaymentInstrument");
+                                 throw new ApiException(400, "Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->DeletePaymentInstrument");
             }
 
             var localVarPath = $"/tms/v1/paymentinstruments/{paymentInstrumentTokenId}";
@@ -397,8 +394,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("paymentInstrumentTokenId", Configuration.ApiClient.ParameterToString(paymentInstrumentTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -416,8 +412,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeletePaymentInstrument", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -435,8 +430,7 @@ namespace CyberSource.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task DeletePaymentInstrumentAsync (string paymentInstrumentTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"DeletePaymentInstrumentAsync\" STARTED");
-            await DeletePaymentInstrumentAsyncWithHttpInfo(paymentInstrumentTokenId, profileId);
+                         await DeletePaymentInstrumentAsyncWithHttpInfo(paymentInstrumentTokenId, profileId);
 
         }
 
@@ -452,8 +446,7 @@ namespace CyberSource.Api
             // verify the required parameter 'paymentInstrumentTokenId' is set
             if (paymentInstrumentTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->DeletePaymentInstrument");
-                throw new ApiException(400, "Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->DeletePaymentInstrument");
+                                 throw new ApiException(400, "Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->DeletePaymentInstrument");
             }
 
             var localVarPath = $"/tms/v1/paymentinstruments/{paymentInstrumentTokenId}";
@@ -484,8 +477,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("paymentInstrumentTokenId", Configuration.ApiClient.ParameterToString(paymentInstrumentTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -503,8 +495,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeletePaymentInstrument", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -521,10 +512,8 @@ namespace CyberSource.Api
         /// <returns>Tmsv2customersEmbeddedDefaultPaymentInstrument</returns>
         public Tmsv2customersEmbeddedDefaultPaymentInstrument GetPaymentInstrument (string paymentInstrumentTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"GetPaymentInstrument\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrument> localVarResponse = GetPaymentInstrumentWithHttpInfo(paymentInstrumentTokenId, profileId);
-            logger.Debug("CALLING API \"GetPaymentInstrument\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrument> localVarResponse = GetPaymentInstrumentWithHttpInfo(paymentInstrumentTokenId, profileId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -539,8 +528,7 @@ namespace CyberSource.Api
             // verify the required parameter 'paymentInstrumentTokenId' is set
             if (paymentInstrumentTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->GetPaymentInstrument");
-                throw new ApiException(400, "Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->GetPaymentInstrument");
+                                 throw new ApiException(400, "Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->GetPaymentInstrument");
             }
 
             var localVarPath = $"/tms/v1/paymentinstruments/{paymentInstrumentTokenId}";
@@ -571,8 +559,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("paymentInstrumentTokenId", Configuration.ApiClient.ParameterToString(paymentInstrumentTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -590,8 +577,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetPaymentInstrument", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -609,10 +595,8 @@ namespace CyberSource.Api
         /// <returns>Task of Tmsv2customersEmbeddedDefaultPaymentInstrument</returns>
         public async System.Threading.Tasks.Task<Tmsv2customersEmbeddedDefaultPaymentInstrument> GetPaymentInstrumentAsync (string paymentInstrumentTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"GetPaymentInstrumentAsync\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrument> localVarResponse = await GetPaymentInstrumentAsyncWithHttpInfo(paymentInstrumentTokenId, profileId);
-            logger.Debug("CALLING API \"GetPaymentInstrumentAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrument> localVarResponse = await GetPaymentInstrumentAsyncWithHttpInfo(paymentInstrumentTokenId, profileId);
+                         return localVarResponse.Data;
 
         }
 
@@ -628,8 +612,7 @@ namespace CyberSource.Api
             // verify the required parameter 'paymentInstrumentTokenId' is set
             if (paymentInstrumentTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->GetPaymentInstrument");
-                throw new ApiException(400, "Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->GetPaymentInstrument");
+                                 throw new ApiException(400, "Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->GetPaymentInstrument");
             }
 
             var localVarPath = $"/tms/v1/paymentinstruments/{paymentInstrumentTokenId}";
@@ -660,8 +643,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("paymentInstrumentTokenId", Configuration.ApiClient.ParameterToString(paymentInstrumentTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -679,8 +661,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetPaymentInstrument", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -699,10 +680,8 @@ namespace CyberSource.Api
         /// <returns>Tmsv2customersEmbeddedDefaultPaymentInstrument</returns>
         public Tmsv2customersEmbeddedDefaultPaymentInstrument PatchPaymentInstrument (string paymentInstrumentTokenId, PatchPaymentInstrumentRequest patchPaymentInstrumentRequest, string profileId = null, string ifMatch = null)
         {
-            logger.Debug("CALLING API \"PatchPaymentInstrument\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrument> localVarResponse = PatchPaymentInstrumentWithHttpInfo(paymentInstrumentTokenId, patchPaymentInstrumentRequest, profileId, ifMatch);
-            logger.Debug("CALLING API \"PatchPaymentInstrument\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrument> localVarResponse = PatchPaymentInstrumentWithHttpInfo(paymentInstrumentTokenId, patchPaymentInstrumentRequest, profileId, ifMatch);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -719,14 +698,12 @@ namespace CyberSource.Api
             // verify the required parameter 'paymentInstrumentTokenId' is set
             if (paymentInstrumentTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->PatchPaymentInstrument");
-                throw new ApiException(400, "Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->PatchPaymentInstrument");
+                                 throw new ApiException(400, "Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->PatchPaymentInstrument");
             }
             // verify the required parameter 'patchPaymentInstrumentRequest' is set
             if (patchPaymentInstrumentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'patchPaymentInstrumentRequest' when calling PaymentInstrumentApi->PatchPaymentInstrument");
-                throw new ApiException(400, "Missing required parameter 'patchPaymentInstrumentRequest' when calling PaymentInstrumentApi->PatchPaymentInstrument");
+                                 throw new ApiException(400, "Missing required parameter 'patchPaymentInstrumentRequest' when calling PaymentInstrumentApi->PatchPaymentInstrument");
             }
 
             var localVarPath = $"/tms/v1/paymentinstruments/{paymentInstrumentTokenId}";
@@ -757,8 +734,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("paymentInstrumentTokenId", Configuration.ApiClient.ParameterToString(paymentInstrumentTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -775,14 +751,12 @@ namespace CyberSource.Api
                 localVarPostBody = patchPaymentInstrumentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -797,8 +771,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PatchPaymentInstrument", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -818,10 +791,8 @@ namespace CyberSource.Api
         /// <returns>Task of Tmsv2customersEmbeddedDefaultPaymentInstrument</returns>
         public async System.Threading.Tasks.Task<Tmsv2customersEmbeddedDefaultPaymentInstrument> PatchPaymentInstrumentAsync (string paymentInstrumentTokenId, PatchPaymentInstrumentRequest patchPaymentInstrumentRequest, string profileId = null, string ifMatch = null)
         {
-            logger.Debug("CALLING API \"PatchPaymentInstrumentAsync\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrument> localVarResponse = await PatchPaymentInstrumentAsyncWithHttpInfo(paymentInstrumentTokenId, patchPaymentInstrumentRequest, profileId, ifMatch);
-            logger.Debug("CALLING API \"PatchPaymentInstrumentAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrument> localVarResponse = await PatchPaymentInstrumentAsyncWithHttpInfo(paymentInstrumentTokenId, patchPaymentInstrumentRequest, profileId, ifMatch);
+                         return localVarResponse.Data;
 
         }
 
@@ -839,14 +810,12 @@ namespace CyberSource.Api
             // verify the required parameter 'paymentInstrumentTokenId' is set
             if (paymentInstrumentTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->PatchPaymentInstrument");
-                throw new ApiException(400, "Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->PatchPaymentInstrument");
+                                 throw new ApiException(400, "Missing required parameter 'paymentInstrumentTokenId' when calling PaymentInstrumentApi->PatchPaymentInstrument");
             }
             // verify the required parameter 'patchPaymentInstrumentRequest' is set
             if (patchPaymentInstrumentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'patchPaymentInstrumentRequest' when calling PaymentInstrumentApi->PatchPaymentInstrument");
-                throw new ApiException(400, "Missing required parameter 'patchPaymentInstrumentRequest' when calling PaymentInstrumentApi->PatchPaymentInstrument");
+                                 throw new ApiException(400, "Missing required parameter 'patchPaymentInstrumentRequest' when calling PaymentInstrumentApi->PatchPaymentInstrument");
             }
 
             var localVarPath = $"/tms/v1/paymentinstruments/{paymentInstrumentTokenId}";
@@ -877,8 +846,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("paymentInstrumentTokenId", Configuration.ApiClient.ParameterToString(paymentInstrumentTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -895,14 +863,12 @@ namespace CyberSource.Api
                 localVarPostBody = patchPaymentInstrumentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -917,8 +883,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PatchPaymentInstrument", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -935,10 +900,8 @@ namespace CyberSource.Api
         /// <returns>Tmsv2customersEmbeddedDefaultPaymentInstrument</returns>
         public Tmsv2customersEmbeddedDefaultPaymentInstrument PostPaymentInstrument (PostPaymentInstrumentRequest postPaymentInstrumentRequest, string profileId = null)
         {
-            logger.Debug("CALLING API \"PostPaymentInstrument\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrument> localVarResponse = PostPaymentInstrumentWithHttpInfo(postPaymentInstrumentRequest, profileId);
-            logger.Debug("CALLING API \"PostPaymentInstrument\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrument> localVarResponse = PostPaymentInstrumentWithHttpInfo(postPaymentInstrumentRequest, profileId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -953,8 +916,7 @@ namespace CyberSource.Api
             // verify the required parameter 'postPaymentInstrumentRequest' is set
             if (postPaymentInstrumentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'postPaymentInstrumentRequest' when calling PaymentInstrumentApi->PostPaymentInstrument");
-                throw new ApiException(400, "Missing required parameter 'postPaymentInstrumentRequest' when calling PaymentInstrumentApi->PostPaymentInstrument");
+                                 throw new ApiException(400, "Missing required parameter 'postPaymentInstrumentRequest' when calling PaymentInstrumentApi->PostPaymentInstrument");
             }
 
             var localVarPath = $"/tms/v1/paymentinstruments";
@@ -994,14 +956,12 @@ namespace CyberSource.Api
                 localVarPostBody = postPaymentInstrumentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1016,8 +976,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PostPaymentInstrument", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1035,10 +994,8 @@ namespace CyberSource.Api
         /// <returns>Task of Tmsv2customersEmbeddedDefaultPaymentInstrument</returns>
         public async System.Threading.Tasks.Task<Tmsv2customersEmbeddedDefaultPaymentInstrument> PostPaymentInstrumentAsync (PostPaymentInstrumentRequest postPaymentInstrumentRequest, string profileId = null)
         {
-            logger.Debug("CALLING API \"PostPaymentInstrumentAsync\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrument> localVarResponse = await PostPaymentInstrumentAsyncWithHttpInfo(postPaymentInstrumentRequest, profileId);
-            logger.Debug("CALLING API \"PostPaymentInstrumentAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrument> localVarResponse = await PostPaymentInstrumentAsyncWithHttpInfo(postPaymentInstrumentRequest, profileId);
+                         return localVarResponse.Data;
 
         }
 
@@ -1054,8 +1011,7 @@ namespace CyberSource.Api
             // verify the required parameter 'postPaymentInstrumentRequest' is set
             if (postPaymentInstrumentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'postPaymentInstrumentRequest' when calling PaymentInstrumentApi->PostPaymentInstrument");
-                throw new ApiException(400, "Missing required parameter 'postPaymentInstrumentRequest' when calling PaymentInstrumentApi->PostPaymentInstrument");
+                                 throw new ApiException(400, "Missing required parameter 'postPaymentInstrumentRequest' when calling PaymentInstrumentApi->PostPaymentInstrument");
             }
 
             var localVarPath = $"/tms/v1/paymentinstruments";
@@ -1095,14 +1051,12 @@ namespace CyberSource.Api
                 localVarPostBody = postPaymentInstrumentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1117,8 +1071,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PostPaymentInstrument", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

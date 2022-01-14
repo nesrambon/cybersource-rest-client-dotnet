@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -262,7 +262,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class VoidApi : IVoidApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -281,9 +281,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -304,9 +304,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -344,8 +344,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -382,10 +381,8 @@ namespace CyberSource.Api
         /// <returns>PtsV2PaymentsVoidsPost201Response</returns>
         public PtsV2PaymentsVoidsPost201Response MitVoid (MitVoidRequest mitVoidRequest)
         {
-            logger.Debug("CALLING API \"MitVoid\" STARTED");
-            ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = MitVoidWithHttpInfo(mitVoidRequest);
-            logger.Debug("CALLING API \"MitVoid\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = MitVoidWithHttpInfo(mitVoidRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -399,8 +396,7 @@ namespace CyberSource.Api
             // verify the required parameter 'mitVoidRequest' is set
             if (mitVoidRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'mitVoidRequest' when calling VoidApi->MitVoid");
-                throw new ApiException(400, "Missing required parameter 'mitVoidRequest' when calling VoidApi->MitVoid");
+                                 throw new ApiException(400, "Missing required parameter 'mitVoidRequest' when calling VoidApi->MitVoid");
             }
 
             var localVarPath = $"/pts/v2/voids/";
@@ -436,14 +432,12 @@ namespace CyberSource.Api
                 localVarPostBody = mitVoidRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -458,8 +452,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("MitVoid", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -476,10 +469,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV2PaymentsVoidsPost201Response</returns>
         public async System.Threading.Tasks.Task<PtsV2PaymentsVoidsPost201Response> MitVoidAsync (MitVoidRequest mitVoidRequest)
         {
-            logger.Debug("CALLING API \"MitVoidAsync\" STARTED");
-            ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = await MitVoidAsyncWithHttpInfo(mitVoidRequest);
-            logger.Debug("CALLING API \"MitVoidAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = await MitVoidAsyncWithHttpInfo(mitVoidRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -494,8 +485,7 @@ namespace CyberSource.Api
             // verify the required parameter 'mitVoidRequest' is set
             if (mitVoidRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'mitVoidRequest' when calling VoidApi->MitVoid");
-                throw new ApiException(400, "Missing required parameter 'mitVoidRequest' when calling VoidApi->MitVoid");
+                                 throw new ApiException(400, "Missing required parameter 'mitVoidRequest' when calling VoidApi->MitVoid");
             }
 
             var localVarPath = $"/pts/v2/voids/";
@@ -531,14 +521,12 @@ namespace CyberSource.Api
                 localVarPostBody = mitVoidRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -553,8 +541,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("MitVoid", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -571,10 +558,8 @@ namespace CyberSource.Api
         /// <returns>PtsV2PaymentsVoidsPost201Response</returns>
         public PtsV2PaymentsVoidsPost201Response VoidCapture (VoidCaptureRequest voidCaptureRequest, string id)
         {
-            logger.Debug("CALLING API \"VoidCapture\" STARTED");
-            ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = VoidCaptureWithHttpInfo(voidCaptureRequest, id);
-            logger.Debug("CALLING API \"VoidCapture\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = VoidCaptureWithHttpInfo(voidCaptureRequest, id);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -589,14 +574,12 @@ namespace CyberSource.Api
             // verify the required parameter 'voidCaptureRequest' is set
             if (voidCaptureRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'voidCaptureRequest' when calling VoidApi->VoidCapture");
-                throw new ApiException(400, "Missing required parameter 'voidCaptureRequest' when calling VoidApi->VoidCapture");
+                                 throw new ApiException(400, "Missing required parameter 'voidCaptureRequest' when calling VoidApi->VoidCapture");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling VoidApi->VoidCapture");
-                throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidCapture");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidCapture");
             }
 
             var localVarPath = $"/pts/v2/captures/{id}/voids";
@@ -627,8 +610,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (voidCaptureRequest != null && voidCaptureRequest.GetType() != typeof(byte[]))
+                         if (voidCaptureRequest != null && voidCaptureRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(voidCaptureRequest); // http body (model) parameter
             }
@@ -637,14 +619,12 @@ namespace CyberSource.Api
                 localVarPostBody = voidCaptureRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -659,8 +639,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("VoidCapture", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -678,10 +657,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV2PaymentsVoidsPost201Response</returns>
         public async System.Threading.Tasks.Task<PtsV2PaymentsVoidsPost201Response> VoidCaptureAsync (VoidCaptureRequest voidCaptureRequest, string id)
         {
-            logger.Debug("CALLING API \"VoidCaptureAsync\" STARTED");
-            ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = await VoidCaptureAsyncWithHttpInfo(voidCaptureRequest, id);
-            logger.Debug("CALLING API \"VoidCaptureAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = await VoidCaptureAsyncWithHttpInfo(voidCaptureRequest, id);
+                         return localVarResponse.Data;
 
         }
 
@@ -697,14 +674,12 @@ namespace CyberSource.Api
             // verify the required parameter 'voidCaptureRequest' is set
             if (voidCaptureRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'voidCaptureRequest' when calling VoidApi->VoidCapture");
-                throw new ApiException(400, "Missing required parameter 'voidCaptureRequest' when calling VoidApi->VoidCapture");
+                                 throw new ApiException(400, "Missing required parameter 'voidCaptureRequest' when calling VoidApi->VoidCapture");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling VoidApi->VoidCapture");
-                throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidCapture");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidCapture");
             }
 
             var localVarPath = $"/pts/v2/captures/{id}/voids";
@@ -735,8 +710,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (voidCaptureRequest != null && voidCaptureRequest.GetType() != typeof(byte[]))
+                         if (voidCaptureRequest != null && voidCaptureRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(voidCaptureRequest); // http body (model) parameter
             }
@@ -745,14 +719,12 @@ namespace CyberSource.Api
                 localVarPostBody = voidCaptureRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -767,8 +739,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("VoidCapture", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -785,10 +756,8 @@ namespace CyberSource.Api
         /// <returns>PtsV2PaymentsVoidsPost201Response</returns>
         public PtsV2PaymentsVoidsPost201Response VoidCredit (VoidCreditRequest voidCreditRequest, string id)
         {
-            logger.Debug("CALLING API \"VoidCredit\" STARTED");
-            ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = VoidCreditWithHttpInfo(voidCreditRequest, id);
-            logger.Debug("CALLING API \"VoidCredit\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = VoidCreditWithHttpInfo(voidCreditRequest, id);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -803,14 +772,12 @@ namespace CyberSource.Api
             // verify the required parameter 'voidCreditRequest' is set
             if (voidCreditRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'voidCreditRequest' when calling VoidApi->VoidCredit");
-                throw new ApiException(400, "Missing required parameter 'voidCreditRequest' when calling VoidApi->VoidCredit");
+                                 throw new ApiException(400, "Missing required parameter 'voidCreditRequest' when calling VoidApi->VoidCredit");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling VoidApi->VoidCredit");
-                throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidCredit");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidCredit");
             }
 
             var localVarPath = $"/pts/v2/credits/{id}/voids";
@@ -841,8 +808,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (voidCreditRequest != null && voidCreditRequest.GetType() != typeof(byte[]))
+                         if (voidCreditRequest != null && voidCreditRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(voidCreditRequest); // http body (model) parameter
             }
@@ -851,14 +817,12 @@ namespace CyberSource.Api
                 localVarPostBody = voidCreditRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -873,8 +837,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("VoidCredit", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -892,10 +855,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV2PaymentsVoidsPost201Response</returns>
         public async System.Threading.Tasks.Task<PtsV2PaymentsVoidsPost201Response> VoidCreditAsync (VoidCreditRequest voidCreditRequest, string id)
         {
-            logger.Debug("CALLING API \"VoidCreditAsync\" STARTED");
-            ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = await VoidCreditAsyncWithHttpInfo(voidCreditRequest, id);
-            logger.Debug("CALLING API \"VoidCreditAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = await VoidCreditAsyncWithHttpInfo(voidCreditRequest, id);
+                         return localVarResponse.Data;
 
         }
 
@@ -911,14 +872,12 @@ namespace CyberSource.Api
             // verify the required parameter 'voidCreditRequest' is set
             if (voidCreditRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'voidCreditRequest' when calling VoidApi->VoidCredit");
-                throw new ApiException(400, "Missing required parameter 'voidCreditRequest' when calling VoidApi->VoidCredit");
+                                 throw new ApiException(400, "Missing required parameter 'voidCreditRequest' when calling VoidApi->VoidCredit");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling VoidApi->VoidCredit");
-                throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidCredit");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidCredit");
             }
 
             var localVarPath = $"/pts/v2/credits/{id}/voids";
@@ -949,8 +908,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (voidCreditRequest != null && voidCreditRequest.GetType() != typeof(byte[]))
+                         if (voidCreditRequest != null && voidCreditRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(voidCreditRequest); // http body (model) parameter
             }
@@ -959,14 +917,12 @@ namespace CyberSource.Api
                 localVarPostBody = voidCreditRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -981,8 +937,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("VoidCredit", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -999,10 +954,8 @@ namespace CyberSource.Api
         /// <returns>PtsV2PaymentsVoidsPost201Response</returns>
         public PtsV2PaymentsVoidsPost201Response VoidPayment (VoidPaymentRequest voidPaymentRequest, string id)
         {
-            logger.Debug("CALLING API \"VoidPayment\" STARTED");
-            ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = VoidPaymentWithHttpInfo(voidPaymentRequest, id);
-            logger.Debug("CALLING API \"VoidPayment\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = VoidPaymentWithHttpInfo(voidPaymentRequest, id);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1017,14 +970,12 @@ namespace CyberSource.Api
             // verify the required parameter 'voidPaymentRequest' is set
             if (voidPaymentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'voidPaymentRequest' when calling VoidApi->VoidPayment");
-                throw new ApiException(400, "Missing required parameter 'voidPaymentRequest' when calling VoidApi->VoidPayment");
+                                 throw new ApiException(400, "Missing required parameter 'voidPaymentRequest' when calling VoidApi->VoidPayment");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling VoidApi->VoidPayment");
-                throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidPayment");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidPayment");
             }
 
             var localVarPath = $"/pts/v2/payments/{id}/voids";
@@ -1055,8 +1006,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (voidPaymentRequest != null && voidPaymentRequest.GetType() != typeof(byte[]))
+                         if (voidPaymentRequest != null && voidPaymentRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(voidPaymentRequest); // http body (model) parameter
             }
@@ -1065,14 +1015,12 @@ namespace CyberSource.Api
                 localVarPostBody = voidPaymentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1087,8 +1035,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("VoidPayment", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1106,10 +1053,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV2PaymentsVoidsPost201Response</returns>
         public async System.Threading.Tasks.Task<PtsV2PaymentsVoidsPost201Response> VoidPaymentAsync (VoidPaymentRequest voidPaymentRequest, string id)
         {
-            logger.Debug("CALLING API \"VoidPaymentAsync\" STARTED");
-            ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = await VoidPaymentAsyncWithHttpInfo(voidPaymentRequest, id);
-            logger.Debug("CALLING API \"VoidPaymentAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = await VoidPaymentAsyncWithHttpInfo(voidPaymentRequest, id);
+                         return localVarResponse.Data;
 
         }
 
@@ -1125,14 +1070,12 @@ namespace CyberSource.Api
             // verify the required parameter 'voidPaymentRequest' is set
             if (voidPaymentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'voidPaymentRequest' when calling VoidApi->VoidPayment");
-                throw new ApiException(400, "Missing required parameter 'voidPaymentRequest' when calling VoidApi->VoidPayment");
+                                 throw new ApiException(400, "Missing required parameter 'voidPaymentRequest' when calling VoidApi->VoidPayment");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling VoidApi->VoidPayment");
-                throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidPayment");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidPayment");
             }
 
             var localVarPath = $"/pts/v2/payments/{id}/voids";
@@ -1163,8 +1106,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (voidPaymentRequest != null && voidPaymentRequest.GetType() != typeof(byte[]))
+                         if (voidPaymentRequest != null && voidPaymentRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(voidPaymentRequest); // http body (model) parameter
             }
@@ -1173,14 +1115,12 @@ namespace CyberSource.Api
                 localVarPostBody = voidPaymentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1195,8 +1135,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("VoidPayment", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1213,10 +1152,8 @@ namespace CyberSource.Api
         /// <returns>PtsV2PaymentsVoidsPost201Response</returns>
         public PtsV2PaymentsVoidsPost201Response VoidRefund (VoidRefundRequest voidRefundRequest, string id)
         {
-            logger.Debug("CALLING API \"VoidRefund\" STARTED");
-            ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = VoidRefundWithHttpInfo(voidRefundRequest, id);
-            logger.Debug("CALLING API \"VoidRefund\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = VoidRefundWithHttpInfo(voidRefundRequest, id);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1231,14 +1168,12 @@ namespace CyberSource.Api
             // verify the required parameter 'voidRefundRequest' is set
             if (voidRefundRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'voidRefundRequest' when calling VoidApi->VoidRefund");
-                throw new ApiException(400, "Missing required parameter 'voidRefundRequest' when calling VoidApi->VoidRefund");
+                                 throw new ApiException(400, "Missing required parameter 'voidRefundRequest' when calling VoidApi->VoidRefund");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling VoidApi->VoidRefund");
-                throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidRefund");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidRefund");
             }
 
             var localVarPath = $"/pts/v2/refunds/{id}/voids";
@@ -1269,8 +1204,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (voidRefundRequest != null && voidRefundRequest.GetType() != typeof(byte[]))
+                         if (voidRefundRequest != null && voidRefundRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(voidRefundRequest); // http body (model) parameter
             }
@@ -1279,14 +1213,12 @@ namespace CyberSource.Api
                 localVarPostBody = voidRefundRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1301,8 +1233,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("VoidRefund", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1320,10 +1251,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV2PaymentsVoidsPost201Response</returns>
         public async System.Threading.Tasks.Task<PtsV2PaymentsVoidsPost201Response> VoidRefundAsync (VoidRefundRequest voidRefundRequest, string id)
         {
-            logger.Debug("CALLING API \"VoidRefundAsync\" STARTED");
-            ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = await VoidRefundAsyncWithHttpInfo(voidRefundRequest, id);
-            logger.Debug("CALLING API \"VoidRefundAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsVoidsPost201Response> localVarResponse = await VoidRefundAsyncWithHttpInfo(voidRefundRequest, id);
+                         return localVarResponse.Data;
 
         }
 
@@ -1339,14 +1268,12 @@ namespace CyberSource.Api
             // verify the required parameter 'voidRefundRequest' is set
             if (voidRefundRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'voidRefundRequest' when calling VoidApi->VoidRefund");
-                throw new ApiException(400, "Missing required parameter 'voidRefundRequest' when calling VoidApi->VoidRefund");
+                                 throw new ApiException(400, "Missing required parameter 'voidRefundRequest' when calling VoidApi->VoidRefund");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling VoidApi->VoidRefund");
-                throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidRefund");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling VoidApi->VoidRefund");
             }
 
             var localVarPath = $"/pts/v2/refunds/{id}/voids";
@@ -1377,8 +1304,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (voidRefundRequest != null && voidRefundRequest.GetType() != typeof(byte[]))
+                         if (voidRefundRequest != null && voidRefundRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(voidRefundRequest); // http body (model) parameter
             }
@@ -1387,14 +1313,12 @@ namespace CyberSource.Api
                 localVarPostBody = voidRefundRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1409,8 +1333,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("VoidRefund", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

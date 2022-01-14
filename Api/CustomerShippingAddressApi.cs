@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -298,7 +298,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class CustomerShippingAddressApi : ICustomerShippingAddressApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -317,9 +317,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -340,9 +340,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -380,8 +380,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -420,8 +419,7 @@ namespace CyberSource.Api
         /// <returns></returns>
         public void DeleteCustomerShippingAddress (string customerTokenId, string shippingAddressTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"DeleteCustomerShippingAddress\" STARTED");
-            DeleteCustomerShippingAddressWithHttpInfo(customerTokenId, shippingAddressTokenId, profileId);
+                         DeleteCustomerShippingAddressWithHttpInfo(customerTokenId, shippingAddressTokenId, profileId);
         }
 
         /// <summary>
@@ -437,14 +435,12 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->DeleteCustomerShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->DeleteCustomerShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->DeleteCustomerShippingAddress");
             }
             // verify the required parameter 'shippingAddressTokenId' is set
             if (shippingAddressTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->DeleteCustomerShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->DeleteCustomerShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->DeleteCustomerShippingAddress");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}/shipping-addresses/{shippingAddressTokenId}";
@@ -479,9 +475,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("shippingAddressTokenId", Configuration.ApiClient.ParameterToString(shippingAddressTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                                      if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -499,8 +493,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeleteCustomerShippingAddress", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -519,8 +512,7 @@ namespace CyberSource.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task DeleteCustomerShippingAddressAsync (string customerTokenId, string shippingAddressTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"DeleteCustomerShippingAddressAsync\" STARTED");
-            await DeleteCustomerShippingAddressAsyncWithHttpInfo(customerTokenId, shippingAddressTokenId, profileId);
+                         await DeleteCustomerShippingAddressAsyncWithHttpInfo(customerTokenId, shippingAddressTokenId, profileId);
 
         }
 
@@ -537,14 +529,12 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->DeleteCustomerShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->DeleteCustomerShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->DeleteCustomerShippingAddress");
             }
             // verify the required parameter 'shippingAddressTokenId' is set
             if (shippingAddressTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->DeleteCustomerShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->DeleteCustomerShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->DeleteCustomerShippingAddress");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}/shipping-addresses/{shippingAddressTokenId}";
@@ -579,9 +569,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("shippingAddressTokenId", Configuration.ApiClient.ParameterToString(shippingAddressTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                                      if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -599,8 +587,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeleteCustomerShippingAddress", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -618,10 +605,8 @@ namespace CyberSource.Api
         /// <returns>Tmsv2customersEmbeddedDefaultShippingAddress</returns>
         public Tmsv2customersEmbeddedDefaultShippingAddress GetCustomerShippingAddress (string customerTokenId, string shippingAddressTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"GetCustomerShippingAddress\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultShippingAddress> localVarResponse = GetCustomerShippingAddressWithHttpInfo(customerTokenId, shippingAddressTokenId, profileId);
-            logger.Debug("CALLING API \"GetCustomerShippingAddress\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultShippingAddress> localVarResponse = GetCustomerShippingAddressWithHttpInfo(customerTokenId, shippingAddressTokenId, profileId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -637,14 +622,12 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddress");
             }
             // verify the required parameter 'shippingAddressTokenId' is set
             if (shippingAddressTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddress");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}/shipping-addresses/{shippingAddressTokenId}";
@@ -679,9 +662,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("shippingAddressTokenId", Configuration.ApiClient.ParameterToString(shippingAddressTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                                      if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -699,8 +680,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetCustomerShippingAddress", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -719,10 +699,8 @@ namespace CyberSource.Api
         /// <returns>Task of Tmsv2customersEmbeddedDefaultShippingAddress</returns>
         public async System.Threading.Tasks.Task<Tmsv2customersEmbeddedDefaultShippingAddress> GetCustomerShippingAddressAsync (string customerTokenId, string shippingAddressTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"GetCustomerShippingAddressAsync\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultShippingAddress> localVarResponse = await GetCustomerShippingAddressAsyncWithHttpInfo(customerTokenId, shippingAddressTokenId, profileId);
-            logger.Debug("CALLING API \"GetCustomerShippingAddressAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultShippingAddress> localVarResponse = await GetCustomerShippingAddressAsyncWithHttpInfo(customerTokenId, shippingAddressTokenId, profileId);
+                         return localVarResponse.Data;
 
         }
 
@@ -739,14 +717,12 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddress");
             }
             // verify the required parameter 'shippingAddressTokenId' is set
             if (shippingAddressTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddress");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}/shipping-addresses/{shippingAddressTokenId}";
@@ -781,9 +757,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("shippingAddressTokenId", Configuration.ApiClient.ParameterToString(shippingAddressTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                                      if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -801,8 +775,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetCustomerShippingAddress", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -821,10 +794,8 @@ namespace CyberSource.Api
         /// <returns>ShippingAddressListForCustomer</returns>
         public ShippingAddressListForCustomer GetCustomerShippingAddressesList (string customerTokenId, string profileId = null, long? offset = null, long? limit = null)
         {
-            logger.Debug("CALLING API \"GetCustomerShippingAddressesList\" STARTED");
-            ApiResponse<ShippingAddressListForCustomer> localVarResponse = GetCustomerShippingAddressesListWithHttpInfo(customerTokenId, profileId, offset, limit);
-            logger.Debug("CALLING API \"GetCustomerShippingAddressesList\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<ShippingAddressListForCustomer> localVarResponse = GetCustomerShippingAddressesListWithHttpInfo(customerTokenId, profileId, offset, limit);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -841,8 +812,7 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddressesList");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddressesList");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddressesList");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}/shipping-addresses";
@@ -873,8 +843,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("customerTokenId", Configuration.ApiClient.ParameterToString(customerTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (offset != null)
+                         if (offset != null)
             {
                 localVarQueryParams.Add("offset", Configuration.ApiClient.ParameterToString(offset)); // query parameter
             }
@@ -882,9 +851,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            if (profileId != null)
+                                      if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -902,8 +869,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetCustomerShippingAddressesList", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -923,10 +889,8 @@ namespace CyberSource.Api
         /// <returns>Task of ShippingAddressListForCustomer</returns>
         public async System.Threading.Tasks.Task<ShippingAddressListForCustomer> GetCustomerShippingAddressesListAsync (string customerTokenId, string profileId = null, long? offset = null, long? limit = null)
         {
-            logger.Debug("CALLING API \"GetCustomerShippingAddressesListAsync\" STARTED");
-            ApiResponse<ShippingAddressListForCustomer> localVarResponse = await GetCustomerShippingAddressesListAsyncWithHttpInfo(customerTokenId, profileId, offset, limit);
-            logger.Debug("CALLING API \"GetCustomerShippingAddressesListAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<ShippingAddressListForCustomer> localVarResponse = await GetCustomerShippingAddressesListAsyncWithHttpInfo(customerTokenId, profileId, offset, limit);
+                         return localVarResponse.Data;
 
         }
 
@@ -944,8 +908,7 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddressesList");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddressesList");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->GetCustomerShippingAddressesList");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}/shipping-addresses";
@@ -976,8 +939,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("customerTokenId", Configuration.ApiClient.ParameterToString(customerTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (offset != null)
+                         if (offset != null)
             {
                 localVarQueryParams.Add("offset", Configuration.ApiClient.ParameterToString(offset)); // query parameter
             }
@@ -985,9 +947,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            if (profileId != null)
+                                      if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -1005,8 +965,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetCustomerShippingAddressesList", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1026,10 +985,8 @@ namespace CyberSource.Api
         /// <returns>Tmsv2customersEmbeddedDefaultShippingAddress</returns>
         public Tmsv2customersEmbeddedDefaultShippingAddress PatchCustomersShippingAddress (string customerTokenId, string shippingAddressTokenId, PatchCustomerShippingAddressRequest patchCustomerShippingAddressRequest, string profileId = null, string ifMatch = null)
         {
-            logger.Debug("CALLING API \"PatchCustomersShippingAddress\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultShippingAddress> localVarResponse = PatchCustomersShippingAddressWithHttpInfo(customerTokenId, shippingAddressTokenId, patchCustomerShippingAddressRequest, profileId, ifMatch);
-            logger.Debug("CALLING API \"PatchCustomersShippingAddress\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultShippingAddress> localVarResponse = PatchCustomersShippingAddressWithHttpInfo(customerTokenId, shippingAddressTokenId, patchCustomerShippingAddressRequest, profileId, ifMatch);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1047,20 +1004,17 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
             }
             // verify the required parameter 'shippingAddressTokenId' is set
             if (shippingAddressTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
             }
             // verify the required parameter 'patchCustomerShippingAddressRequest' is set
             if (patchCustomerShippingAddressRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'patchCustomerShippingAddressRequest' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'patchCustomerShippingAddressRequest' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'patchCustomerShippingAddressRequest' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}/shipping-addresses/{shippingAddressTokenId}";
@@ -1095,9 +1049,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("shippingAddressTokenId", Configuration.ApiClient.ParameterToString(shippingAddressTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                                      if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -1114,14 +1066,12 @@ namespace CyberSource.Api
                 localVarPostBody = patchCustomerShippingAddressRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1136,8 +1086,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PatchCustomersShippingAddress", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1158,10 +1107,8 @@ namespace CyberSource.Api
         /// <returns>Task of Tmsv2customersEmbeddedDefaultShippingAddress</returns>
         public async System.Threading.Tasks.Task<Tmsv2customersEmbeddedDefaultShippingAddress> PatchCustomersShippingAddressAsync (string customerTokenId, string shippingAddressTokenId, PatchCustomerShippingAddressRequest patchCustomerShippingAddressRequest, string profileId = null, string ifMatch = null)
         {
-            logger.Debug("CALLING API \"PatchCustomersShippingAddressAsync\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultShippingAddress> localVarResponse = await PatchCustomersShippingAddressAsyncWithHttpInfo(customerTokenId, shippingAddressTokenId, patchCustomerShippingAddressRequest, profileId, ifMatch);
-            logger.Debug("CALLING API \"PatchCustomersShippingAddressAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultShippingAddress> localVarResponse = await PatchCustomersShippingAddressAsyncWithHttpInfo(customerTokenId, shippingAddressTokenId, patchCustomerShippingAddressRequest, profileId, ifMatch);
+                         return localVarResponse.Data;
 
         }
 
@@ -1180,20 +1127,17 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
             }
             // verify the required parameter 'shippingAddressTokenId' is set
             if (shippingAddressTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'shippingAddressTokenId' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
             }
             // verify the required parameter 'patchCustomerShippingAddressRequest' is set
             if (patchCustomerShippingAddressRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'patchCustomerShippingAddressRequest' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'patchCustomerShippingAddressRequest' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'patchCustomerShippingAddressRequest' when calling CustomerShippingAddressApi->PatchCustomersShippingAddress");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}/shipping-addresses/{shippingAddressTokenId}";
@@ -1228,9 +1172,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("shippingAddressTokenId", Configuration.ApiClient.ParameterToString(shippingAddressTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                                      if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -1247,14 +1189,12 @@ namespace CyberSource.Api
                 localVarPostBody = patchCustomerShippingAddressRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1269,8 +1209,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PatchCustomersShippingAddress", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1288,10 +1227,8 @@ namespace CyberSource.Api
         /// <returns>Tmsv2customersEmbeddedDefaultShippingAddress</returns>
         public Tmsv2customersEmbeddedDefaultShippingAddress PostCustomerShippingAddress (string customerTokenId, PostCustomerShippingAddressRequest postCustomerShippingAddressRequest, string profileId = null)
         {
-            logger.Debug("CALLING API \"PostCustomerShippingAddress\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultShippingAddress> localVarResponse = PostCustomerShippingAddressWithHttpInfo(customerTokenId, postCustomerShippingAddressRequest, profileId);
-            logger.Debug("CALLING API \"PostCustomerShippingAddress\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultShippingAddress> localVarResponse = PostCustomerShippingAddressWithHttpInfo(customerTokenId, postCustomerShippingAddressRequest, profileId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1307,14 +1244,12 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->PostCustomerShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->PostCustomerShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->PostCustomerShippingAddress");
             }
             // verify the required parameter 'postCustomerShippingAddressRequest' is set
             if (postCustomerShippingAddressRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'postCustomerShippingAddressRequest' when calling CustomerShippingAddressApi->PostCustomerShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'postCustomerShippingAddressRequest' when calling CustomerShippingAddressApi->PostCustomerShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'postCustomerShippingAddressRequest' when calling CustomerShippingAddressApi->PostCustomerShippingAddress");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}/shipping-addresses";
@@ -1345,8 +1280,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("customerTokenId", Configuration.ApiClient.ParameterToString(customerTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -1359,14 +1293,12 @@ namespace CyberSource.Api
                 localVarPostBody = postCustomerShippingAddressRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1381,8 +1313,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PostCustomerShippingAddress", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1401,10 +1332,8 @@ namespace CyberSource.Api
         /// <returns>Task of Tmsv2customersEmbeddedDefaultShippingAddress</returns>
         public async System.Threading.Tasks.Task<Tmsv2customersEmbeddedDefaultShippingAddress> PostCustomerShippingAddressAsync (string customerTokenId, PostCustomerShippingAddressRequest postCustomerShippingAddressRequest, string profileId = null)
         {
-            logger.Debug("CALLING API \"PostCustomerShippingAddressAsync\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultShippingAddress> localVarResponse = await PostCustomerShippingAddressAsyncWithHttpInfo(customerTokenId, postCustomerShippingAddressRequest, profileId);
-            logger.Debug("CALLING API \"PostCustomerShippingAddressAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultShippingAddress> localVarResponse = await PostCustomerShippingAddressAsyncWithHttpInfo(customerTokenId, postCustomerShippingAddressRequest, profileId);
+                         return localVarResponse.Data;
 
         }
 
@@ -1421,14 +1350,12 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->PostCustomerShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->PostCustomerShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerShippingAddressApi->PostCustomerShippingAddress");
             }
             // verify the required parameter 'postCustomerShippingAddressRequest' is set
             if (postCustomerShippingAddressRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'postCustomerShippingAddressRequest' when calling CustomerShippingAddressApi->PostCustomerShippingAddress");
-                throw new ApiException(400, "Missing required parameter 'postCustomerShippingAddressRequest' when calling CustomerShippingAddressApi->PostCustomerShippingAddress");
+                                 throw new ApiException(400, "Missing required parameter 'postCustomerShippingAddressRequest' when calling CustomerShippingAddressApi->PostCustomerShippingAddress");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}/shipping-addresses";
@@ -1459,8 +1386,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("customerTokenId", Configuration.ApiClient.ParameterToString(customerTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -1473,14 +1399,12 @@ namespace CyberSource.Api
                 localVarPostBody = postCustomerShippingAddressRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1495,8 +1419,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PostCustomerShippingAddress", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

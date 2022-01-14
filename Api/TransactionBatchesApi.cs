@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -174,7 +174,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class TransactionBatchesApi : ITransactionBatchesApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -193,9 +193,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -216,9 +216,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -256,8 +256,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -296,8 +295,7 @@ namespace CyberSource.Api
         /// <returns></returns>
         public void GetTransactionBatchDetails (string id, DateTime? uploadDate = null, string status = null)
         {
-            logger.Debug("CALLING API \"GetTransactionBatchDetails\" STARTED");
-            GetTransactionBatchDetailsWithHttpInfo(id, uploadDate, status);
+                         GetTransactionBatchDetailsWithHttpInfo(id, uploadDate, status);
         }
 
         /// <summary>
@@ -313,8 +311,7 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling TransactionBatchesApi->GetTransactionBatchDetails");
-                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionBatchesApi->GetTransactionBatchDetails");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling TransactionBatchesApi->GetTransactionBatchDetails");
             }
 
             var localVarPath = $"/pts/v1/transaction-batch-details/{id}";
@@ -347,8 +344,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (uploadDate != null)
+                         if (uploadDate != null)
             {
                 localVarQueryParams.Add("uploadDate", Configuration.ApiClient.ParameterToString(uploadDate)); // query parameter
             }
@@ -356,9 +352,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("status", Configuration.ApiClient.ParameterToString(status)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                          
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -372,8 +366,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetTransactionBatchDetails", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -392,8 +385,7 @@ namespace CyberSource.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task GetTransactionBatchDetailsAsync (string id, DateTime? uploadDate = null, string status = null)
         {
-            logger.Debug("CALLING API \"GetTransactionBatchDetailsAsync\" STARTED");
-            await GetTransactionBatchDetailsAsyncWithHttpInfo(id, uploadDate, status);
+                         await GetTransactionBatchDetailsAsyncWithHttpInfo(id, uploadDate, status);
 
         }
 
@@ -410,8 +402,7 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling TransactionBatchesApi->GetTransactionBatchDetails");
-                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionBatchesApi->GetTransactionBatchDetails");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling TransactionBatchesApi->GetTransactionBatchDetails");
             }
 
             var localVarPath = $"/pts/v1/transaction-batch-details/{id}";
@@ -444,8 +435,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (uploadDate != null)
+                         if (uploadDate != null)
             {
                 localVarQueryParams.Add("uploadDate", Configuration.ApiClient.ParameterToString(uploadDate)); // query parameter
             }
@@ -453,9 +443,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("status", Configuration.ApiClient.ParameterToString(status)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                          
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -469,8 +457,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetTransactionBatchDetails", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -486,10 +473,8 @@ namespace CyberSource.Api
         /// <returns>PtsV1TransactionBatchesIdGet200Response</returns>
         public PtsV1TransactionBatchesIdGet200Response GetTransactionBatchId (string id)
         {
-            logger.Debug("CALLING API \"GetTransactionBatchId\" STARTED");
-            ApiResponse<PtsV1TransactionBatchesIdGet200Response> localVarResponse = GetTransactionBatchIdWithHttpInfo(id);
-            logger.Debug("CALLING API \"GetTransactionBatchId\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV1TransactionBatchesIdGet200Response> localVarResponse = GetTransactionBatchIdWithHttpInfo(id);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -503,8 +488,7 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling TransactionBatchesApi->GetTransactionBatchId");
-                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionBatchesApi->GetTransactionBatchId");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling TransactionBatchesApi->GetTransactionBatchId");
             }
 
             var localVarPath = $"/pts/v1/transaction-batches/{id}";
@@ -535,8 +519,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -550,8 +533,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetTransactionBatchId", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -568,10 +550,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV1TransactionBatchesIdGet200Response</returns>
         public async System.Threading.Tasks.Task<PtsV1TransactionBatchesIdGet200Response> GetTransactionBatchIdAsync (string id)
         {
-            logger.Debug("CALLING API \"GetTransactionBatchIdAsync\" STARTED");
-            ApiResponse<PtsV1TransactionBatchesIdGet200Response> localVarResponse = await GetTransactionBatchIdAsyncWithHttpInfo(id);
-            logger.Debug("CALLING API \"GetTransactionBatchIdAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV1TransactionBatchesIdGet200Response> localVarResponse = await GetTransactionBatchIdAsyncWithHttpInfo(id);
+                         return localVarResponse.Data;
 
         }
 
@@ -586,8 +566,7 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling TransactionBatchesApi->GetTransactionBatchId");
-                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionBatchesApi->GetTransactionBatchId");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling TransactionBatchesApi->GetTransactionBatchId");
             }
 
             var localVarPath = $"/pts/v1/transaction-batches/{id}";
@@ -618,8 +597,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -633,8 +611,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetTransactionBatchId", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -651,10 +628,8 @@ namespace CyberSource.Api
         /// <returns>PtsV1TransactionBatchesGet200Response</returns>
         public PtsV1TransactionBatchesGet200Response GetTransactionBatches (DateTime? startTime, DateTime? endTime)
         {
-            logger.Debug("CALLING API \"GetTransactionBatches\" STARTED");
-            ApiResponse<PtsV1TransactionBatchesGet200Response> localVarResponse = GetTransactionBatchesWithHttpInfo(startTime, endTime);
-            logger.Debug("CALLING API \"GetTransactionBatches\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV1TransactionBatchesGet200Response> localVarResponse = GetTransactionBatchesWithHttpInfo(startTime, endTime);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -669,14 +644,12 @@ namespace CyberSource.Api
             // verify the required parameter 'startTime' is set
             if (startTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'startTime' when calling TransactionBatchesApi->GetTransactionBatches");
-                throw new ApiException(400, "Missing required parameter 'startTime' when calling TransactionBatchesApi->GetTransactionBatches");
+                                 throw new ApiException(400, "Missing required parameter 'startTime' when calling TransactionBatchesApi->GetTransactionBatches");
             }
             // verify the required parameter 'endTime' is set
             if (endTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'endTime' when calling TransactionBatchesApi->GetTransactionBatches");
-                throw new ApiException(400, "Missing required parameter 'endTime' when calling TransactionBatchesApi->GetTransactionBatches");
+                                 throw new ApiException(400, "Missing required parameter 'endTime' when calling TransactionBatchesApi->GetTransactionBatches");
             }
 
             var localVarPath = $"/pts/v1/transaction-batches";
@@ -711,9 +684,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("endTime", Configuration.ApiClient.ParameterToString(endTime)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                          
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -727,8 +698,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetTransactionBatches", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -746,10 +716,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV1TransactionBatchesGet200Response</returns>
         public async System.Threading.Tasks.Task<PtsV1TransactionBatchesGet200Response> GetTransactionBatchesAsync (DateTime? startTime, DateTime? endTime)
         {
-            logger.Debug("CALLING API \"GetTransactionBatchesAsync\" STARTED");
-            ApiResponse<PtsV1TransactionBatchesGet200Response> localVarResponse = await GetTransactionBatchesAsyncWithHttpInfo(startTime, endTime);
-            logger.Debug("CALLING API \"GetTransactionBatchesAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV1TransactionBatchesGet200Response> localVarResponse = await GetTransactionBatchesAsyncWithHttpInfo(startTime, endTime);
+                         return localVarResponse.Data;
 
         }
 
@@ -765,14 +733,12 @@ namespace CyberSource.Api
             // verify the required parameter 'startTime' is set
             if (startTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'startTime' when calling TransactionBatchesApi->GetTransactionBatches");
-                throw new ApiException(400, "Missing required parameter 'startTime' when calling TransactionBatchesApi->GetTransactionBatches");
+                                 throw new ApiException(400, "Missing required parameter 'startTime' when calling TransactionBatchesApi->GetTransactionBatches");
             }
             // verify the required parameter 'endTime' is set
             if (endTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'endTime' when calling TransactionBatchesApi->GetTransactionBatches");
-                throw new ApiException(400, "Missing required parameter 'endTime' when calling TransactionBatchesApi->GetTransactionBatches");
+                                 throw new ApiException(400, "Missing required parameter 'endTime' when calling TransactionBatchesApi->GetTransactionBatches");
             }
 
             var localVarPath = $"/pts/v1/transaction-batches";
@@ -807,9 +773,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("endTime", Configuration.ApiClient.ParameterToString(endTime)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                          
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -823,8 +787,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetTransactionBatches", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

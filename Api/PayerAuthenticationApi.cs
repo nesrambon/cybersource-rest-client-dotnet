@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -162,7 +162,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class PayerAuthenticationApi : IPayerAuthenticationApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -181,9 +181,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -204,9 +204,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -244,8 +244,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -282,10 +281,8 @@ namespace CyberSource.Api
         /// <returns>RiskV1AuthenticationsPost201Response</returns>
         public RiskV1AuthenticationsPost201Response CheckPayerAuthEnrollment (CheckPayerAuthEnrollmentRequest checkPayerAuthEnrollmentRequest)
         {
-            logger.Debug("CALLING API \"CheckPayerAuthEnrollment\" STARTED");
-            ApiResponse<RiskV1AuthenticationsPost201Response> localVarResponse = CheckPayerAuthEnrollmentWithHttpInfo(checkPayerAuthEnrollmentRequest);
-            logger.Debug("CALLING API \"CheckPayerAuthEnrollment\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1AuthenticationsPost201Response> localVarResponse = CheckPayerAuthEnrollmentWithHttpInfo(checkPayerAuthEnrollmentRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -299,8 +296,7 @@ namespace CyberSource.Api
             // verify the required parameter 'checkPayerAuthEnrollmentRequest' is set
             if (checkPayerAuthEnrollmentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'checkPayerAuthEnrollmentRequest' when calling PayerAuthenticationApi->CheckPayerAuthEnrollment");
-                throw new ApiException(400, "Missing required parameter 'checkPayerAuthEnrollmentRequest' when calling PayerAuthenticationApi->CheckPayerAuthEnrollment");
+                                 throw new ApiException(400, "Missing required parameter 'checkPayerAuthEnrollmentRequest' when calling PayerAuthenticationApi->CheckPayerAuthEnrollment");
             }
 
             var localVarPath = $"/risk/v1/authentications";
@@ -336,14 +332,12 @@ namespace CyberSource.Api
                 localVarPostBody = checkPayerAuthEnrollmentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -358,8 +352,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CheckPayerAuthEnrollment", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -376,10 +369,8 @@ namespace CyberSource.Api
         /// <returns>Task of RiskV1AuthenticationsPost201Response</returns>
         public async System.Threading.Tasks.Task<RiskV1AuthenticationsPost201Response> CheckPayerAuthEnrollmentAsync (CheckPayerAuthEnrollmentRequest checkPayerAuthEnrollmentRequest)
         {
-            logger.Debug("CALLING API \"CheckPayerAuthEnrollmentAsync\" STARTED");
-            ApiResponse<RiskV1AuthenticationsPost201Response> localVarResponse = await CheckPayerAuthEnrollmentAsyncWithHttpInfo(checkPayerAuthEnrollmentRequest);
-            logger.Debug("CALLING API \"CheckPayerAuthEnrollmentAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1AuthenticationsPost201Response> localVarResponse = await CheckPayerAuthEnrollmentAsyncWithHttpInfo(checkPayerAuthEnrollmentRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -394,8 +385,7 @@ namespace CyberSource.Api
             // verify the required parameter 'checkPayerAuthEnrollmentRequest' is set
             if (checkPayerAuthEnrollmentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'checkPayerAuthEnrollmentRequest' when calling PayerAuthenticationApi->CheckPayerAuthEnrollment");
-                throw new ApiException(400, "Missing required parameter 'checkPayerAuthEnrollmentRequest' when calling PayerAuthenticationApi->CheckPayerAuthEnrollment");
+                                 throw new ApiException(400, "Missing required parameter 'checkPayerAuthEnrollmentRequest' when calling PayerAuthenticationApi->CheckPayerAuthEnrollment");
             }
 
             var localVarPath = $"/risk/v1/authentications";
@@ -431,14 +421,12 @@ namespace CyberSource.Api
                 localVarPostBody = checkPayerAuthEnrollmentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -453,8 +441,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CheckPayerAuthEnrollment", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -470,10 +457,8 @@ namespace CyberSource.Api
         /// <returns>RiskV1AuthenticationSetupsPost201Response</returns>
         public RiskV1AuthenticationSetupsPost201Response PayerAuthSetup (PayerAuthSetupRequest payerAuthSetupRequest)
         {
-            logger.Debug("CALLING API \"PayerAuthSetup\" STARTED");
-            ApiResponse<RiskV1AuthenticationSetupsPost201Response> localVarResponse = PayerAuthSetupWithHttpInfo(payerAuthSetupRequest);
-            logger.Debug("CALLING API \"PayerAuthSetup\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1AuthenticationSetupsPost201Response> localVarResponse = PayerAuthSetupWithHttpInfo(payerAuthSetupRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -487,8 +472,7 @@ namespace CyberSource.Api
             // verify the required parameter 'payerAuthSetupRequest' is set
             if (payerAuthSetupRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'payerAuthSetupRequest' when calling PayerAuthenticationApi->PayerAuthSetup");
-                throw new ApiException(400, "Missing required parameter 'payerAuthSetupRequest' when calling PayerAuthenticationApi->PayerAuthSetup");
+                                 throw new ApiException(400, "Missing required parameter 'payerAuthSetupRequest' when calling PayerAuthenticationApi->PayerAuthSetup");
             }
 
             var localVarPath = $"/risk/v1/authentication-setups";
@@ -524,14 +508,12 @@ namespace CyberSource.Api
                 localVarPostBody = payerAuthSetupRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -546,8 +528,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PayerAuthSetup", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -564,10 +545,8 @@ namespace CyberSource.Api
         /// <returns>Task of RiskV1AuthenticationSetupsPost201Response</returns>
         public async System.Threading.Tasks.Task<RiskV1AuthenticationSetupsPost201Response> PayerAuthSetupAsync (PayerAuthSetupRequest payerAuthSetupRequest)
         {
-            logger.Debug("CALLING API \"PayerAuthSetupAsync\" STARTED");
-            ApiResponse<RiskV1AuthenticationSetupsPost201Response> localVarResponse = await PayerAuthSetupAsyncWithHttpInfo(payerAuthSetupRequest);
-            logger.Debug("CALLING API \"PayerAuthSetupAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1AuthenticationSetupsPost201Response> localVarResponse = await PayerAuthSetupAsyncWithHttpInfo(payerAuthSetupRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -582,8 +561,7 @@ namespace CyberSource.Api
             // verify the required parameter 'payerAuthSetupRequest' is set
             if (payerAuthSetupRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'payerAuthSetupRequest' when calling PayerAuthenticationApi->PayerAuthSetup");
-                throw new ApiException(400, "Missing required parameter 'payerAuthSetupRequest' when calling PayerAuthenticationApi->PayerAuthSetup");
+                                 throw new ApiException(400, "Missing required parameter 'payerAuthSetupRequest' when calling PayerAuthenticationApi->PayerAuthSetup");
             }
 
             var localVarPath = $"/risk/v1/authentication-setups";
@@ -619,14 +597,12 @@ namespace CyberSource.Api
                 localVarPostBody = payerAuthSetupRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -641,8 +617,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PayerAuthSetup", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -658,10 +633,8 @@ namespace CyberSource.Api
         /// <returns>RiskV1AuthenticationResultsPost201Response</returns>
         public RiskV1AuthenticationResultsPost201Response ValidateAuthenticationResults (ValidateRequest validateRequest)
         {
-            logger.Debug("CALLING API \"ValidateAuthenticationResults\" STARTED");
-            ApiResponse<RiskV1AuthenticationResultsPost201Response> localVarResponse = ValidateAuthenticationResultsWithHttpInfo(validateRequest);
-            logger.Debug("CALLING API \"ValidateAuthenticationResults\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1AuthenticationResultsPost201Response> localVarResponse = ValidateAuthenticationResultsWithHttpInfo(validateRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -675,8 +648,7 @@ namespace CyberSource.Api
             // verify the required parameter 'validateRequest' is set
             if (validateRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'validateRequest' when calling PayerAuthenticationApi->ValidateAuthenticationResults");
-                throw new ApiException(400, "Missing required parameter 'validateRequest' when calling PayerAuthenticationApi->ValidateAuthenticationResults");
+                                 throw new ApiException(400, "Missing required parameter 'validateRequest' when calling PayerAuthenticationApi->ValidateAuthenticationResults");
             }
 
             var localVarPath = $"/risk/v1/authentication-results";
@@ -712,14 +684,12 @@ namespace CyberSource.Api
                 localVarPostBody = validateRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -734,8 +704,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("ValidateAuthenticationResults", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -752,10 +721,8 @@ namespace CyberSource.Api
         /// <returns>Task of RiskV1AuthenticationResultsPost201Response</returns>
         public async System.Threading.Tasks.Task<RiskV1AuthenticationResultsPost201Response> ValidateAuthenticationResultsAsync (ValidateRequest validateRequest)
         {
-            logger.Debug("CALLING API \"ValidateAuthenticationResultsAsync\" STARTED");
-            ApiResponse<RiskV1AuthenticationResultsPost201Response> localVarResponse = await ValidateAuthenticationResultsAsyncWithHttpInfo(validateRequest);
-            logger.Debug("CALLING API \"ValidateAuthenticationResultsAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1AuthenticationResultsPost201Response> localVarResponse = await ValidateAuthenticationResultsAsyncWithHttpInfo(validateRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -770,8 +737,7 @@ namespace CyberSource.Api
             // verify the required parameter 'validateRequest' is set
             if (validateRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'validateRequest' when calling PayerAuthenticationApi->ValidateAuthenticationResults");
-                throw new ApiException(400, "Missing required parameter 'validateRequest' when calling PayerAuthenticationApi->ValidateAuthenticationResults");
+                                 throw new ApiException(400, "Missing required parameter 'validateRequest' when calling PayerAuthenticationApi->ValidateAuthenticationResults");
             }
 
             var localVarPath = $"/risk/v1/authentication-results";
@@ -807,14 +773,12 @@ namespace CyberSource.Api
                 localVarPostBody = validateRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -829,8 +793,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("ValidateAuthenticationResults", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

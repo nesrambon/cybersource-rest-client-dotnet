@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -228,7 +228,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class CustomerApi : ICustomerApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -247,9 +247,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -270,9 +270,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -310,8 +310,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -349,8 +348,7 @@ namespace CyberSource.Api
         /// <returns></returns>
         public void DeleteCustomer (string customerTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"DeleteCustomer\" STARTED");
-            DeleteCustomerWithHttpInfo(customerTokenId, profileId);
+                         DeleteCustomerWithHttpInfo(customerTokenId, profileId);
         }
 
         /// <summary>
@@ -365,8 +363,7 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerApi->DeleteCustomer");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerApi->DeleteCustomer");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerApi->DeleteCustomer");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}";
@@ -397,8 +394,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("customerTokenId", Configuration.ApiClient.ParameterToString(customerTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -416,8 +412,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeleteCustomer", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -435,8 +430,7 @@ namespace CyberSource.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task DeleteCustomerAsync (string customerTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"DeleteCustomerAsync\" STARTED");
-            await DeleteCustomerAsyncWithHttpInfo(customerTokenId, profileId);
+                         await DeleteCustomerAsyncWithHttpInfo(customerTokenId, profileId);
 
         }
 
@@ -452,8 +446,7 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerApi->DeleteCustomer");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerApi->DeleteCustomer");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerApi->DeleteCustomer");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}";
@@ -484,8 +477,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("customerTokenId", Configuration.ApiClient.ParameterToString(customerTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -503,8 +495,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeleteCustomer", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -521,10 +512,8 @@ namespace CyberSource.Api
         /// <returns>TmsV2CustomersResponse</returns>
         public TmsV2CustomersResponse GetCustomer (string customerTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"GetCustomer\" STARTED");
-            ApiResponse<TmsV2CustomersResponse> localVarResponse = GetCustomerWithHttpInfo(customerTokenId, profileId);
-            logger.Debug("CALLING API \"GetCustomer\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<TmsV2CustomersResponse> localVarResponse = GetCustomerWithHttpInfo(customerTokenId, profileId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -539,8 +528,7 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerApi->GetCustomer");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerApi->GetCustomer");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerApi->GetCustomer");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}";
@@ -571,8 +559,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("customerTokenId", Configuration.ApiClient.ParameterToString(customerTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -590,8 +577,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetCustomer", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -609,10 +595,8 @@ namespace CyberSource.Api
         /// <returns>Task of TmsV2CustomersResponse</returns>
         public async System.Threading.Tasks.Task<TmsV2CustomersResponse> GetCustomerAsync (string customerTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"GetCustomerAsync\" STARTED");
-            ApiResponse<TmsV2CustomersResponse> localVarResponse = await GetCustomerAsyncWithHttpInfo(customerTokenId, profileId);
-            logger.Debug("CALLING API \"GetCustomerAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<TmsV2CustomersResponse> localVarResponse = await GetCustomerAsyncWithHttpInfo(customerTokenId, profileId);
+                         return localVarResponse.Data;
 
         }
 
@@ -628,8 +612,7 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerApi->GetCustomer");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerApi->GetCustomer");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerApi->GetCustomer");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}";
@@ -660,8 +643,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("customerTokenId", Configuration.ApiClient.ParameterToString(customerTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -679,8 +661,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetCustomer", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -699,10 +680,8 @@ namespace CyberSource.Api
         /// <returns>TmsV2CustomersResponse</returns>
         public TmsV2CustomersResponse PatchCustomer (string customerTokenId, PatchCustomerRequest patchCustomerRequest, string profileId = null, string ifMatch = null)
         {
-            logger.Debug("CALLING API \"PatchCustomer\" STARTED");
-            ApiResponse<TmsV2CustomersResponse> localVarResponse = PatchCustomerWithHttpInfo(customerTokenId, patchCustomerRequest, profileId, ifMatch);
-            logger.Debug("CALLING API \"PatchCustomer\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<TmsV2CustomersResponse> localVarResponse = PatchCustomerWithHttpInfo(customerTokenId, patchCustomerRequest, profileId, ifMatch);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -719,14 +698,12 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerApi->PatchCustomer");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerApi->PatchCustomer");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerApi->PatchCustomer");
             }
             // verify the required parameter 'patchCustomerRequest' is set
             if (patchCustomerRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'patchCustomerRequest' when calling CustomerApi->PatchCustomer");
-                throw new ApiException(400, "Missing required parameter 'patchCustomerRequest' when calling CustomerApi->PatchCustomer");
+                                 throw new ApiException(400, "Missing required parameter 'patchCustomerRequest' when calling CustomerApi->PatchCustomer");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}";
@@ -757,8 +734,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("customerTokenId", Configuration.ApiClient.ParameterToString(customerTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -775,14 +751,12 @@ namespace CyberSource.Api
                 localVarPostBody = patchCustomerRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -797,8 +771,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PatchCustomer", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -818,10 +791,8 @@ namespace CyberSource.Api
         /// <returns>Task of TmsV2CustomersResponse</returns>
         public async System.Threading.Tasks.Task<TmsV2CustomersResponse> PatchCustomerAsync (string customerTokenId, PatchCustomerRequest patchCustomerRequest, string profileId = null, string ifMatch = null)
         {
-            logger.Debug("CALLING API \"PatchCustomerAsync\" STARTED");
-            ApiResponse<TmsV2CustomersResponse> localVarResponse = await PatchCustomerAsyncWithHttpInfo(customerTokenId, patchCustomerRequest, profileId, ifMatch);
-            logger.Debug("CALLING API \"PatchCustomerAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<TmsV2CustomersResponse> localVarResponse = await PatchCustomerAsyncWithHttpInfo(customerTokenId, patchCustomerRequest, profileId, ifMatch);
+                         return localVarResponse.Data;
 
         }
 
@@ -839,14 +810,12 @@ namespace CyberSource.Api
             // verify the required parameter 'customerTokenId' is set
             if (customerTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'customerTokenId' when calling CustomerApi->PatchCustomer");
-                throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerApi->PatchCustomer");
+                                 throw new ApiException(400, "Missing required parameter 'customerTokenId' when calling CustomerApi->PatchCustomer");
             }
             // verify the required parameter 'patchCustomerRequest' is set
             if (patchCustomerRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'patchCustomerRequest' when calling CustomerApi->PatchCustomer");
-                throw new ApiException(400, "Missing required parameter 'patchCustomerRequest' when calling CustomerApi->PatchCustomer");
+                                 throw new ApiException(400, "Missing required parameter 'patchCustomerRequest' when calling CustomerApi->PatchCustomer");
             }
 
             var localVarPath = $"/tms/v2/customers/{customerTokenId}";
@@ -877,8 +846,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("customerTokenId", Configuration.ApiClient.ParameterToString(customerTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -895,14 +863,12 @@ namespace CyberSource.Api
                 localVarPostBody = patchCustomerRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -917,8 +883,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PatchCustomer", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -935,10 +900,8 @@ namespace CyberSource.Api
         /// <returns>TmsV2CustomersResponse</returns>
         public TmsV2CustomersResponse PostCustomer (PostCustomerRequest postCustomerRequest, string profileId = null)
         {
-            logger.Debug("CALLING API \"PostCustomer\" STARTED");
-            ApiResponse<TmsV2CustomersResponse> localVarResponse = PostCustomerWithHttpInfo(postCustomerRequest, profileId);
-            logger.Debug("CALLING API \"PostCustomer\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<TmsV2CustomersResponse> localVarResponse = PostCustomerWithHttpInfo(postCustomerRequest, profileId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -953,8 +916,7 @@ namespace CyberSource.Api
             // verify the required parameter 'postCustomerRequest' is set
             if (postCustomerRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'postCustomerRequest' when calling CustomerApi->PostCustomer");
-                throw new ApiException(400, "Missing required parameter 'postCustomerRequest' when calling CustomerApi->PostCustomer");
+                                 throw new ApiException(400, "Missing required parameter 'postCustomerRequest' when calling CustomerApi->PostCustomer");
             }
 
             var localVarPath = $"/tms/v2/customers";
@@ -994,14 +956,12 @@ namespace CyberSource.Api
                 localVarPostBody = postCustomerRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1016,8 +976,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PostCustomer", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1035,10 +994,8 @@ namespace CyberSource.Api
         /// <returns>Task of TmsV2CustomersResponse</returns>
         public async System.Threading.Tasks.Task<TmsV2CustomersResponse> PostCustomerAsync (PostCustomerRequest postCustomerRequest, string profileId = null)
         {
-            logger.Debug("CALLING API \"PostCustomerAsync\" STARTED");
-            ApiResponse<TmsV2CustomersResponse> localVarResponse = await PostCustomerAsyncWithHttpInfo(postCustomerRequest, profileId);
-            logger.Debug("CALLING API \"PostCustomerAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<TmsV2CustomersResponse> localVarResponse = await PostCustomerAsyncWithHttpInfo(postCustomerRequest, profileId);
+                         return localVarResponse.Data;
 
         }
 
@@ -1054,8 +1011,7 @@ namespace CyberSource.Api
             // verify the required parameter 'postCustomerRequest' is set
             if (postCustomerRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'postCustomerRequest' when calling CustomerApi->PostCustomer");
-                throw new ApiException(400, "Missing required parameter 'postCustomerRequest' when calling CustomerApi->PostCustomer");
+                                 throw new ApiException(400, "Missing required parameter 'postCustomerRequest' when calling CustomerApi->PostCustomer");
             }
 
             var localVarPath = $"/tms/v2/customers";
@@ -1095,14 +1051,12 @@ namespace CyberSource.Api
                 localVarPostBody = postCustomerRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1117,8 +1071,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PostCustomer", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

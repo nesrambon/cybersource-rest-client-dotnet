@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -86,7 +86,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class ConversionDetailsApi : IConversionDetailsApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -105,9 +105,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -128,9 +128,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -168,8 +168,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -208,10 +207,8 @@ namespace CyberSource.Api
         /// <returns>ReportingV3ConversionDetailsGet200Response</returns>
         public ReportingV3ConversionDetailsGet200Response GetConversionDetail (DateTime? startTime, DateTime? endTime, string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetConversionDetail\" STARTED");
-            ApiResponse<ReportingV3ConversionDetailsGet200Response> localVarResponse = GetConversionDetailWithHttpInfo(startTime, endTime, organizationId);
-            logger.Debug("CALLING API \"GetConversionDetail\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ConversionDetailsGet200Response> localVarResponse = GetConversionDetailWithHttpInfo(startTime, endTime, organizationId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -227,14 +224,12 @@ namespace CyberSource.Api
             // verify the required parameter 'startTime' is set
             if (startTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'startTime' when calling ConversionDetailsApi->GetConversionDetail");
-                throw new ApiException(400, "Missing required parameter 'startTime' when calling ConversionDetailsApi->GetConversionDetail");
+                                 throw new ApiException(400, "Missing required parameter 'startTime' when calling ConversionDetailsApi->GetConversionDetail");
             }
             // verify the required parameter 'endTime' is set
             if (endTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'endTime' when calling ConversionDetailsApi->GetConversionDetail");
-                throw new ApiException(400, "Missing required parameter 'endTime' when calling ConversionDetailsApi->GetConversionDetail");
+                                 throw new ApiException(400, "Missing required parameter 'endTime' when calling ConversionDetailsApi->GetConversionDetail");
             }
 
             var localVarPath = $"/reporting/v3/conversion-details";
@@ -274,10 +269,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                       
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -291,8 +283,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetConversionDetail", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -311,10 +302,8 @@ namespace CyberSource.Api
         /// <returns>Task of ReportingV3ConversionDetailsGet200Response</returns>
         public async System.Threading.Tasks.Task<ReportingV3ConversionDetailsGet200Response> GetConversionDetailAsync (DateTime? startTime, DateTime? endTime, string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetConversionDetailAsync\" STARTED");
-            ApiResponse<ReportingV3ConversionDetailsGet200Response> localVarResponse = await GetConversionDetailAsyncWithHttpInfo(startTime, endTime, organizationId);
-            logger.Debug("CALLING API \"GetConversionDetailAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ConversionDetailsGet200Response> localVarResponse = await GetConversionDetailAsyncWithHttpInfo(startTime, endTime, organizationId);
+                         return localVarResponse.Data;
 
         }
 
@@ -331,14 +320,12 @@ namespace CyberSource.Api
             // verify the required parameter 'startTime' is set
             if (startTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'startTime' when calling ConversionDetailsApi->GetConversionDetail");
-                throw new ApiException(400, "Missing required parameter 'startTime' when calling ConversionDetailsApi->GetConversionDetail");
+                                 throw new ApiException(400, "Missing required parameter 'startTime' when calling ConversionDetailsApi->GetConversionDetail");
             }
             // verify the required parameter 'endTime' is set
             if (endTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'endTime' when calling ConversionDetailsApi->GetConversionDetail");
-                throw new ApiException(400, "Missing required parameter 'endTime' when calling ConversionDetailsApi->GetConversionDetail");
+                                 throw new ApiException(400, "Missing required parameter 'endTime' when calling ConversionDetailsApi->GetConversionDetail");
             }
 
             var localVarPath = $"/reporting/v3/conversion-details";
@@ -378,10 +365,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                       
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -395,8 +379,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetConversionDetail", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

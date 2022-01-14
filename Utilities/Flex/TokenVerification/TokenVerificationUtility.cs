@@ -1,6 +1,6 @@
 ﻿using CyberSource.Utilities.Flex.Exception;
 using CyberSource.Utilities.Flex.Model;
-using NLog;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,13 +11,13 @@ namespace CyberSource.Utilities.Flex.TokenVerification
 {
     public class TokenVerificationUtility
     {
-        private static Logger logger;
+        
 
         public TokenVerificationUtility()
         {
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -60,13 +60,11 @@ namespace CyberSource.Utilities.Flex.TokenVerification
                 }
                 catch (CryptographicException e)
                 {
-                    logger.Error($"FlexInternalException : Error validating signature\n{e.Message}");
-                    throw new FlexInternalException("Error validating signature", e);
+                                         throw new FlexInternalException("Error validating signature", e);
                 }
                 catch (System.Exception e)
                 {
-                    logger.Error($"FlexInternalException : Error validating signature\n{e.Message}");
-                    throw new FlexInternalException("Error validating signature", e);
+                                         throw new FlexInternalException("Error validating signature", e);
                 }
                 finally
                 {

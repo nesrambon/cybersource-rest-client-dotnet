@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -78,7 +78,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class TokenizationApi : ITokenizationApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -97,9 +97,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -120,9 +120,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -160,8 +160,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -198,10 +197,8 @@ namespace CyberSource.Api
         /// <returns>FlexV1TokensPost200Response</returns>
         public FlexV1TokensPost200Response Tokenize (TokenizeRequest tokenizeRequest)
         {
-            logger.Debug("CALLING API \"Tokenize\" STARTED");
-            ApiResponse<FlexV1TokensPost200Response> localVarResponse = TokenizeWithHttpInfo(tokenizeRequest);
-            logger.Debug("CALLING API \"Tokenize\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<FlexV1TokensPost200Response> localVarResponse = TokenizeWithHttpInfo(tokenizeRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -215,8 +212,7 @@ namespace CyberSource.Api
             // verify the required parameter 'tokenizeRequest' is set
             if (tokenizeRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'tokenizeRequest' when calling TokenizationApi->Tokenize");
-                throw new ApiException(400, "Missing required parameter 'tokenizeRequest' when calling TokenizationApi->Tokenize");
+                                 throw new ApiException(400, "Missing required parameter 'tokenizeRequest' when calling TokenizationApi->Tokenize");
             }
 
             var localVarPath = $"/flex/v1/tokens";
@@ -252,14 +248,12 @@ namespace CyberSource.Api
                 localVarPostBody = tokenizeRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -274,8 +268,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("Tokenize", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -292,10 +285,8 @@ namespace CyberSource.Api
         /// <returns>Task of FlexV1TokensPost200Response</returns>
         public async System.Threading.Tasks.Task<FlexV1TokensPost200Response> TokenizeAsync (TokenizeRequest tokenizeRequest)
         {
-            logger.Debug("CALLING API \"TokenizeAsync\" STARTED");
-            ApiResponse<FlexV1TokensPost200Response> localVarResponse = await TokenizeAsyncWithHttpInfo(tokenizeRequest);
-            logger.Debug("CALLING API \"TokenizeAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<FlexV1TokensPost200Response> localVarResponse = await TokenizeAsyncWithHttpInfo(tokenizeRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -310,8 +301,7 @@ namespace CyberSource.Api
             // verify the required parameter 'tokenizeRequest' is set
             if (tokenizeRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'tokenizeRequest' when calling TokenizationApi->Tokenize");
-                throw new ApiException(400, "Missing required parameter 'tokenizeRequest' when calling TokenizationApi->Tokenize");
+                                 throw new ApiException(400, "Missing required parameter 'tokenizeRequest' when calling TokenizationApi->Tokenize");
             }
 
             var localVarPath = $"/flex/v1/tokens";
@@ -347,14 +337,12 @@ namespace CyberSource.Api
                 localVarPostBody = tokenizeRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -369,8 +357,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("Tokenize", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

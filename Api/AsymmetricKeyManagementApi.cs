@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -162,7 +162,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class AsymmetricKeyManagementApi : IAsymmetricKeyManagementApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -181,9 +181,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -204,9 +204,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -244,8 +244,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -282,10 +281,8 @@ namespace CyberSource.Api
         /// <returns>KmsV2KeysAsymPost201Response</returns>
         public KmsV2KeysAsymPost201Response CreateP12Keys (CreateP12KeysRequest createP12KeysRequest)
         {
-            logger.Debug("CALLING API \"CreateP12Keys\" STARTED");
-            ApiResponse<KmsV2KeysAsymPost201Response> localVarResponse = CreateP12KeysWithHttpInfo(createP12KeysRequest);
-            logger.Debug("CALLING API \"CreateP12Keys\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<KmsV2KeysAsymPost201Response> localVarResponse = CreateP12KeysWithHttpInfo(createP12KeysRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -299,8 +296,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createP12KeysRequest' is set
             if (createP12KeysRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createP12KeysRequest' when calling AsymmetricKeyManagementApi->CreateP12Keys");
-                throw new ApiException(400, "Missing required parameter 'createP12KeysRequest' when calling AsymmetricKeyManagementApi->CreateP12Keys");
+                                 throw new ApiException(400, "Missing required parameter 'createP12KeysRequest' when calling AsymmetricKeyManagementApi->CreateP12Keys");
             }
 
             var localVarPath = $"/kms/v2/keys-asym";
@@ -336,8 +332,7 @@ namespace CyberSource.Api
                 localVarPostBody = createP12KeysRequest; // byte array
             }
 
-            logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -351,8 +346,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateP12Keys", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -369,10 +363,8 @@ namespace CyberSource.Api
         /// <returns>Task of KmsV2KeysAsymPost201Response</returns>
         public async System.Threading.Tasks.Task<KmsV2KeysAsymPost201Response> CreateP12KeysAsync (CreateP12KeysRequest createP12KeysRequest)
         {
-            logger.Debug("CALLING API \"CreateP12KeysAsync\" STARTED");
-            ApiResponse<KmsV2KeysAsymPost201Response> localVarResponse = await CreateP12KeysAsyncWithHttpInfo(createP12KeysRequest);
-            logger.Debug("CALLING API \"CreateP12KeysAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<KmsV2KeysAsymPost201Response> localVarResponse = await CreateP12KeysAsyncWithHttpInfo(createP12KeysRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -387,8 +379,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createP12KeysRequest' is set
             if (createP12KeysRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createP12KeysRequest' when calling AsymmetricKeyManagementApi->CreateP12Keys");
-                throw new ApiException(400, "Missing required parameter 'createP12KeysRequest' when calling AsymmetricKeyManagementApi->CreateP12Keys");
+                                 throw new ApiException(400, "Missing required parameter 'createP12KeysRequest' when calling AsymmetricKeyManagementApi->CreateP12Keys");
             }
 
             var localVarPath = $"/kms/v2/keys-asym";
@@ -424,8 +415,7 @@ namespace CyberSource.Api
                 localVarPostBody = createP12KeysRequest; // byte array
             }
 
-            logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -439,8 +429,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateP12Keys", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -456,10 +445,8 @@ namespace CyberSource.Api
         /// <returns>KmsV2KeysAsymDeletesPost200Response</returns>
         public KmsV2KeysAsymDeletesPost200Response DeleteBulkP12Keys (DeleteBulkP12KeysRequest deleteBulkP12KeysRequest)
         {
-            logger.Debug("CALLING API \"DeleteBulkP12Keys\" STARTED");
-            ApiResponse<KmsV2KeysAsymDeletesPost200Response> localVarResponse = DeleteBulkP12KeysWithHttpInfo(deleteBulkP12KeysRequest);
-            logger.Debug("CALLING API \"DeleteBulkP12Keys\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<KmsV2KeysAsymDeletesPost200Response> localVarResponse = DeleteBulkP12KeysWithHttpInfo(deleteBulkP12KeysRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -473,8 +460,7 @@ namespace CyberSource.Api
             // verify the required parameter 'deleteBulkP12KeysRequest' is set
             if (deleteBulkP12KeysRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'deleteBulkP12KeysRequest' when calling AsymmetricKeyManagementApi->DeleteBulkP12Keys");
-                throw new ApiException(400, "Missing required parameter 'deleteBulkP12KeysRequest' when calling AsymmetricKeyManagementApi->DeleteBulkP12Keys");
+                                 throw new ApiException(400, "Missing required parameter 'deleteBulkP12KeysRequest' when calling AsymmetricKeyManagementApi->DeleteBulkP12Keys");
             }
 
             var localVarPath = $"/kms/v2/keys-asym/deletes";
@@ -510,8 +496,7 @@ namespace CyberSource.Api
                 localVarPostBody = deleteBulkP12KeysRequest; // byte array
             }
 
-            logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -525,8 +510,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeleteBulkP12Keys", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -543,10 +527,8 @@ namespace CyberSource.Api
         /// <returns>Task of KmsV2KeysAsymDeletesPost200Response</returns>
         public async System.Threading.Tasks.Task<KmsV2KeysAsymDeletesPost200Response> DeleteBulkP12KeysAsync (DeleteBulkP12KeysRequest deleteBulkP12KeysRequest)
         {
-            logger.Debug("CALLING API \"DeleteBulkP12KeysAsync\" STARTED");
-            ApiResponse<KmsV2KeysAsymDeletesPost200Response> localVarResponse = await DeleteBulkP12KeysAsyncWithHttpInfo(deleteBulkP12KeysRequest);
-            logger.Debug("CALLING API \"DeleteBulkP12KeysAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<KmsV2KeysAsymDeletesPost200Response> localVarResponse = await DeleteBulkP12KeysAsyncWithHttpInfo(deleteBulkP12KeysRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -561,8 +543,7 @@ namespace CyberSource.Api
             // verify the required parameter 'deleteBulkP12KeysRequest' is set
             if (deleteBulkP12KeysRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'deleteBulkP12KeysRequest' when calling AsymmetricKeyManagementApi->DeleteBulkP12Keys");
-                throw new ApiException(400, "Missing required parameter 'deleteBulkP12KeysRequest' when calling AsymmetricKeyManagementApi->DeleteBulkP12Keys");
+                                 throw new ApiException(400, "Missing required parameter 'deleteBulkP12KeysRequest' when calling AsymmetricKeyManagementApi->DeleteBulkP12Keys");
             }
 
             var localVarPath = $"/kms/v2/keys-asym/deletes";
@@ -598,8 +579,7 @@ namespace CyberSource.Api
                 localVarPostBody = deleteBulkP12KeysRequest; // byte array
             }
 
-            logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -613,8 +593,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeleteBulkP12Keys", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -630,10 +609,8 @@ namespace CyberSource.Api
         /// <returns>KmsV2KeysAsymGet200Response</returns>
         public KmsV2KeysAsymGet200Response GetP12KeyDetails (string keyId)
         {
-            logger.Debug("CALLING API \"GetP12KeyDetails\" STARTED");
-            ApiResponse<KmsV2KeysAsymGet200Response> localVarResponse = GetP12KeyDetailsWithHttpInfo(keyId);
-            logger.Debug("CALLING API \"GetP12KeyDetails\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<KmsV2KeysAsymGet200Response> localVarResponse = GetP12KeyDetailsWithHttpInfo(keyId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -647,8 +624,7 @@ namespace CyberSource.Api
             // verify the required parameter 'keyId' is set
             if (keyId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'keyId' when calling AsymmetricKeyManagementApi->GetP12KeyDetails");
-                throw new ApiException(400, "Missing required parameter 'keyId' when calling AsymmetricKeyManagementApi->GetP12KeyDetails");
+                                 throw new ApiException(400, "Missing required parameter 'keyId' when calling AsymmetricKeyManagementApi->GetP12KeyDetails");
             }
 
             var localVarPath = $"/kms/v2/keys-asym/{keyId}";
@@ -679,8 +655,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("keyId", Configuration.ApiClient.ParameterToString(keyId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -694,8 +669,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetP12KeyDetails", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -712,10 +686,8 @@ namespace CyberSource.Api
         /// <returns>Task of KmsV2KeysAsymGet200Response</returns>
         public async System.Threading.Tasks.Task<KmsV2KeysAsymGet200Response> GetP12KeyDetailsAsync (string keyId)
         {
-            logger.Debug("CALLING API \"GetP12KeyDetailsAsync\" STARTED");
-            ApiResponse<KmsV2KeysAsymGet200Response> localVarResponse = await GetP12KeyDetailsAsyncWithHttpInfo(keyId);
-            logger.Debug("CALLING API \"GetP12KeyDetailsAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<KmsV2KeysAsymGet200Response> localVarResponse = await GetP12KeyDetailsAsyncWithHttpInfo(keyId);
+                         return localVarResponse.Data;
 
         }
 
@@ -730,8 +702,7 @@ namespace CyberSource.Api
             // verify the required parameter 'keyId' is set
             if (keyId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'keyId' when calling AsymmetricKeyManagementApi->GetP12KeyDetails");
-                throw new ApiException(400, "Missing required parameter 'keyId' when calling AsymmetricKeyManagementApi->GetP12KeyDetails");
+                                 throw new ApiException(400, "Missing required parameter 'keyId' when calling AsymmetricKeyManagementApi->GetP12KeyDetails");
             }
 
             var localVarPath = $"/kms/v2/keys-asym/{keyId}";
@@ -762,8 +733,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("keyId", Configuration.ApiClient.ParameterToString(keyId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -777,8 +747,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetP12KeyDetails", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

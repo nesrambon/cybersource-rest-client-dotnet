@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -202,7 +202,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class ReportsApi : IReportsApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -221,9 +221,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -244,9 +244,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -284,8 +284,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -323,8 +322,7 @@ namespace CyberSource.Api
         /// <returns></returns>
         public void CreateReport (CreateAdhocReportRequest createAdhocReportRequest, string organizationId = null)
         {
-            logger.Debug("CALLING API \"CreateReport\" STARTED");
-            CreateReportWithHttpInfo(createAdhocReportRequest, organizationId);
+                         CreateReportWithHttpInfo(createAdhocReportRequest, organizationId);
         }
 
         /// <summary>
@@ -339,8 +337,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createAdhocReportRequest' is set
             if (createAdhocReportRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createAdhocReportRequest' when calling ReportsApi->CreateReport");
-                throw new ApiException(400, "Missing required parameter 'createAdhocReportRequest' when calling ReportsApi->CreateReport");
+                                 throw new ApiException(400, "Missing required parameter 'createAdhocReportRequest' when calling ReportsApi->CreateReport");
             }
 
             var localVarPath = $"/reporting/v3/reports";
@@ -371,8 +368,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            if (createAdhocReportRequest != null && createAdhocReportRequest.GetType() != typeof(byte[]))
+                         if (createAdhocReportRequest != null && createAdhocReportRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(createAdhocReportRequest); // http body (model) parameter
             }
@@ -381,14 +377,12 @@ namespace CyberSource.Api
                 localVarPostBody = createAdhocReportRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -403,8 +397,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateReport", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -422,8 +415,7 @@ namespace CyberSource.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task CreateReportAsync (CreateAdhocReportRequest createAdhocReportRequest, string organizationId = null)
         {
-            logger.Debug("CALLING API \"CreateReportAsync\" STARTED");
-            await CreateReportAsyncWithHttpInfo(createAdhocReportRequest, organizationId);
+                         await CreateReportAsyncWithHttpInfo(createAdhocReportRequest, organizationId);
 
         }
 
@@ -439,8 +431,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createAdhocReportRequest' is set
             if (createAdhocReportRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createAdhocReportRequest' when calling ReportsApi->CreateReport");
-                throw new ApiException(400, "Missing required parameter 'createAdhocReportRequest' when calling ReportsApi->CreateReport");
+                                 throw new ApiException(400, "Missing required parameter 'createAdhocReportRequest' when calling ReportsApi->CreateReport");
             }
 
             var localVarPath = $"/reporting/v3/reports";
@@ -471,8 +462,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            if (createAdhocReportRequest != null && createAdhocReportRequest.GetType() != typeof(byte[]))
+                         if (createAdhocReportRequest != null && createAdhocReportRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(createAdhocReportRequest); // http body (model) parameter
             }
@@ -481,14 +471,12 @@ namespace CyberSource.Api
                 localVarPostBody = createAdhocReportRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -503,8 +491,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateReport", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -521,10 +508,8 @@ namespace CyberSource.Api
         /// <returns>ReportingV3ReportsIdGet200Response</returns>
         public ReportingV3ReportsIdGet200Response GetReportByReportId (string reportId, string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetReportByReportId\" STARTED");
-            ApiResponse<ReportingV3ReportsIdGet200Response> localVarResponse = GetReportByReportIdWithHttpInfo(reportId, organizationId);
-            logger.Debug("CALLING API \"GetReportByReportId\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ReportsIdGet200Response> localVarResponse = GetReportByReportIdWithHttpInfo(reportId, organizationId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -539,8 +524,7 @@ namespace CyberSource.Api
             // verify the required parameter 'reportId' is set
             if (reportId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportId' when calling ReportsApi->GetReportByReportId");
-                throw new ApiException(400, "Missing required parameter 'reportId' when calling ReportsApi->GetReportByReportId");
+                                 throw new ApiException(400, "Missing required parameter 'reportId' when calling ReportsApi->GetReportByReportId");
             }
 
             var localVarPath = $"/reporting/v3/reports/{reportId}";
@@ -572,13 +556,11 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("reportId", Configuration.ApiClient.ParameterToString(reportId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (organizationId != null)
+                         if (organizationId != null)
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -592,8 +574,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetReportByReportId", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -611,10 +592,8 @@ namespace CyberSource.Api
         /// <returns>Task of ReportingV3ReportsIdGet200Response</returns>
         public async System.Threading.Tasks.Task<ReportingV3ReportsIdGet200Response> GetReportByReportIdAsync (string reportId, string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetReportByReportIdAsync\" STARTED");
-            ApiResponse<ReportingV3ReportsIdGet200Response> localVarResponse = await GetReportByReportIdAsyncWithHttpInfo(reportId, organizationId);
-            logger.Debug("CALLING API \"GetReportByReportIdAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ReportsIdGet200Response> localVarResponse = await GetReportByReportIdAsyncWithHttpInfo(reportId, organizationId);
+                         return localVarResponse.Data;
 
         }
 
@@ -630,8 +609,7 @@ namespace CyberSource.Api
             // verify the required parameter 'reportId' is set
             if (reportId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportId' when calling ReportsApi->GetReportByReportId");
-                throw new ApiException(400, "Missing required parameter 'reportId' when calling ReportsApi->GetReportByReportId");
+                                 throw new ApiException(400, "Missing required parameter 'reportId' when calling ReportsApi->GetReportByReportId");
             }
 
             var localVarPath = $"/reporting/v3/reports/{reportId}";
@@ -663,13 +641,11 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("reportId", Configuration.ApiClient.ParameterToString(reportId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (organizationId != null)
+                         if (organizationId != null)
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -683,8 +659,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetReportByReportId", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -708,10 +683,8 @@ namespace CyberSource.Api
         /// <returns>ReportingV3ReportsGet200Response</returns>
         public ReportingV3ReportsGet200Response SearchReports (DateTime? startTime, DateTime? endTime, string timeQueryType, string organizationId = null, string reportMimeType = null, string reportFrequency = null, string reportName = null, int? reportDefinitionId = null, string reportStatus = null)
         {
-            logger.Debug("CALLING API \"SearchReports\" STARTED");
-            ApiResponse<ReportingV3ReportsGet200Response> localVarResponse = SearchReportsWithHttpInfo(startTime, endTime, timeQueryType, organizationId, reportMimeType, reportFrequency, reportName, reportDefinitionId, reportStatus);
-            logger.Debug("CALLING API \"SearchReports\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ReportsGet200Response> localVarResponse = SearchReportsWithHttpInfo(startTime, endTime, timeQueryType, organizationId, reportMimeType, reportFrequency, reportName, reportDefinitionId, reportStatus);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -733,20 +706,17 @@ namespace CyberSource.Api
             // verify the required parameter 'startTime' is set
             if (startTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'startTime' when calling ReportsApi->SearchReports");
-                throw new ApiException(400, "Missing required parameter 'startTime' when calling ReportsApi->SearchReports");
+                                 throw new ApiException(400, "Missing required parameter 'startTime' when calling ReportsApi->SearchReports");
             }
             // verify the required parameter 'endTime' is set
             if (endTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'endTime' when calling ReportsApi->SearchReports");
-                throw new ApiException(400, "Missing required parameter 'endTime' when calling ReportsApi->SearchReports");
+                                 throw new ApiException(400, "Missing required parameter 'endTime' when calling ReportsApi->SearchReports");
             }
             // verify the required parameter 'timeQueryType' is set
             if (timeQueryType == null)
             {
-                logger.Error("ApiException : Missing required parameter 'timeQueryType' when calling ReportsApi->SearchReports");
-                throw new ApiException(400, "Missing required parameter 'timeQueryType' when calling ReportsApi->SearchReports");
+                                 throw new ApiException(400, "Missing required parameter 'timeQueryType' when calling ReportsApi->SearchReports");
             }
 
             var localVarPath = $"/reporting/v3/reports";
@@ -809,16 +779,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("reportStatus", Configuration.ApiClient.ParameterToString(reportStatus)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                                                                                                     
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -832,8 +793,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("SearchReports", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -858,10 +818,8 @@ namespace CyberSource.Api
         /// <returns>Task of ReportingV3ReportsGet200Response</returns>
         public async System.Threading.Tasks.Task<ReportingV3ReportsGet200Response> SearchReportsAsync (DateTime? startTime, DateTime? endTime, string timeQueryType, string organizationId = null, string reportMimeType = null, string reportFrequency = null, string reportName = null, int? reportDefinitionId = null, string reportStatus = null)
         {
-            logger.Debug("CALLING API \"SearchReportsAsync\" STARTED");
-            ApiResponse<ReportingV3ReportsGet200Response> localVarResponse = await SearchReportsAsyncWithHttpInfo(startTime, endTime, timeQueryType, organizationId, reportMimeType, reportFrequency, reportName, reportDefinitionId, reportStatus);
-            logger.Debug("CALLING API \"SearchReportsAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ReportsGet200Response> localVarResponse = await SearchReportsAsyncWithHttpInfo(startTime, endTime, timeQueryType, organizationId, reportMimeType, reportFrequency, reportName, reportDefinitionId, reportStatus);
+                         return localVarResponse.Data;
 
         }
 
@@ -884,20 +842,17 @@ namespace CyberSource.Api
             // verify the required parameter 'startTime' is set
             if (startTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'startTime' when calling ReportsApi->SearchReports");
-                throw new ApiException(400, "Missing required parameter 'startTime' when calling ReportsApi->SearchReports");
+                                 throw new ApiException(400, "Missing required parameter 'startTime' when calling ReportsApi->SearchReports");
             }
             // verify the required parameter 'endTime' is set
             if (endTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'endTime' when calling ReportsApi->SearchReports");
-                throw new ApiException(400, "Missing required parameter 'endTime' when calling ReportsApi->SearchReports");
+                                 throw new ApiException(400, "Missing required parameter 'endTime' when calling ReportsApi->SearchReports");
             }
             // verify the required parameter 'timeQueryType' is set
             if (timeQueryType == null)
             {
-                logger.Error("ApiException : Missing required parameter 'timeQueryType' when calling ReportsApi->SearchReports");
-                throw new ApiException(400, "Missing required parameter 'timeQueryType' when calling ReportsApi->SearchReports");
+                                 throw new ApiException(400, "Missing required parameter 'timeQueryType' when calling ReportsApi->SearchReports");
             }
 
             var localVarPath = $"/reporting/v3/reports";
@@ -960,16 +915,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("reportStatus", Configuration.ApiClient.ParameterToString(reportStatus)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                                                                                                     
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -983,8 +929,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("SearchReports", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -262,7 +262,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class ReportSubscriptionsApi : IReportSubscriptionsApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -281,9 +281,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -304,9 +304,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -344,8 +344,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -383,8 +382,7 @@ namespace CyberSource.Api
         /// <returns></returns>
         public void CreateStandardOrClassicSubscription (PredefinedSubscriptionRequestBean predefinedSubscriptionRequestBean, string organizationId = null)
         {
-            logger.Debug("CALLING API \"CreateStandardOrClassicSubscription\" STARTED");
-            CreateStandardOrClassicSubscriptionWithHttpInfo(predefinedSubscriptionRequestBean, organizationId);
+                         CreateStandardOrClassicSubscriptionWithHttpInfo(predefinedSubscriptionRequestBean, organizationId);
         }
 
         /// <summary>
@@ -399,8 +397,7 @@ namespace CyberSource.Api
             // verify the required parameter 'predefinedSubscriptionRequestBean' is set
             if (predefinedSubscriptionRequestBean == null)
             {
-                logger.Error("ApiException : Missing required parameter 'predefinedSubscriptionRequestBean' when calling ReportSubscriptionsApi->CreateStandardOrClassicSubscription");
-                throw new ApiException(400, "Missing required parameter 'predefinedSubscriptionRequestBean' when calling ReportSubscriptionsApi->CreateStandardOrClassicSubscription");
+                                 throw new ApiException(400, "Missing required parameter 'predefinedSubscriptionRequestBean' when calling ReportSubscriptionsApi->CreateStandardOrClassicSubscription");
             }
 
             var localVarPath = $"/reporting/v3/predefined-report-subscriptions";
@@ -431,8 +428,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            if (predefinedSubscriptionRequestBean != null && predefinedSubscriptionRequestBean.GetType() != typeof(byte[]))
+                         if (predefinedSubscriptionRequestBean != null && predefinedSubscriptionRequestBean.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(predefinedSubscriptionRequestBean); // http body (model) parameter
             }
@@ -441,14 +437,12 @@ namespace CyberSource.Api
                 localVarPostBody = predefinedSubscriptionRequestBean; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -463,8 +457,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateStandardOrClassicSubscription", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -482,8 +475,7 @@ namespace CyberSource.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task CreateStandardOrClassicSubscriptionAsync (PredefinedSubscriptionRequestBean predefinedSubscriptionRequestBean, string organizationId = null)
         {
-            logger.Debug("CALLING API \"CreateStandardOrClassicSubscriptionAsync\" STARTED");
-            await CreateStandardOrClassicSubscriptionAsyncWithHttpInfo(predefinedSubscriptionRequestBean, organizationId);
+                         await CreateStandardOrClassicSubscriptionAsyncWithHttpInfo(predefinedSubscriptionRequestBean, organizationId);
 
         }
 
@@ -499,8 +491,7 @@ namespace CyberSource.Api
             // verify the required parameter 'predefinedSubscriptionRequestBean' is set
             if (predefinedSubscriptionRequestBean == null)
             {
-                logger.Error("ApiException : Missing required parameter 'predefinedSubscriptionRequestBean' when calling ReportSubscriptionsApi->CreateStandardOrClassicSubscription");
-                throw new ApiException(400, "Missing required parameter 'predefinedSubscriptionRequestBean' when calling ReportSubscriptionsApi->CreateStandardOrClassicSubscription");
+                                 throw new ApiException(400, "Missing required parameter 'predefinedSubscriptionRequestBean' when calling ReportSubscriptionsApi->CreateStandardOrClassicSubscription");
             }
 
             var localVarPath = $"/reporting/v3/predefined-report-subscriptions";
@@ -531,8 +522,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            if (predefinedSubscriptionRequestBean != null && predefinedSubscriptionRequestBean.GetType() != typeof(byte[]))
+                         if (predefinedSubscriptionRequestBean != null && predefinedSubscriptionRequestBean.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(predefinedSubscriptionRequestBean); // http body (model) parameter
             }
@@ -541,14 +531,12 @@ namespace CyberSource.Api
                 localVarPostBody = predefinedSubscriptionRequestBean; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -563,8 +551,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateStandardOrClassicSubscription", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -581,8 +568,7 @@ namespace CyberSource.Api
         /// <returns></returns>
         public void CreateSubscription (CreateReportSubscriptionRequest createReportSubscriptionRequest, string organizationId = null)
         {
-            logger.Debug("CALLING API \"CreateSubscription\" STARTED");
-            CreateSubscriptionWithHttpInfo(createReportSubscriptionRequest, organizationId);
+                         CreateSubscriptionWithHttpInfo(createReportSubscriptionRequest, organizationId);
         }
 
         /// <summary>
@@ -597,8 +583,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createReportSubscriptionRequest' is set
             if (createReportSubscriptionRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createReportSubscriptionRequest' when calling ReportSubscriptionsApi->CreateSubscription");
-                throw new ApiException(400, "Missing required parameter 'createReportSubscriptionRequest' when calling ReportSubscriptionsApi->CreateSubscription");
+                                 throw new ApiException(400, "Missing required parameter 'createReportSubscriptionRequest' when calling ReportSubscriptionsApi->CreateSubscription");
             }
 
             var localVarPath = $"/reporting/v3/report-subscriptions";
@@ -629,8 +614,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            if (createReportSubscriptionRequest != null && createReportSubscriptionRequest.GetType() != typeof(byte[]))
+                         if (createReportSubscriptionRequest != null && createReportSubscriptionRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(createReportSubscriptionRequest); // http body (model) parameter
             }
@@ -639,14 +623,12 @@ namespace CyberSource.Api
                 localVarPostBody = createReportSubscriptionRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -661,8 +643,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateSubscription", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -680,8 +661,7 @@ namespace CyberSource.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task CreateSubscriptionAsync (CreateReportSubscriptionRequest createReportSubscriptionRequest, string organizationId = null)
         {
-            logger.Debug("CALLING API \"CreateSubscriptionAsync\" STARTED");
-            await CreateSubscriptionAsyncWithHttpInfo(createReportSubscriptionRequest, organizationId);
+                         await CreateSubscriptionAsyncWithHttpInfo(createReportSubscriptionRequest, organizationId);
 
         }
 
@@ -697,8 +677,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createReportSubscriptionRequest' is set
             if (createReportSubscriptionRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createReportSubscriptionRequest' when calling ReportSubscriptionsApi->CreateSubscription");
-                throw new ApiException(400, "Missing required parameter 'createReportSubscriptionRequest' when calling ReportSubscriptionsApi->CreateSubscription");
+                                 throw new ApiException(400, "Missing required parameter 'createReportSubscriptionRequest' when calling ReportSubscriptionsApi->CreateSubscription");
             }
 
             var localVarPath = $"/reporting/v3/report-subscriptions";
@@ -729,8 +708,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            if (createReportSubscriptionRequest != null && createReportSubscriptionRequest.GetType() != typeof(byte[]))
+                         if (createReportSubscriptionRequest != null && createReportSubscriptionRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(createReportSubscriptionRequest); // http body (model) parameter
             }
@@ -739,14 +717,12 @@ namespace CyberSource.Api
                 localVarPostBody = createReportSubscriptionRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -761,8 +737,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateSubscription", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -779,8 +754,7 @@ namespace CyberSource.Api
         /// <returns></returns>
         public void DeleteSubscription (string reportName, string organizationId = null)
         {
-            logger.Debug("CALLING API \"DeleteSubscription\" STARTED");
-            DeleteSubscriptionWithHttpInfo(reportName, organizationId);
+                         DeleteSubscriptionWithHttpInfo(reportName, organizationId);
         }
 
         /// <summary>
@@ -795,8 +769,7 @@ namespace CyberSource.Api
             // verify the required parameter 'reportName' is set
             if (reportName == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportName' when calling ReportSubscriptionsApi->DeleteSubscription");
-                throw new ApiException(400, "Missing required parameter 'reportName' when calling ReportSubscriptionsApi->DeleteSubscription");
+                                 throw new ApiException(400, "Missing required parameter 'reportName' when calling ReportSubscriptionsApi->DeleteSubscription");
             }
 
             var localVarPath = $"/reporting/v3/report-subscriptions/{reportName}";
@@ -827,13 +800,11 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("reportName", Configuration.ApiClient.ParameterToString(reportName)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (organizationId != null)
+                         if (organizationId != null)
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -847,8 +818,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeleteSubscription", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -866,8 +836,7 @@ namespace CyberSource.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task DeleteSubscriptionAsync (string reportName, string organizationId = null)
         {
-            logger.Debug("CALLING API \"DeleteSubscriptionAsync\" STARTED");
-            await DeleteSubscriptionAsyncWithHttpInfo(reportName, organizationId);
+                         await DeleteSubscriptionAsyncWithHttpInfo(reportName, organizationId);
 
         }
 
@@ -883,8 +852,7 @@ namespace CyberSource.Api
             // verify the required parameter 'reportName' is set
             if (reportName == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportName' when calling ReportSubscriptionsApi->DeleteSubscription");
-                throw new ApiException(400, "Missing required parameter 'reportName' when calling ReportSubscriptionsApi->DeleteSubscription");
+                                 throw new ApiException(400, "Missing required parameter 'reportName' when calling ReportSubscriptionsApi->DeleteSubscription");
             }
 
             var localVarPath = $"/reporting/v3/report-subscriptions/{reportName}";
@@ -915,13 +883,11 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("reportName", Configuration.ApiClient.ParameterToString(reportName)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (organizationId != null)
+                         if (organizationId != null)
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -935,8 +901,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeleteSubscription", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -952,10 +917,8 @@ namespace CyberSource.Api
         /// <returns>ReportingV3ReportSubscriptionsGet200Response</returns>
         public ReportingV3ReportSubscriptionsGet200Response GetAllSubscriptions (string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetAllSubscriptions\" STARTED");
-            ApiResponse<ReportingV3ReportSubscriptionsGet200Response> localVarResponse = GetAllSubscriptionsWithHttpInfo(organizationId);
-            logger.Debug("CALLING API \"GetAllSubscriptions\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ReportSubscriptionsGet200Response> localVarResponse = GetAllSubscriptionsWithHttpInfo(organizationId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -995,8 +958,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -1010,8 +972,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetAllSubscriptions", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1028,10 +989,8 @@ namespace CyberSource.Api
         /// <returns>Task of ReportingV3ReportSubscriptionsGet200Response</returns>
         public async System.Threading.Tasks.Task<ReportingV3ReportSubscriptionsGet200Response> GetAllSubscriptionsAsync (string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetAllSubscriptionsAsync\" STARTED");
-            ApiResponse<ReportingV3ReportSubscriptionsGet200Response> localVarResponse = await GetAllSubscriptionsAsyncWithHttpInfo(organizationId);
-            logger.Debug("CALLING API \"GetAllSubscriptionsAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ReportSubscriptionsGet200Response> localVarResponse = await GetAllSubscriptionsAsyncWithHttpInfo(organizationId);
+                         return localVarResponse.Data;
 
         }
 
@@ -1072,8 +1031,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -1087,8 +1045,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetAllSubscriptions", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1105,10 +1062,8 @@ namespace CyberSource.Api
         /// <returns>ReportingV3ReportSubscriptionsGet200ResponseSubscriptions</returns>
         public ReportingV3ReportSubscriptionsGet200ResponseSubscriptions GetSubscription (string reportName, string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetSubscription\" STARTED");
-            ApiResponse<ReportingV3ReportSubscriptionsGet200ResponseSubscriptions> localVarResponse = GetSubscriptionWithHttpInfo(reportName, organizationId);
-            logger.Debug("CALLING API \"GetSubscription\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ReportSubscriptionsGet200ResponseSubscriptions> localVarResponse = GetSubscriptionWithHttpInfo(reportName, organizationId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1123,8 +1078,7 @@ namespace CyberSource.Api
             // verify the required parameter 'reportName' is set
             if (reportName == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportName' when calling ReportSubscriptionsApi->GetSubscription");
-                throw new ApiException(400, "Missing required parameter 'reportName' when calling ReportSubscriptionsApi->GetSubscription");
+                                 throw new ApiException(400, "Missing required parameter 'reportName' when calling ReportSubscriptionsApi->GetSubscription");
             }
 
             var localVarPath = $"/reporting/v3/report-subscriptions/{reportName}";
@@ -1155,13 +1109,11 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("reportName", Configuration.ApiClient.ParameterToString(reportName)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (organizationId != null)
+                         if (organizationId != null)
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -1175,8 +1127,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetSubscription", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1194,10 +1145,8 @@ namespace CyberSource.Api
         /// <returns>Task of ReportingV3ReportSubscriptionsGet200ResponseSubscriptions</returns>
         public async System.Threading.Tasks.Task<ReportingV3ReportSubscriptionsGet200ResponseSubscriptions> GetSubscriptionAsync (string reportName, string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetSubscriptionAsync\" STARTED");
-            ApiResponse<ReportingV3ReportSubscriptionsGet200ResponseSubscriptions> localVarResponse = await GetSubscriptionAsyncWithHttpInfo(reportName, organizationId);
-            logger.Debug("CALLING API \"GetSubscriptionAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3ReportSubscriptionsGet200ResponseSubscriptions> localVarResponse = await GetSubscriptionAsyncWithHttpInfo(reportName, organizationId);
+                         return localVarResponse.Data;
 
         }
 
@@ -1213,8 +1162,7 @@ namespace CyberSource.Api
             // verify the required parameter 'reportName' is set
             if (reportName == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportName' when calling ReportSubscriptionsApi->GetSubscription");
-                throw new ApiException(400, "Missing required parameter 'reportName' when calling ReportSubscriptionsApi->GetSubscription");
+                                 throw new ApiException(400, "Missing required parameter 'reportName' when calling ReportSubscriptionsApi->GetSubscription");
             }
 
             var localVarPath = $"/reporting/v3/report-subscriptions/{reportName}";
@@ -1245,13 +1193,11 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("reportName", Configuration.ApiClient.ParameterToString(reportName)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (organizationId != null)
+                         if (organizationId != null)
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -1265,8 +1211,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetSubscription", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

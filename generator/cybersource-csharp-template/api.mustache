@@ -12,7 +12,7 @@ using RestSharp;
 using {{packageName}}.Client;
 {{#hasImport}}using {{packageName}}.{{modelPackage}};
 {{/hasImport}}
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace {{packageName}}.{{apiPackage}}
@@ -82,7 +82,7 @@ namespace {{packageName}}.{{apiPackage}}
     /// </summary>
     {{>visibility}} partial class {{classname}} : {{interfacePrefix}}{{classname}}
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -101,9 +101,9 @@ namespace {{packageName}}.{{apiPackage}}
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -124,9 +124,9 @@ namespace {{packageName}}.{{apiPackage}}
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -164,8 +164,7 @@ namespace {{packageName}}.{{apiPackage}}
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -203,10 +202,8 @@ namespace {{packageName}}.{{apiPackage}}
         {{/allParams}}/// <returns>{{#returnType}}{{returnType}}{{/returnType}}</returns>
         public {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}void{{/returnType}} {{operationId}} ({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = null{{/optionalMethodArgument}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
         {
-            logger.Debug("CALLING API \"{{operationId}}\" STARTED");
-            {{#returnType}}ApiResponse<{{{returnType}}}> localVarResponse = {{operationId}}WithHttpInfo({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
-            logger.Debug("CALLING API \"{{operationId}}\" ENDED");
-            return localVarResponse.Data;{{/returnType}}{{^returnType}}{{operationId}}WithHttpInfo({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});{{/returnType}}
+                         {{#returnType}}ApiResponse<{{{returnType}}}> localVarResponse = {{operationId}}WithHttpInfo({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
+                         return localVarResponse.Data;{{/returnType}}{{^returnType}}{{operationId}}WithHttpInfo({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});{{/returnType}}
         }
 
         /// <summary>
@@ -222,8 +219,7 @@ namespace {{packageName}}.{{apiPackage}}
             // verify the required parameter '{{paramName}}' is set
             if ({{paramName}} == null)
             {
-                logger.Error("ApiException : Missing required parameter '{{paramName}}' when calling {{classname}}->{{operationId}}");
-                throw new ApiException(400, "Missing required parameter '{{paramName}}' when calling {{classname}}->{{operationId}}");
+                                 throw new ApiException(400, "Missing required parameter '{{paramName}}' when calling {{classname}}->{{operationId}}");
             }
             {{/required}}
             {{/allParams}}
@@ -263,8 +259,7 @@ namespace {{packageName}}.{{apiPackage}}
             }
             {{/pathParams}}
             {{#pathParams}}
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            {{/pathParams}}
+                         {{/pathParams}}
             {{#queryParams}}
             if ({{paramName}} != null)
             {
@@ -272,8 +267,7 @@ namespace {{packageName}}.{{apiPackage}}
             }
             {{/queryParams}}
             {{#queryParams}}
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            {{/queryParams}}
+                         {{/queryParams}}
             {{#headerParams}}
             if ({{paramName}} != null)
             {
@@ -296,14 +290,12 @@ namespace {{packageName}}.{{apiPackage}}
                 localVarPostBody = {{paramName}}; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
             {{/bodyParam}}
 
             {{#authMethods}}
@@ -349,8 +341,7 @@ namespace {{packageName}}.{{apiPackage}}
                 Exception exception = ExceptionFactory("{{operationId}}", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -375,10 +366,8 @@ namespace {{packageName}}.{{apiPackage}}
         {{/allParams}}/// <returns>Task of {{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}void{{/returnType}}</returns>
         {{#returnType}}public async System.Threading.Tasks.Task<{{{returnType}}}>{{/returnType}}{{^returnType}}public async System.Threading.Tasks.Task{{/returnType}} {{operationId}}Async ({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = null{{/optionalMethodArgument}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
         {
-            logger.Debug("CALLING API \"{{operationId}}Async\" STARTED");
-            {{#returnType}}ApiResponse<{{{returnType}}}> localVarResponse = await {{operationId}}AsyncWithHttpInfo({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
-            logger.Debug("CALLING API \"{{operationId}}Async\" STARTED");
-            return localVarResponse.Data;{{/returnType}}{{^returnType}}await {{operationId}}AsyncWithHttpInfo({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});{{/returnType}}
+                         {{#returnType}}ApiResponse<{{{returnType}}}> localVarResponse = await {{operationId}}AsyncWithHttpInfo({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
+                         return localVarResponse.Data;{{/returnType}}{{^returnType}}await {{operationId}}AsyncWithHttpInfo({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});{{/returnType}}
 
         }
 
@@ -395,8 +384,7 @@ namespace {{packageName}}.{{apiPackage}}
             // verify the required parameter '{{paramName}}' is set
             if ({{paramName}} == null)
             {
-                logger.Error("ApiException : Missing required parameter '{{paramName}}' when calling {{classname}}->{{operationId}}");
-                throw new ApiException(400, "Missing required parameter '{{paramName}}' when calling {{classname}}->{{operationId}}");
+                                 throw new ApiException(400, "Missing required parameter '{{paramName}}' when calling {{classname}}->{{operationId}}");
             }
             {{/required}}
             {{/allParams}}
@@ -436,8 +424,7 @@ namespace {{packageName}}.{{apiPackage}}
             }
             {{/pathParams}}
             {{#pathParams}}
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            {{/pathParams}}
+                         {{/pathParams}}
             {{#queryParams}}
             if ({{paramName}} != null)
             {
@@ -445,8 +432,7 @@ namespace {{packageName}}.{{apiPackage}}
             }
             {{/queryParams}}
             {{#queryParams}}
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            {{/queryParams}}
+                         {{/queryParams}}
             {{#headerParams}}
             if ({{paramName}} != null)
             {
@@ -469,14 +455,12 @@ namespace {{packageName}}.{{apiPackage}}
                 localVarPostBody = {{paramName}}; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
             {{/bodyParam}}
 
             {{#authMethods}}
@@ -522,8 +506,7 @@ namespace {{packageName}}.{{apiPackage}}
                 Exception exception = ExceptionFactory("{{operationId}}", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -162,7 +162,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class SymmetricKeyManagementApi : ISymmetricKeyManagementApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -181,9 +181,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -204,9 +204,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -244,8 +244,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -282,10 +281,8 @@ namespace CyberSource.Api
         /// <returns>KmsV2KeysSymPost201Response</returns>
         public KmsV2KeysSymPost201Response CreateV2SharedSecretKeys (CreateSharedSecretKeysRequest createSharedSecretKeysRequest)
         {
-            logger.Debug("CALLING API \"CreateV2SharedSecretKeys\" STARTED");
-            ApiResponse<KmsV2KeysSymPost201Response> localVarResponse = CreateV2SharedSecretKeysWithHttpInfo(createSharedSecretKeysRequest);
-            logger.Debug("CALLING API \"CreateV2SharedSecretKeys\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<KmsV2KeysSymPost201Response> localVarResponse = CreateV2SharedSecretKeysWithHttpInfo(createSharedSecretKeysRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -299,8 +296,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createSharedSecretKeysRequest' is set
             if (createSharedSecretKeysRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createSharedSecretKeysRequest' when calling SymmetricKeyManagementApi->CreateV2SharedSecretKeys");
-                throw new ApiException(400, "Missing required parameter 'createSharedSecretKeysRequest' when calling SymmetricKeyManagementApi->CreateV2SharedSecretKeys");
+                                 throw new ApiException(400, "Missing required parameter 'createSharedSecretKeysRequest' when calling SymmetricKeyManagementApi->CreateV2SharedSecretKeys");
             }
 
             var localVarPath = $"/kms/v2/keys-sym";
@@ -336,14 +332,12 @@ namespace CyberSource.Api
                 localVarPostBody = createSharedSecretKeysRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -358,8 +352,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateV2SharedSecretKeys", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -376,10 +369,8 @@ namespace CyberSource.Api
         /// <returns>Task of KmsV2KeysSymPost201Response</returns>
         public async System.Threading.Tasks.Task<KmsV2KeysSymPost201Response> CreateV2SharedSecretKeysAsync (CreateSharedSecretKeysRequest createSharedSecretKeysRequest)
         {
-            logger.Debug("CALLING API \"CreateV2SharedSecretKeysAsync\" STARTED");
-            ApiResponse<KmsV2KeysSymPost201Response> localVarResponse = await CreateV2SharedSecretKeysAsyncWithHttpInfo(createSharedSecretKeysRequest);
-            logger.Debug("CALLING API \"CreateV2SharedSecretKeysAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<KmsV2KeysSymPost201Response> localVarResponse = await CreateV2SharedSecretKeysAsyncWithHttpInfo(createSharedSecretKeysRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -394,8 +385,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createSharedSecretKeysRequest' is set
             if (createSharedSecretKeysRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createSharedSecretKeysRequest' when calling SymmetricKeyManagementApi->CreateV2SharedSecretKeys");
-                throw new ApiException(400, "Missing required parameter 'createSharedSecretKeysRequest' when calling SymmetricKeyManagementApi->CreateV2SharedSecretKeys");
+                                 throw new ApiException(400, "Missing required parameter 'createSharedSecretKeysRequest' when calling SymmetricKeyManagementApi->CreateV2SharedSecretKeys");
             }
 
             var localVarPath = $"/kms/v2/keys-sym";
@@ -431,14 +421,12 @@ namespace CyberSource.Api
                 localVarPostBody = createSharedSecretKeysRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -453,8 +441,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreateV2SharedSecretKeys", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -470,10 +457,8 @@ namespace CyberSource.Api
         /// <returns>KmsV2KeysSymDeletesPost200Response</returns>
         public KmsV2KeysSymDeletesPost200Response DeleteBulkSymmetricKeys (DeleteBulkSymmetricKeysRequest deleteBulkSymmetricKeysRequest)
         {
-            logger.Debug("CALLING API \"DeleteBulkSymmetricKeys\" STARTED");
-            ApiResponse<KmsV2KeysSymDeletesPost200Response> localVarResponse = DeleteBulkSymmetricKeysWithHttpInfo(deleteBulkSymmetricKeysRequest);
-            logger.Debug("CALLING API \"DeleteBulkSymmetricKeys\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<KmsV2KeysSymDeletesPost200Response> localVarResponse = DeleteBulkSymmetricKeysWithHttpInfo(deleteBulkSymmetricKeysRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -487,8 +472,7 @@ namespace CyberSource.Api
             // verify the required parameter 'deleteBulkSymmetricKeysRequest' is set
             if (deleteBulkSymmetricKeysRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'deleteBulkSymmetricKeysRequest' when calling SymmetricKeyManagementApi->DeleteBulkSymmetricKeys");
-                throw new ApiException(400, "Missing required parameter 'deleteBulkSymmetricKeysRequest' when calling SymmetricKeyManagementApi->DeleteBulkSymmetricKeys");
+                                 throw new ApiException(400, "Missing required parameter 'deleteBulkSymmetricKeysRequest' when calling SymmetricKeyManagementApi->DeleteBulkSymmetricKeys");
             }
 
             var localVarPath = $"/kms/v2/keys-sym/deletes";
@@ -524,14 +508,12 @@ namespace CyberSource.Api
                 localVarPostBody = deleteBulkSymmetricKeysRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -546,8 +528,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeleteBulkSymmetricKeys", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -564,10 +545,8 @@ namespace CyberSource.Api
         /// <returns>Task of KmsV2KeysSymDeletesPost200Response</returns>
         public async System.Threading.Tasks.Task<KmsV2KeysSymDeletesPost200Response> DeleteBulkSymmetricKeysAsync (DeleteBulkSymmetricKeysRequest deleteBulkSymmetricKeysRequest)
         {
-            logger.Debug("CALLING API \"DeleteBulkSymmetricKeysAsync\" STARTED");
-            ApiResponse<KmsV2KeysSymDeletesPost200Response> localVarResponse = await DeleteBulkSymmetricKeysAsyncWithHttpInfo(deleteBulkSymmetricKeysRequest);
-            logger.Debug("CALLING API \"DeleteBulkSymmetricKeysAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<KmsV2KeysSymDeletesPost200Response> localVarResponse = await DeleteBulkSymmetricKeysAsyncWithHttpInfo(deleteBulkSymmetricKeysRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -582,8 +561,7 @@ namespace CyberSource.Api
             // verify the required parameter 'deleteBulkSymmetricKeysRequest' is set
             if (deleteBulkSymmetricKeysRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'deleteBulkSymmetricKeysRequest' when calling SymmetricKeyManagementApi->DeleteBulkSymmetricKeys");
-                throw new ApiException(400, "Missing required parameter 'deleteBulkSymmetricKeysRequest' when calling SymmetricKeyManagementApi->DeleteBulkSymmetricKeys");
+                                 throw new ApiException(400, "Missing required parameter 'deleteBulkSymmetricKeysRequest' when calling SymmetricKeyManagementApi->DeleteBulkSymmetricKeys");
             }
 
             var localVarPath = $"/kms/v2/keys-sym/deletes";
@@ -619,14 +597,12 @@ namespace CyberSource.Api
                 localVarPostBody = deleteBulkSymmetricKeysRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -641,8 +617,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeleteBulkSymmetricKeys", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -658,10 +633,8 @@ namespace CyberSource.Api
         /// <returns>KmsV2KeysSymGet200Response</returns>
         public KmsV2KeysSymGet200Response GetKeyDetails (string keyId)
         {
-            logger.Debug("CALLING API \"GetKeyDetails\" STARTED");
-            ApiResponse<KmsV2KeysSymGet200Response> localVarResponse = GetKeyDetailsWithHttpInfo(keyId);
-            logger.Debug("CALLING API \"GetKeyDetails\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<KmsV2KeysSymGet200Response> localVarResponse = GetKeyDetailsWithHttpInfo(keyId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -675,8 +648,7 @@ namespace CyberSource.Api
             // verify the required parameter 'keyId' is set
             if (keyId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'keyId' when calling SymmetricKeyManagementApi->GetKeyDetails");
-                throw new ApiException(400, "Missing required parameter 'keyId' when calling SymmetricKeyManagementApi->GetKeyDetails");
+                                 throw new ApiException(400, "Missing required parameter 'keyId' when calling SymmetricKeyManagementApi->GetKeyDetails");
             }
 
             var localVarPath = $"/kms/v2/keys-sym/{keyId}";
@@ -707,8 +679,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("keyId", Configuration.ApiClient.ParameterToString(keyId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -722,8 +693,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetKeyDetails", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -740,10 +710,8 @@ namespace CyberSource.Api
         /// <returns>Task of KmsV2KeysSymGet200Response</returns>
         public async System.Threading.Tasks.Task<KmsV2KeysSymGet200Response> GetKeyDetailsAsync (string keyId)
         {
-            logger.Debug("CALLING API \"GetKeyDetailsAsync\" STARTED");
-            ApiResponse<KmsV2KeysSymGet200Response> localVarResponse = await GetKeyDetailsAsyncWithHttpInfo(keyId);
-            logger.Debug("CALLING API \"GetKeyDetailsAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<KmsV2KeysSymGet200Response> localVarResponse = await GetKeyDetailsAsyncWithHttpInfo(keyId);
+                         return localVarResponse.Data;
 
         }
 
@@ -758,8 +726,7 @@ namespace CyberSource.Api
             // verify the required parameter 'keyId' is set
             if (keyId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'keyId' when calling SymmetricKeyManagementApi->GetKeyDetails");
-                throw new ApiException(400, "Missing required parameter 'keyId' when calling SymmetricKeyManagementApi->GetKeyDetails");
+                                 throw new ApiException(400, "Missing required parameter 'keyId' when calling SymmetricKeyManagementApi->GetKeyDetails");
             }
 
             var localVarPath = $"/kms/v2/keys-sym/{keyId}";
@@ -790,8 +757,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("keyId", Configuration.ApiClient.ParameterToString(keyId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -805,8 +771,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetKeyDetails", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

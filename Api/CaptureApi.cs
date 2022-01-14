@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -82,7 +82,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class CaptureApi : ICaptureApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -101,9 +101,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -124,9 +124,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -164,8 +164,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -203,10 +202,8 @@ namespace CyberSource.Api
         /// <returns>PtsV2PaymentsCapturesPost201Response</returns>
         public PtsV2PaymentsCapturesPost201Response CapturePayment (CapturePaymentRequest capturePaymentRequest, string id)
         {
-            logger.Debug("CALLING API \"CapturePayment\" STARTED");
-            ApiResponse<PtsV2PaymentsCapturesPost201Response> localVarResponse = CapturePaymentWithHttpInfo(capturePaymentRequest, id);
-            logger.Debug("CALLING API \"CapturePayment\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsCapturesPost201Response> localVarResponse = CapturePaymentWithHttpInfo(capturePaymentRequest, id);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -221,14 +218,12 @@ namespace CyberSource.Api
             // verify the required parameter 'capturePaymentRequest' is set
             if (capturePaymentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'capturePaymentRequest' when calling CaptureApi->CapturePayment");
-                throw new ApiException(400, "Missing required parameter 'capturePaymentRequest' when calling CaptureApi->CapturePayment");
+                                 throw new ApiException(400, "Missing required parameter 'capturePaymentRequest' when calling CaptureApi->CapturePayment");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling CaptureApi->CapturePayment");
-                throw new ApiException(400, "Missing required parameter 'id' when calling CaptureApi->CapturePayment");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling CaptureApi->CapturePayment");
             }
 
             var localVarPath = $"/pts/v2/payments/{id}/captures";
@@ -259,8 +254,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (capturePaymentRequest != null && capturePaymentRequest.GetType() != typeof(byte[]))
+                         if (capturePaymentRequest != null && capturePaymentRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(capturePaymentRequest); // http body (model) parameter
             }
@@ -269,8 +263,7 @@ namespace CyberSource.Api
                 localVarPostBody = capturePaymentRequest; // byte array
             }
 
-            logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -284,8 +277,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CapturePayment", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -303,10 +295,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV2PaymentsCapturesPost201Response</returns>
         public async System.Threading.Tasks.Task<PtsV2PaymentsCapturesPost201Response> CapturePaymentAsync (CapturePaymentRequest capturePaymentRequest, string id)
         {
-            logger.Debug("CALLING API \"CapturePaymentAsync\" STARTED");
-            ApiResponse<PtsV2PaymentsCapturesPost201Response> localVarResponse = await CapturePaymentAsyncWithHttpInfo(capturePaymentRequest, id);
-            logger.Debug("CALLING API \"CapturePaymentAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsCapturesPost201Response> localVarResponse = await CapturePaymentAsyncWithHttpInfo(capturePaymentRequest, id);
+                         return localVarResponse.Data;
 
         }
 
@@ -322,14 +312,12 @@ namespace CyberSource.Api
             // verify the required parameter 'capturePaymentRequest' is set
             if (capturePaymentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'capturePaymentRequest' when calling CaptureApi->CapturePayment");
-                throw new ApiException(400, "Missing required parameter 'capturePaymentRequest' when calling CaptureApi->CapturePayment");
+                                 throw new ApiException(400, "Missing required parameter 'capturePaymentRequest' when calling CaptureApi->CapturePayment");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling CaptureApi->CapturePayment");
-                throw new ApiException(400, "Missing required parameter 'id' when calling CaptureApi->CapturePayment");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling CaptureApi->CapturePayment");
             }
 
             var localVarPath = $"/pts/v2/payments/{id}/captures";
@@ -360,8 +348,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (capturePaymentRequest != null && capturePaymentRequest.GetType() != typeof(byte[]))
+                         if (capturePaymentRequest != null && capturePaymentRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(capturePaymentRequest); // http body (model) parameter
             }
@@ -370,8 +357,7 @@ namespace CyberSource.Api
                 localVarPostBody = capturePaymentRequest; // byte array
             }
 
-            logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -385,8 +371,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CapturePayment", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -90,7 +90,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class UserManagementApi : IUserManagementApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -109,9 +109,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -132,9 +132,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -172,8 +172,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -213,10 +212,8 @@ namespace CyberSource.Api
         /// <returns>UmsV1UsersGet200Response</returns>
         public UmsV1UsersGet200Response GetUsers (string organizationId = null, string userName = null, string permissionId = null, string roleId = null)
         {
-            logger.Debug("CALLING API \"GetUsers\" STARTED");
-            ApiResponse<UmsV1UsersGet200Response> localVarResponse = GetUsersWithHttpInfo(organizationId, userName, permissionId, roleId);
-            logger.Debug("CALLING API \"GetUsers\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<UmsV1UsersGet200Response> localVarResponse = GetUsersWithHttpInfo(organizationId, userName, permissionId, roleId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -271,11 +268,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("roleId", Configuration.ApiClient.ParameterToString(roleId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                                    
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -289,8 +282,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetUsers", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -310,10 +302,8 @@ namespace CyberSource.Api
         /// <returns>Task of UmsV1UsersGet200Response</returns>
         public async System.Threading.Tasks.Task<UmsV1UsersGet200Response> GetUsersAsync (string organizationId = null, string userName = null, string permissionId = null, string roleId = null)
         {
-            logger.Debug("CALLING API \"GetUsersAsync\" STARTED");
-            ApiResponse<UmsV1UsersGet200Response> localVarResponse = await GetUsersAsyncWithHttpInfo(organizationId, userName, permissionId, roleId);
-            logger.Debug("CALLING API \"GetUsersAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<UmsV1UsersGet200Response> localVarResponse = await GetUsersAsyncWithHttpInfo(organizationId, userName, permissionId, roleId);
+                         return localVarResponse.Data;
 
         }
 
@@ -369,11 +359,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("roleId", Configuration.ApiClient.ParameterToString(roleId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                                    
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -387,8 +373,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetUsers", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -124,7 +124,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class ReversalApi : IReversalApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -143,9 +143,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -166,9 +166,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -206,8 +206,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -245,10 +244,8 @@ namespace CyberSource.Api
         /// <returns>PtsV2PaymentsReversalsPost201Response</returns>
         public PtsV2PaymentsReversalsPost201Response AuthReversal (string id, AuthReversalRequest authReversalRequest)
         {
-            logger.Debug("CALLING API \"AuthReversal\" STARTED");
-            ApiResponse<PtsV2PaymentsReversalsPost201Response> localVarResponse = AuthReversalWithHttpInfo(id, authReversalRequest);
-            logger.Debug("CALLING API \"AuthReversal\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsReversalsPost201Response> localVarResponse = AuthReversalWithHttpInfo(id, authReversalRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -263,14 +260,12 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling ReversalApi->AuthReversal");
-                throw new ApiException(400, "Missing required parameter 'id' when calling ReversalApi->AuthReversal");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling ReversalApi->AuthReversal");
             }
             // verify the required parameter 'authReversalRequest' is set
             if (authReversalRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'authReversalRequest' when calling ReversalApi->AuthReversal");
-                throw new ApiException(400, "Missing required parameter 'authReversalRequest' when calling ReversalApi->AuthReversal");
+                                 throw new ApiException(400, "Missing required parameter 'authReversalRequest' when calling ReversalApi->AuthReversal");
             }
 
             var localVarPath = $"/pts/v2/payments/{id}/reversals";
@@ -301,8 +296,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (authReversalRequest != null && authReversalRequest.GetType() != typeof(byte[]))
+                         if (authReversalRequest != null && authReversalRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(authReversalRequest); // http body (model) parameter
             }
@@ -311,14 +305,12 @@ namespace CyberSource.Api
                 localVarPostBody = authReversalRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -333,8 +325,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("AuthReversal", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -352,10 +343,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV2PaymentsReversalsPost201Response</returns>
         public async System.Threading.Tasks.Task<PtsV2PaymentsReversalsPost201Response> AuthReversalAsync (string id, AuthReversalRequest authReversalRequest)
         {
-            logger.Debug("CALLING API \"AuthReversalAsync\" STARTED");
-            ApiResponse<PtsV2PaymentsReversalsPost201Response> localVarResponse = await AuthReversalAsyncWithHttpInfo(id, authReversalRequest);
-            logger.Debug("CALLING API \"AuthReversalAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsReversalsPost201Response> localVarResponse = await AuthReversalAsyncWithHttpInfo(id, authReversalRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -371,14 +360,12 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling ReversalApi->AuthReversal");
-                throw new ApiException(400, "Missing required parameter 'id' when calling ReversalApi->AuthReversal");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling ReversalApi->AuthReversal");
             }
             // verify the required parameter 'authReversalRequest' is set
             if (authReversalRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'authReversalRequest' when calling ReversalApi->AuthReversal");
-                throw new ApiException(400, "Missing required parameter 'authReversalRequest' when calling ReversalApi->AuthReversal");
+                                 throw new ApiException(400, "Missing required parameter 'authReversalRequest' when calling ReversalApi->AuthReversal");
             }
 
             var localVarPath = $"/pts/v2/payments/{id}/reversals";
@@ -409,8 +396,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (authReversalRequest != null && authReversalRequest.GetType() != typeof(byte[]))
+                         if (authReversalRequest != null && authReversalRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(authReversalRequest); // http body (model) parameter
             }
@@ -419,14 +405,12 @@ namespace CyberSource.Api
                 localVarPostBody = authReversalRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -441,8 +425,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("AuthReversal", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -458,10 +441,8 @@ namespace CyberSource.Api
         /// <returns>PtsV2PaymentsReversalsPost201Response</returns>
         public PtsV2PaymentsReversalsPost201Response MitReversal (MitReversalRequest mitReversalRequest)
         {
-            logger.Debug("CALLING API \"MitReversal\" STARTED");
-            ApiResponse<PtsV2PaymentsReversalsPost201Response> localVarResponse = MitReversalWithHttpInfo(mitReversalRequest);
-            logger.Debug("CALLING API \"MitReversal\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsReversalsPost201Response> localVarResponse = MitReversalWithHttpInfo(mitReversalRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -475,8 +456,7 @@ namespace CyberSource.Api
             // verify the required parameter 'mitReversalRequest' is set
             if (mitReversalRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'mitReversalRequest' when calling ReversalApi->MitReversal");
-                throw new ApiException(400, "Missing required parameter 'mitReversalRequest' when calling ReversalApi->MitReversal");
+                                 throw new ApiException(400, "Missing required parameter 'mitReversalRequest' when calling ReversalApi->MitReversal");
             }
 
             var localVarPath = $"/pts/v2/reversals/";
@@ -512,14 +492,12 @@ namespace CyberSource.Api
                 localVarPostBody = mitReversalRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -534,8 +512,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("MitReversal", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -552,10 +529,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV2PaymentsReversalsPost201Response</returns>
         public async System.Threading.Tasks.Task<PtsV2PaymentsReversalsPost201Response> MitReversalAsync (MitReversalRequest mitReversalRequest)
         {
-            logger.Debug("CALLING API \"MitReversalAsync\" STARTED");
-            ApiResponse<PtsV2PaymentsReversalsPost201Response> localVarResponse = await MitReversalAsyncWithHttpInfo(mitReversalRequest);
-            logger.Debug("CALLING API \"MitReversalAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsReversalsPost201Response> localVarResponse = await MitReversalAsyncWithHttpInfo(mitReversalRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -570,8 +545,7 @@ namespace CyberSource.Api
             // verify the required parameter 'mitReversalRequest' is set
             if (mitReversalRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'mitReversalRequest' when calling ReversalApi->MitReversal");
-                throw new ApiException(400, "Missing required parameter 'mitReversalRequest' when calling ReversalApi->MitReversal");
+                                 throw new ApiException(400, "Missing required parameter 'mitReversalRequest' when calling ReversalApi->MitReversal");
             }
 
             var localVarPath = $"/pts/v2/reversals/";
@@ -607,14 +581,12 @@ namespace CyberSource.Api
                 localVarPostBody = mitReversalRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -629,8 +601,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("MitReversal", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

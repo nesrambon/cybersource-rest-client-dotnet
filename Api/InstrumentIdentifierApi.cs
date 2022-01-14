@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -332,7 +332,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class InstrumentIdentifierApi : IInstrumentIdentifierApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -351,9 +351,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -374,9 +374,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -414,8 +414,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -453,8 +452,7 @@ namespace CyberSource.Api
         /// <returns></returns>
         public void DeleteInstrumentIdentifier (string instrumentIdentifierTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"DeleteInstrumentIdentifier\" STARTED");
-            DeleteInstrumentIdentifierWithHttpInfo(instrumentIdentifierTokenId, profileId);
+                         DeleteInstrumentIdentifierWithHttpInfo(instrumentIdentifierTokenId, profileId);
         }
 
         /// <summary>
@@ -469,8 +467,7 @@ namespace CyberSource.Api
             // verify the required parameter 'instrumentIdentifierTokenId' is set
             if (instrumentIdentifierTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->DeleteInstrumentIdentifier");
-                throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->DeleteInstrumentIdentifier");
+                                 throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->DeleteInstrumentIdentifier");
             }
 
             var localVarPath = $"/tms/v1/instrumentidentifiers/{instrumentIdentifierTokenId}";
@@ -501,8 +498,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("instrumentIdentifierTokenId", Configuration.ApiClient.ParameterToString(instrumentIdentifierTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -520,8 +516,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeleteInstrumentIdentifier", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -539,8 +534,7 @@ namespace CyberSource.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task DeleteInstrumentIdentifierAsync (string instrumentIdentifierTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"DeleteInstrumentIdentifierAsync\" STARTED");
-            await DeleteInstrumentIdentifierAsyncWithHttpInfo(instrumentIdentifierTokenId, profileId);
+                         await DeleteInstrumentIdentifierAsyncWithHttpInfo(instrumentIdentifierTokenId, profileId);
 
         }
 
@@ -556,8 +550,7 @@ namespace CyberSource.Api
             // verify the required parameter 'instrumentIdentifierTokenId' is set
             if (instrumentIdentifierTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->DeleteInstrumentIdentifier");
-                throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->DeleteInstrumentIdentifier");
+                                 throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->DeleteInstrumentIdentifier");
             }
 
             var localVarPath = $"/tms/v1/instrumentidentifiers/{instrumentIdentifierTokenId}";
@@ -588,8 +581,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("instrumentIdentifierTokenId", Configuration.ApiClient.ParameterToString(instrumentIdentifierTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -607,8 +599,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DeleteInstrumentIdentifier", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -625,10 +616,8 @@ namespace CyberSource.Api
         /// <returns>Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier</returns>
         public Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier GetInstrumentIdentifier (string instrumentIdentifierTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"GetInstrumentIdentifier\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> localVarResponse = GetInstrumentIdentifierWithHttpInfo(instrumentIdentifierTokenId, profileId);
-            logger.Debug("CALLING API \"GetInstrumentIdentifier\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> localVarResponse = GetInstrumentIdentifierWithHttpInfo(instrumentIdentifierTokenId, profileId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -643,8 +632,7 @@ namespace CyberSource.Api
             // verify the required parameter 'instrumentIdentifierTokenId' is set
             if (instrumentIdentifierTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->GetInstrumentIdentifier");
-                throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->GetInstrumentIdentifier");
+                                 throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->GetInstrumentIdentifier");
             }
 
             var localVarPath = $"/tms/v1/instrumentidentifiers/{instrumentIdentifierTokenId}";
@@ -675,8 +663,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("instrumentIdentifierTokenId", Configuration.ApiClient.ParameterToString(instrumentIdentifierTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -694,8 +681,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetInstrumentIdentifier", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -713,10 +699,8 @@ namespace CyberSource.Api
         /// <returns>Task of Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier</returns>
         public async System.Threading.Tasks.Task<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> GetInstrumentIdentifierAsync (string instrumentIdentifierTokenId, string profileId = null)
         {
-            logger.Debug("CALLING API \"GetInstrumentIdentifierAsync\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> localVarResponse = await GetInstrumentIdentifierAsyncWithHttpInfo(instrumentIdentifierTokenId, profileId);
-            logger.Debug("CALLING API \"GetInstrumentIdentifierAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> localVarResponse = await GetInstrumentIdentifierAsyncWithHttpInfo(instrumentIdentifierTokenId, profileId);
+                         return localVarResponse.Data;
 
         }
 
@@ -732,8 +716,7 @@ namespace CyberSource.Api
             // verify the required parameter 'instrumentIdentifierTokenId' is set
             if (instrumentIdentifierTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->GetInstrumentIdentifier");
-                throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->GetInstrumentIdentifier");
+                                 throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->GetInstrumentIdentifier");
             }
 
             var localVarPath = $"/tms/v1/instrumentidentifiers/{instrumentIdentifierTokenId}";
@@ -764,8 +747,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("instrumentIdentifierTokenId", Configuration.ApiClient.ParameterToString(instrumentIdentifierTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -783,8 +765,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetInstrumentIdentifier", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -803,10 +784,8 @@ namespace CyberSource.Api
         /// <returns>PaymentInstrumentList</returns>
         public PaymentInstrumentList GetInstrumentIdentifierPaymentInstrumentsList (string instrumentIdentifierTokenId, string profileId = null, long? offset = null, long? limit = null)
         {
-            logger.Debug("CALLING API \"GetInstrumentIdentifierPaymentInstrumentsList\" STARTED");
-            ApiResponse<PaymentInstrumentList> localVarResponse = GetInstrumentIdentifierPaymentInstrumentsListWithHttpInfo(instrumentIdentifierTokenId, profileId, offset, limit);
-            logger.Debug("CALLING API \"GetInstrumentIdentifierPaymentInstrumentsList\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PaymentInstrumentList> localVarResponse = GetInstrumentIdentifierPaymentInstrumentsListWithHttpInfo(instrumentIdentifierTokenId, profileId, offset, limit);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -823,8 +802,7 @@ namespace CyberSource.Api
             // verify the required parameter 'instrumentIdentifierTokenId' is set
             if (instrumentIdentifierTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->GetInstrumentIdentifierPaymentInstrumentsList");
-                throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->GetInstrumentIdentifierPaymentInstrumentsList");
+                                 throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->GetInstrumentIdentifierPaymentInstrumentsList");
             }
 
             var localVarPath = $"/tms/v1/instrumentidentifiers/{instrumentIdentifierTokenId}/paymentinstruments";
@@ -855,8 +833,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("instrumentIdentifierTokenId", Configuration.ApiClient.ParameterToString(instrumentIdentifierTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (offset != null)
+                         if (offset != null)
             {
                 localVarQueryParams.Add("offset", Configuration.ApiClient.ParameterToString(offset)); // query parameter
             }
@@ -864,9 +841,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            if (profileId != null)
+                                      if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -884,8 +859,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetInstrumentIdentifierPaymentInstrumentsList", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -905,10 +879,8 @@ namespace CyberSource.Api
         /// <returns>Task of PaymentInstrumentList</returns>
         public async System.Threading.Tasks.Task<PaymentInstrumentList> GetInstrumentIdentifierPaymentInstrumentsListAsync (string instrumentIdentifierTokenId, string profileId = null, long? offset = null, long? limit = null)
         {
-            logger.Debug("CALLING API \"GetInstrumentIdentifierPaymentInstrumentsListAsync\" STARTED");
-            ApiResponse<PaymentInstrumentList> localVarResponse = await GetInstrumentIdentifierPaymentInstrumentsListAsyncWithHttpInfo(instrumentIdentifierTokenId, profileId, offset, limit);
-            logger.Debug("CALLING API \"GetInstrumentIdentifierPaymentInstrumentsListAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PaymentInstrumentList> localVarResponse = await GetInstrumentIdentifierPaymentInstrumentsListAsyncWithHttpInfo(instrumentIdentifierTokenId, profileId, offset, limit);
+                         return localVarResponse.Data;
 
         }
 
@@ -926,8 +898,7 @@ namespace CyberSource.Api
             // verify the required parameter 'instrumentIdentifierTokenId' is set
             if (instrumentIdentifierTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->GetInstrumentIdentifierPaymentInstrumentsList");
-                throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->GetInstrumentIdentifierPaymentInstrumentsList");
+                                 throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->GetInstrumentIdentifierPaymentInstrumentsList");
             }
 
             var localVarPath = $"/tms/v1/instrumentidentifiers/{instrumentIdentifierTokenId}/paymentinstruments";
@@ -958,8 +929,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("instrumentIdentifierTokenId", Configuration.ApiClient.ParameterToString(instrumentIdentifierTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (offset != null)
+                         if (offset != null)
             {
                 localVarQueryParams.Add("offset", Configuration.ApiClient.ParameterToString(offset)); // query parameter
             }
@@ -967,9 +937,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            if (profileId != null)
+                                      if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -987,8 +955,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetInstrumentIdentifierPaymentInstrumentsList", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1007,10 +974,8 @@ namespace CyberSource.Api
         /// <returns>Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier</returns>
         public Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier PatchInstrumentIdentifier (string instrumentIdentifierTokenId, PatchInstrumentIdentifierRequest patchInstrumentIdentifierRequest, string profileId = null, string ifMatch = null)
         {
-            logger.Debug("CALLING API \"PatchInstrumentIdentifier\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> localVarResponse = PatchInstrumentIdentifierWithHttpInfo(instrumentIdentifierTokenId, patchInstrumentIdentifierRequest, profileId, ifMatch);
-            logger.Debug("CALLING API \"PatchInstrumentIdentifier\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> localVarResponse = PatchInstrumentIdentifierWithHttpInfo(instrumentIdentifierTokenId, patchInstrumentIdentifierRequest, profileId, ifMatch);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1027,14 +992,12 @@ namespace CyberSource.Api
             // verify the required parameter 'instrumentIdentifierTokenId' is set
             if (instrumentIdentifierTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->PatchInstrumentIdentifier");
-                throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->PatchInstrumentIdentifier");
+                                 throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->PatchInstrumentIdentifier");
             }
             // verify the required parameter 'patchInstrumentIdentifierRequest' is set
             if (patchInstrumentIdentifierRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'patchInstrumentIdentifierRequest' when calling InstrumentIdentifierApi->PatchInstrumentIdentifier");
-                throw new ApiException(400, "Missing required parameter 'patchInstrumentIdentifierRequest' when calling InstrumentIdentifierApi->PatchInstrumentIdentifier");
+                                 throw new ApiException(400, "Missing required parameter 'patchInstrumentIdentifierRequest' when calling InstrumentIdentifierApi->PatchInstrumentIdentifier");
             }
 
             var localVarPath = $"/tms/v1/instrumentidentifiers/{instrumentIdentifierTokenId}";
@@ -1065,8 +1028,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("instrumentIdentifierTokenId", Configuration.ApiClient.ParameterToString(instrumentIdentifierTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -1083,14 +1045,12 @@ namespace CyberSource.Api
                 localVarPostBody = patchInstrumentIdentifierRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1105,8 +1065,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PatchInstrumentIdentifier", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1126,10 +1085,8 @@ namespace CyberSource.Api
         /// <returns>Task of Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier</returns>
         public async System.Threading.Tasks.Task<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> PatchInstrumentIdentifierAsync (string instrumentIdentifierTokenId, PatchInstrumentIdentifierRequest patchInstrumentIdentifierRequest, string profileId = null, string ifMatch = null)
         {
-            logger.Debug("CALLING API \"PatchInstrumentIdentifierAsync\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> localVarResponse = await PatchInstrumentIdentifierAsyncWithHttpInfo(instrumentIdentifierTokenId, patchInstrumentIdentifierRequest, profileId, ifMatch);
-            logger.Debug("CALLING API \"PatchInstrumentIdentifierAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> localVarResponse = await PatchInstrumentIdentifierAsyncWithHttpInfo(instrumentIdentifierTokenId, patchInstrumentIdentifierRequest, profileId, ifMatch);
+                         return localVarResponse.Data;
 
         }
 
@@ -1147,14 +1104,12 @@ namespace CyberSource.Api
             // verify the required parameter 'instrumentIdentifierTokenId' is set
             if (instrumentIdentifierTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->PatchInstrumentIdentifier");
-                throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->PatchInstrumentIdentifier");
+                                 throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->PatchInstrumentIdentifier");
             }
             // verify the required parameter 'patchInstrumentIdentifierRequest' is set
             if (patchInstrumentIdentifierRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'patchInstrumentIdentifierRequest' when calling InstrumentIdentifierApi->PatchInstrumentIdentifier");
-                throw new ApiException(400, "Missing required parameter 'patchInstrumentIdentifierRequest' when calling InstrumentIdentifierApi->PatchInstrumentIdentifier");
+                                 throw new ApiException(400, "Missing required parameter 'patchInstrumentIdentifierRequest' when calling InstrumentIdentifierApi->PatchInstrumentIdentifier");
             }
 
             var localVarPath = $"/tms/v1/instrumentidentifiers/{instrumentIdentifierTokenId}";
@@ -1185,8 +1140,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("instrumentIdentifierTokenId", Configuration.ApiClient.ParameterToString(instrumentIdentifierTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -1203,14 +1157,12 @@ namespace CyberSource.Api
                 localVarPostBody = patchInstrumentIdentifierRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1225,8 +1177,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PatchInstrumentIdentifier", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1243,10 +1194,8 @@ namespace CyberSource.Api
         /// <returns>Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier</returns>
         public Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier PostInstrumentIdentifier (PostInstrumentIdentifierRequest postInstrumentIdentifierRequest, string profileId = null)
         {
-            logger.Debug("CALLING API \"PostInstrumentIdentifier\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> localVarResponse = PostInstrumentIdentifierWithHttpInfo(postInstrumentIdentifierRequest, profileId);
-            logger.Debug("CALLING API \"PostInstrumentIdentifier\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> localVarResponse = PostInstrumentIdentifierWithHttpInfo(postInstrumentIdentifierRequest, profileId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1261,8 +1210,7 @@ namespace CyberSource.Api
             // verify the required parameter 'postInstrumentIdentifierRequest' is set
             if (postInstrumentIdentifierRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'postInstrumentIdentifierRequest' when calling InstrumentIdentifierApi->PostInstrumentIdentifier");
-                throw new ApiException(400, "Missing required parameter 'postInstrumentIdentifierRequest' when calling InstrumentIdentifierApi->PostInstrumentIdentifier");
+                                 throw new ApiException(400, "Missing required parameter 'postInstrumentIdentifierRequest' when calling InstrumentIdentifierApi->PostInstrumentIdentifier");
             }
 
             var localVarPath = $"/tms/v1/instrumentidentifiers";
@@ -1302,14 +1250,12 @@ namespace CyberSource.Api
                 localVarPostBody = postInstrumentIdentifierRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1324,8 +1270,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PostInstrumentIdentifier", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1343,10 +1288,8 @@ namespace CyberSource.Api
         /// <returns>Task of Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier</returns>
         public async System.Threading.Tasks.Task<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> PostInstrumentIdentifierAsync (PostInstrumentIdentifierRequest postInstrumentIdentifierRequest, string profileId = null)
         {
-            logger.Debug("CALLING API \"PostInstrumentIdentifierAsync\" STARTED");
-            ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> localVarResponse = await PostInstrumentIdentifierAsyncWithHttpInfo(postInstrumentIdentifierRequest, profileId);
-            logger.Debug("CALLING API \"PostInstrumentIdentifierAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier> localVarResponse = await PostInstrumentIdentifierAsyncWithHttpInfo(postInstrumentIdentifierRequest, profileId);
+                         return localVarResponse.Data;
 
         }
 
@@ -1362,8 +1305,7 @@ namespace CyberSource.Api
             // verify the required parameter 'postInstrumentIdentifierRequest' is set
             if (postInstrumentIdentifierRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'postInstrumentIdentifierRequest' when calling InstrumentIdentifierApi->PostInstrumentIdentifier");
-                throw new ApiException(400, "Missing required parameter 'postInstrumentIdentifierRequest' when calling InstrumentIdentifierApi->PostInstrumentIdentifier");
+                                 throw new ApiException(400, "Missing required parameter 'postInstrumentIdentifierRequest' when calling InstrumentIdentifierApi->PostInstrumentIdentifier");
             }
 
             var localVarPath = $"/tms/v1/instrumentidentifiers";
@@ -1403,14 +1345,12 @@ namespace CyberSource.Api
                 localVarPostBody = postInstrumentIdentifierRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1425,8 +1365,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PostInstrumentIdentifier", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1444,8 +1383,7 @@ namespace CyberSource.Api
         /// <returns></returns>
         public void PostInstrumentIdentifierEnrollment (string instrumentIdentifierTokenId, PostInstrumentIdentifierEnrollmentRequest postInstrumentIdentifierEnrollmentRequest, string profileId = null)
         {
-            logger.Debug("CALLING API \"PostInstrumentIdentifierEnrollment\" STARTED");
-            PostInstrumentIdentifierEnrollmentWithHttpInfo(instrumentIdentifierTokenId, postInstrumentIdentifierEnrollmentRequest, profileId);
+                         PostInstrumentIdentifierEnrollmentWithHttpInfo(instrumentIdentifierTokenId, postInstrumentIdentifierEnrollmentRequest, profileId);
         }
 
         /// <summary>
@@ -1461,14 +1399,12 @@ namespace CyberSource.Api
             // verify the required parameter 'instrumentIdentifierTokenId' is set
             if (instrumentIdentifierTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->PostInstrumentIdentifierEnrollment");
-                throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->PostInstrumentIdentifierEnrollment");
+                                 throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->PostInstrumentIdentifierEnrollment");
             }
             // verify the required parameter 'postInstrumentIdentifierEnrollmentRequest' is set
             if (postInstrumentIdentifierEnrollmentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'postInstrumentIdentifierEnrollmentRequest' when calling InstrumentIdentifierApi->PostInstrumentIdentifierEnrollment");
-                throw new ApiException(400, "Missing required parameter 'postInstrumentIdentifierEnrollmentRequest' when calling InstrumentIdentifierApi->PostInstrumentIdentifierEnrollment");
+                                 throw new ApiException(400, "Missing required parameter 'postInstrumentIdentifierEnrollmentRequest' when calling InstrumentIdentifierApi->PostInstrumentIdentifierEnrollment");
             }
 
             var localVarPath = $"/tms/v1/instrumentidentifiers/{instrumentIdentifierTokenId}/enrollment";
@@ -1499,8 +1435,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("instrumentIdentifierTokenId", Configuration.ApiClient.ParameterToString(instrumentIdentifierTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -1513,14 +1448,12 @@ namespace CyberSource.Api
                 localVarPostBody = postInstrumentIdentifierEnrollmentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1535,8 +1468,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PostInstrumentIdentifierEnrollment", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -1555,8 +1487,7 @@ namespace CyberSource.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task PostInstrumentIdentifierEnrollmentAsync (string instrumentIdentifierTokenId, PostInstrumentIdentifierEnrollmentRequest postInstrumentIdentifierEnrollmentRequest, string profileId = null)
         {
-            logger.Debug("CALLING API \"PostInstrumentIdentifierEnrollmentAsync\" STARTED");
-            await PostInstrumentIdentifierEnrollmentAsyncWithHttpInfo(instrumentIdentifierTokenId, postInstrumentIdentifierEnrollmentRequest, profileId);
+                         await PostInstrumentIdentifierEnrollmentAsyncWithHttpInfo(instrumentIdentifierTokenId, postInstrumentIdentifierEnrollmentRequest, profileId);
 
         }
 
@@ -1573,14 +1504,12 @@ namespace CyberSource.Api
             // verify the required parameter 'instrumentIdentifierTokenId' is set
             if (instrumentIdentifierTokenId == null)
             {
-                logger.Error("ApiException : Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->PostInstrumentIdentifierEnrollment");
-                throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->PostInstrumentIdentifierEnrollment");
+                                 throw new ApiException(400, "Missing required parameter 'instrumentIdentifierTokenId' when calling InstrumentIdentifierApi->PostInstrumentIdentifierEnrollment");
             }
             // verify the required parameter 'postInstrumentIdentifierEnrollmentRequest' is set
             if (postInstrumentIdentifierEnrollmentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'postInstrumentIdentifierEnrollmentRequest' when calling InstrumentIdentifierApi->PostInstrumentIdentifierEnrollment");
-                throw new ApiException(400, "Missing required parameter 'postInstrumentIdentifierEnrollmentRequest' when calling InstrumentIdentifierApi->PostInstrumentIdentifierEnrollment");
+                                 throw new ApiException(400, "Missing required parameter 'postInstrumentIdentifierEnrollmentRequest' when calling InstrumentIdentifierApi->PostInstrumentIdentifierEnrollment");
             }
 
             var localVarPath = $"/tms/v1/instrumentidentifiers/{instrumentIdentifierTokenId}/enrollment";
@@ -1611,8 +1540,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("instrumentIdentifierTokenId", Configuration.ApiClient.ParameterToString(instrumentIdentifierTokenId)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (profileId != null)
+                         if (profileId != null)
             {
                 localVarHeaderParams.Add("profile-id", Configuration.ApiClient.ParameterToString(profileId)); // header parameter
             }
@@ -1625,14 +1553,12 @@ namespace CyberSource.Api
                 localVarPostBody = postInstrumentIdentifierEnrollmentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -1647,8 +1573,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PostInstrumentIdentifierEnrollment", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

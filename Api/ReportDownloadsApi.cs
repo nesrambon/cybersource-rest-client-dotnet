@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -86,7 +86,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class ReportDownloadsApi : IReportDownloadsApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -105,9 +105,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -128,9 +128,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -168,8 +168,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -208,8 +207,7 @@ namespace CyberSource.Api
         /// <returns></returns>
         public void DownloadReport (DateTime? reportDate, string reportName, string organizationId = null)
         {
-            logger.Debug("CALLING API \"DownloadReport\" STARTED");
-            DownloadReportWithHttpInfo(reportDate, reportName, organizationId);
+                         DownloadReportWithHttpInfo(reportDate, reportName, organizationId);
         }
 
         /// <summary>
@@ -225,14 +223,12 @@ namespace CyberSource.Api
             // verify the required parameter 'reportDate' is set
             if (reportDate == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportDate' when calling ReportDownloadsApi->DownloadReport");
-                throw new ApiException(400, "Missing required parameter 'reportDate' when calling ReportDownloadsApi->DownloadReport");
+                                 throw new ApiException(400, "Missing required parameter 'reportDate' when calling ReportDownloadsApi->DownloadReport");
             }
             // verify the required parameter 'reportName' is set
             if (reportName == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportName' when calling ReportDownloadsApi->DownloadReport");
-                throw new ApiException(400, "Missing required parameter 'reportName' when calling ReportDownloadsApi->DownloadReport");
+                                 throw new ApiException(400, "Missing required parameter 'reportName' when calling ReportDownloadsApi->DownloadReport");
             }
 
             var localVarPath = $"/reporting/v3/report-downloads";
@@ -272,10 +268,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("reportName", Configuration.ApiClient.ParameterToString(reportName)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                       
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -289,8 +282,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DownloadReport", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -309,8 +301,7 @@ namespace CyberSource.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task DownloadReportAsync (DateTime? reportDate, string reportName, string organizationId = null)
         {
-            logger.Debug("CALLING API \"DownloadReportAsync\" STARTED");
-            await DownloadReportAsyncWithHttpInfo(reportDate, reportName, organizationId);
+                         await DownloadReportAsyncWithHttpInfo(reportDate, reportName, organizationId);
 
         }
 
@@ -327,14 +318,12 @@ namespace CyberSource.Api
             // verify the required parameter 'reportDate' is set
             if (reportDate == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportDate' when calling ReportDownloadsApi->DownloadReport");
-                throw new ApiException(400, "Missing required parameter 'reportDate' when calling ReportDownloadsApi->DownloadReport");
+                                 throw new ApiException(400, "Missing required parameter 'reportDate' when calling ReportDownloadsApi->DownloadReport");
             }
             // verify the required parameter 'reportName' is set
             if (reportName == null)
             {
-                logger.Error("ApiException : Missing required parameter 'reportName' when calling ReportDownloadsApi->DownloadReport");
-                throw new ApiException(400, "Missing required parameter 'reportName' when calling ReportDownloadsApi->DownloadReport");
+                                 throw new ApiException(400, "Missing required parameter 'reportName' when calling ReportDownloadsApi->DownloadReport");
             }
 
             var localVarPath = $"/reporting/v3/report-downloads";
@@ -374,10 +363,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("reportName", Configuration.ApiClient.ParameterToString(reportName)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                       
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -391,8 +377,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("DownloadReport", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

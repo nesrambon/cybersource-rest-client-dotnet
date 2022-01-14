@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -78,7 +78,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class TransactionDetailsApi : ITransactionDetailsApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -97,9 +97,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -120,9 +120,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -160,8 +160,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -198,10 +197,8 @@ namespace CyberSource.Api
         /// <returns>TssV2TransactionsGet200Response</returns>
         public TssV2TransactionsGet200Response GetTransaction (string id)
         {
-            logger.Debug("CALLING API \"GetTransaction\" STARTED");
-            ApiResponse<TssV2TransactionsGet200Response> localVarResponse = GetTransactionWithHttpInfo(id);
-            logger.Debug("CALLING API \"GetTransaction\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<TssV2TransactionsGet200Response> localVarResponse = GetTransactionWithHttpInfo(id);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -215,8 +212,7 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling TransactionDetailsApi->GetTransaction");
-                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionDetailsApi->GetTransaction");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling TransactionDetailsApi->GetTransaction");
             }
 
             var localVarPath = $"/tss/v2/transactions/{id}";
@@ -247,8 +243,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -262,8 +257,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetTransaction", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -280,10 +274,8 @@ namespace CyberSource.Api
         /// <returns>Task of TssV2TransactionsGet200Response</returns>
         public async System.Threading.Tasks.Task<TssV2TransactionsGet200Response> GetTransactionAsync (string id)
         {
-            logger.Debug("CALLING API \"GetTransactionAsync\" STARTED");
-            ApiResponse<TssV2TransactionsGet200Response> localVarResponse = await GetTransactionAsyncWithHttpInfo(id);
-            logger.Debug("CALLING API \"GetTransactionAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<TssV2TransactionsGet200Response> localVarResponse = await GetTransactionAsyncWithHttpInfo(id);
+                         return localVarResponse.Data;
 
         }
 
@@ -298,8 +290,7 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling TransactionDetailsApi->GetTransaction");
-                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionDetailsApi->GetTransaction");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling TransactionDetailsApi->GetTransaction");
             }
 
             var localVarPath = $"/tss/v2/transactions/{id}";
@@ -330,8 +321,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-
+             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -345,8 +335,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetTransaction", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

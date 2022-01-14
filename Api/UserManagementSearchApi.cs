@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -78,7 +78,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class UserManagementSearchApi : IUserManagementSearchApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -97,9 +97,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -120,9 +120,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -160,8 +160,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -198,10 +197,8 @@ namespace CyberSource.Api
         /// <returns>UmsV1UsersGet200Response</returns>
         public UmsV1UsersGet200Response SearchUsers (SearchRequest searchRequest)
         {
-            logger.Debug("CALLING API \"SearchUsers\" STARTED");
-            ApiResponse<UmsV1UsersGet200Response> localVarResponse = SearchUsersWithHttpInfo(searchRequest);
-            logger.Debug("CALLING API \"SearchUsers\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<UmsV1UsersGet200Response> localVarResponse = SearchUsersWithHttpInfo(searchRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -215,8 +212,7 @@ namespace CyberSource.Api
             // verify the required parameter 'searchRequest' is set
             if (searchRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'searchRequest' when calling UserManagementSearchApi->SearchUsers");
-                throw new ApiException(400, "Missing required parameter 'searchRequest' when calling UserManagementSearchApi->SearchUsers");
+                                 throw new ApiException(400, "Missing required parameter 'searchRequest' when calling UserManagementSearchApi->SearchUsers");
             }
 
             var localVarPath = $"/ums/v1/users/search";
@@ -252,14 +248,12 @@ namespace CyberSource.Api
                 localVarPostBody = searchRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -274,8 +268,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("SearchUsers", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -292,10 +285,8 @@ namespace CyberSource.Api
         /// <returns>Task of UmsV1UsersGet200Response</returns>
         public async System.Threading.Tasks.Task<UmsV1UsersGet200Response> SearchUsersAsync (SearchRequest searchRequest)
         {
-            logger.Debug("CALLING API \"SearchUsersAsync\" STARTED");
-            ApiResponse<UmsV1UsersGet200Response> localVarResponse = await SearchUsersAsyncWithHttpInfo(searchRequest);
-            logger.Debug("CALLING API \"SearchUsersAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<UmsV1UsersGet200Response> localVarResponse = await SearchUsersAsyncWithHttpInfo(searchRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -310,8 +301,7 @@ namespace CyberSource.Api
             // verify the required parameter 'searchRequest' is set
             if (searchRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'searchRequest' when calling UserManagementSearchApi->SearchUsers");
-                throw new ApiException(400, "Missing required parameter 'searchRequest' when calling UserManagementSearchApi->SearchUsers");
+                                 throw new ApiException(400, "Missing required parameter 'searchRequest' when calling UserManagementSearchApi->SearchUsers");
             }
 
             var localVarPath = $"/ums/v1/users/search";
@@ -347,14 +337,12 @@ namespace CyberSource.Api
                 localVarPostBody = searchRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -369,8 +357,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("SearchUsers", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

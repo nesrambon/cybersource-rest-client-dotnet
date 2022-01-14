@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -116,7 +116,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class InvoiceSettingsApi : IInvoiceSettingsApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -135,9 +135,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -158,9 +158,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -198,8 +198,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -235,10 +234,8 @@ namespace CyberSource.Api
         /// <returns>InvoicingV2InvoiceSettingsGet200Response</returns>
         public InvoicingV2InvoiceSettingsGet200Response GetInvoiceSettings ()
         {
-            logger.Debug("CALLING API \"GetInvoiceSettings\" STARTED");
-            ApiResponse<InvoicingV2InvoiceSettingsGet200Response> localVarResponse = GetInvoiceSettingsWithHttpInfo();
-            logger.Debug("CALLING API \"GetInvoiceSettings\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoiceSettingsGet200Response> localVarResponse = GetInvoiceSettingsWithHttpInfo();
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -287,8 +284,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetInvoiceSettings", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -304,10 +300,8 @@ namespace CyberSource.Api
         /// <returns>Task of InvoicingV2InvoiceSettingsGet200Response</returns>
         public async System.Threading.Tasks.Task<InvoicingV2InvoiceSettingsGet200Response> GetInvoiceSettingsAsync ()
         {
-            logger.Debug("CALLING API \"GetInvoiceSettingsAsync\" STARTED");
-            ApiResponse<InvoicingV2InvoiceSettingsGet200Response> localVarResponse = await GetInvoiceSettingsAsyncWithHttpInfo();
-            logger.Debug("CALLING API \"GetInvoiceSettingsAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoiceSettingsGet200Response> localVarResponse = await GetInvoiceSettingsAsyncWithHttpInfo();
+                         return localVarResponse.Data;
 
         }
 
@@ -357,8 +351,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetInvoiceSettings", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -374,10 +367,8 @@ namespace CyberSource.Api
         /// <returns>InvoicingV2InvoiceSettingsGet200Response</returns>
         public InvoicingV2InvoiceSettingsGet200Response UpdateInvoiceSettings (InvoiceSettingsRequest invoiceSettingsRequest)
         {
-            logger.Debug("CALLING API \"UpdateInvoiceSettings\" STARTED");
-            ApiResponse<InvoicingV2InvoiceSettingsGet200Response> localVarResponse = UpdateInvoiceSettingsWithHttpInfo(invoiceSettingsRequest);
-            logger.Debug("CALLING API \"UpdateInvoiceSettings\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoiceSettingsGet200Response> localVarResponse = UpdateInvoiceSettingsWithHttpInfo(invoiceSettingsRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -391,8 +382,7 @@ namespace CyberSource.Api
             // verify the required parameter 'invoiceSettingsRequest' is set
             if (invoiceSettingsRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'invoiceSettingsRequest' when calling InvoiceSettingsApi->UpdateInvoiceSettings");
-                throw new ApiException(400, "Missing required parameter 'invoiceSettingsRequest' when calling InvoiceSettingsApi->UpdateInvoiceSettings");
+                                 throw new ApiException(400, "Missing required parameter 'invoiceSettingsRequest' when calling InvoiceSettingsApi->UpdateInvoiceSettings");
             }
 
             var localVarPath = $"/invoicing/v2/invoiceSettings";
@@ -428,14 +418,12 @@ namespace CyberSource.Api
                 localVarPostBody = invoiceSettingsRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -450,8 +438,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("UpdateInvoiceSettings", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -468,10 +455,8 @@ namespace CyberSource.Api
         /// <returns>Task of InvoicingV2InvoiceSettingsGet200Response</returns>
         public async System.Threading.Tasks.Task<InvoicingV2InvoiceSettingsGet200Response> UpdateInvoiceSettingsAsync (InvoiceSettingsRequest invoiceSettingsRequest)
         {
-            logger.Debug("CALLING API \"UpdateInvoiceSettingsAsync\" STARTED");
-            ApiResponse<InvoicingV2InvoiceSettingsGet200Response> localVarResponse = await UpdateInvoiceSettingsAsyncWithHttpInfo(invoiceSettingsRequest);
-            logger.Debug("CALLING API \"UpdateInvoiceSettingsAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<InvoicingV2InvoiceSettingsGet200Response> localVarResponse = await UpdateInvoiceSettingsAsyncWithHttpInfo(invoiceSettingsRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -486,8 +471,7 @@ namespace CyberSource.Api
             // verify the required parameter 'invoiceSettingsRequest' is set
             if (invoiceSettingsRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'invoiceSettingsRequest' when calling InvoiceSettingsApi->UpdateInvoiceSettings");
-                throw new ApiException(400, "Missing required parameter 'invoiceSettingsRequest' when calling InvoiceSettingsApi->UpdateInvoiceSettings");
+                                 throw new ApiException(400, "Missing required parameter 'invoiceSettingsRequest' when calling InvoiceSettingsApi->UpdateInvoiceSettings");
             }
 
             var localVarPath = $"/invoicing/v2/invoiceSettings";
@@ -523,14 +507,12 @@ namespace CyberSource.Api
                 localVarPostBody = invoiceSettingsRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -545,8 +527,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("UpdateInvoiceSettings", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

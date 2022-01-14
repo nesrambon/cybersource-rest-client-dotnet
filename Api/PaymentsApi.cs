@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -124,7 +124,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class PaymentsApi : IPaymentsApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -143,9 +143,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -166,9 +166,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -206,8 +206,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -244,10 +243,8 @@ namespace CyberSource.Api
         /// <returns>PtsV2PaymentsPost201Response</returns>
         public PtsV2PaymentsPost201Response CreatePayment (CreatePaymentRequest createPaymentRequest)
         {
-            logger.Debug("CALLING API \"CreatePayment\" STARTED");
-            ApiResponse<PtsV2PaymentsPost201Response> localVarResponse = CreatePaymentWithHttpInfo(createPaymentRequest);
-            logger.Debug("CALLING API \"CreatePayment\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsPost201Response> localVarResponse = CreatePaymentWithHttpInfo(createPaymentRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -261,8 +258,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createPaymentRequest' is set
             if (createPaymentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createPaymentRequest' when calling PaymentsApi->CreatePayment");
-                throw new ApiException(400, "Missing required parameter 'createPaymentRequest' when calling PaymentsApi->CreatePayment");
+                                 throw new ApiException(400, "Missing required parameter 'createPaymentRequest' when calling PaymentsApi->CreatePayment");
             }
 
             var localVarPath = $"/pts/v2/payments";
@@ -298,14 +294,12 @@ namespace CyberSource.Api
                 localVarPostBody = createPaymentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -320,8 +314,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreatePayment", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -338,10 +331,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV2PaymentsPost201Response</returns>
         public async System.Threading.Tasks.Task<PtsV2PaymentsPost201Response> CreatePaymentAsync (CreatePaymentRequest createPaymentRequest)
         {
-            logger.Debug("CALLING API \"CreatePaymentAsync\" STARTED");
-            ApiResponse<PtsV2PaymentsPost201Response> localVarResponse = await CreatePaymentAsyncWithHttpInfo(createPaymentRequest);
-            logger.Debug("CALLING API \"CreatePaymentAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsPost201Response> localVarResponse = await CreatePaymentAsyncWithHttpInfo(createPaymentRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -356,8 +347,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createPaymentRequest' is set
             if (createPaymentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createPaymentRequest' when calling PaymentsApi->CreatePayment");
-                throw new ApiException(400, "Missing required parameter 'createPaymentRequest' when calling PaymentsApi->CreatePayment");
+                                 throw new ApiException(400, "Missing required parameter 'createPaymentRequest' when calling PaymentsApi->CreatePayment");
             }
 
             var localVarPath = $"/pts/v2/payments";
@@ -393,14 +383,12 @@ namespace CyberSource.Api
                 localVarPostBody = createPaymentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -415,8 +403,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CreatePayment", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -433,10 +420,8 @@ namespace CyberSource.Api
         /// <returns>PtsV2IncrementalAuthorizationPatch201Response</returns>
         public PtsV2IncrementalAuthorizationPatch201Response IncrementAuth (string id, IncrementAuthRequest incrementAuthRequest)
         {
-            logger.Debug("CALLING API \"IncrementAuth\" STARTED");
-            ApiResponse<PtsV2IncrementalAuthorizationPatch201Response> localVarResponse = IncrementAuthWithHttpInfo(id, incrementAuthRequest);
-            logger.Debug("CALLING API \"IncrementAuth\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2IncrementalAuthorizationPatch201Response> localVarResponse = IncrementAuthWithHttpInfo(id, incrementAuthRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -451,14 +436,12 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling PaymentsApi->IncrementAuth");
-                throw new ApiException(400, "Missing required parameter 'id' when calling PaymentsApi->IncrementAuth");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling PaymentsApi->IncrementAuth");
             }
             // verify the required parameter 'incrementAuthRequest' is set
             if (incrementAuthRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'incrementAuthRequest' when calling PaymentsApi->IncrementAuth");
-                throw new ApiException(400, "Missing required parameter 'incrementAuthRequest' when calling PaymentsApi->IncrementAuth");
+                                 throw new ApiException(400, "Missing required parameter 'incrementAuthRequest' when calling PaymentsApi->IncrementAuth");
             }
 
             var localVarPath = $"/pts/v2/payments/{id}";
@@ -489,8 +472,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (incrementAuthRequest != null && incrementAuthRequest.GetType() != typeof(byte[]))
+                         if (incrementAuthRequest != null && incrementAuthRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(incrementAuthRequest); // http body (model) parameter
             }
@@ -499,14 +481,12 @@ namespace CyberSource.Api
                 localVarPostBody = incrementAuthRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -521,8 +501,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("IncrementAuth", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -540,10 +519,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV2IncrementalAuthorizationPatch201Response</returns>
         public async System.Threading.Tasks.Task<PtsV2IncrementalAuthorizationPatch201Response> IncrementAuthAsync (string id, IncrementAuthRequest incrementAuthRequest)
         {
-            logger.Debug("CALLING API \"IncrementAuthAsync\" STARTED");
-            ApiResponse<PtsV2IncrementalAuthorizationPatch201Response> localVarResponse = await IncrementAuthAsyncWithHttpInfo(id, incrementAuthRequest);
-            logger.Debug("CALLING API \"IncrementAuthAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2IncrementalAuthorizationPatch201Response> localVarResponse = await IncrementAuthAsyncWithHttpInfo(id, incrementAuthRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -559,14 +536,12 @@ namespace CyberSource.Api
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling PaymentsApi->IncrementAuth");
-                throw new ApiException(400, "Missing required parameter 'id' when calling PaymentsApi->IncrementAuth");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling PaymentsApi->IncrementAuth");
             }
             // verify the required parameter 'incrementAuthRequest' is set
             if (incrementAuthRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'incrementAuthRequest' when calling PaymentsApi->IncrementAuth");
-                throw new ApiException(400, "Missing required parameter 'incrementAuthRequest' when calling PaymentsApi->IncrementAuth");
+                                 throw new ApiException(400, "Missing required parameter 'incrementAuthRequest' when calling PaymentsApi->IncrementAuth");
             }
 
             var localVarPath = $"/pts/v2/payments/{id}";
@@ -597,8 +572,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (incrementAuthRequest != null && incrementAuthRequest.GetType() != typeof(byte[]))
+                         if (incrementAuthRequest != null && incrementAuthRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(incrementAuthRequest); // http body (model) parameter
             }
@@ -607,14 +581,12 @@ namespace CyberSource.Api
                 localVarPostBody = incrementAuthRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -629,8 +601,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("IncrementAuth", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

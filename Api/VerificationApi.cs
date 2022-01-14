@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -120,7 +120,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class VerificationApi : IVerificationApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -139,9 +139,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -162,9 +162,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -202,8 +202,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -240,10 +239,8 @@ namespace CyberSource.Api
         /// <returns>RiskV1ExportComplianceInquiriesPost201Response</returns>
         public RiskV1ExportComplianceInquiriesPost201Response ValidateExportCompliance (ValidateExportComplianceRequest validateExportComplianceRequest)
         {
-            logger.Debug("CALLING API \"ValidateExportCompliance\" STARTED");
-            ApiResponse<RiskV1ExportComplianceInquiriesPost201Response> localVarResponse = ValidateExportComplianceWithHttpInfo(validateExportComplianceRequest);
-            logger.Debug("CALLING API \"ValidateExportCompliance\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1ExportComplianceInquiriesPost201Response> localVarResponse = ValidateExportComplianceWithHttpInfo(validateExportComplianceRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -257,8 +254,7 @@ namespace CyberSource.Api
             // verify the required parameter 'validateExportComplianceRequest' is set
             if (validateExportComplianceRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'validateExportComplianceRequest' when calling VerificationApi->ValidateExportCompliance");
-                throw new ApiException(400, "Missing required parameter 'validateExportComplianceRequest' when calling VerificationApi->ValidateExportCompliance");
+                                 throw new ApiException(400, "Missing required parameter 'validateExportComplianceRequest' when calling VerificationApi->ValidateExportCompliance");
             }
 
             var localVarPath = $"/risk/v1/export-compliance-inquiries";
@@ -294,14 +290,12 @@ namespace CyberSource.Api
                 localVarPostBody = validateExportComplianceRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -316,8 +310,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("ValidateExportCompliance", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -334,10 +327,8 @@ namespace CyberSource.Api
         /// <returns>Task of RiskV1ExportComplianceInquiriesPost201Response</returns>
         public async System.Threading.Tasks.Task<RiskV1ExportComplianceInquiriesPost201Response> ValidateExportComplianceAsync (ValidateExportComplianceRequest validateExportComplianceRequest)
         {
-            logger.Debug("CALLING API \"ValidateExportComplianceAsync\" STARTED");
-            ApiResponse<RiskV1ExportComplianceInquiriesPost201Response> localVarResponse = await ValidateExportComplianceAsyncWithHttpInfo(validateExportComplianceRequest);
-            logger.Debug("CALLING API \"ValidateExportComplianceAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1ExportComplianceInquiriesPost201Response> localVarResponse = await ValidateExportComplianceAsyncWithHttpInfo(validateExportComplianceRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -352,8 +343,7 @@ namespace CyberSource.Api
             // verify the required parameter 'validateExportComplianceRequest' is set
             if (validateExportComplianceRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'validateExportComplianceRequest' when calling VerificationApi->ValidateExportCompliance");
-                throw new ApiException(400, "Missing required parameter 'validateExportComplianceRequest' when calling VerificationApi->ValidateExportCompliance");
+                                 throw new ApiException(400, "Missing required parameter 'validateExportComplianceRequest' when calling VerificationApi->ValidateExportCompliance");
             }
 
             var localVarPath = $"/risk/v1/export-compliance-inquiries";
@@ -389,14 +379,12 @@ namespace CyberSource.Api
                 localVarPostBody = validateExportComplianceRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -411,8 +399,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("ValidateExportCompliance", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -428,10 +415,8 @@ namespace CyberSource.Api
         /// <returns>RiskV1AddressVerificationsPost201Response</returns>
         public RiskV1AddressVerificationsPost201Response VerifyCustomerAddress (VerifyCustomerAddressRequest verifyCustomerAddressRequest)
         {
-            logger.Debug("CALLING API \"VerifyCustomerAddress\" STARTED");
-            ApiResponse<RiskV1AddressVerificationsPost201Response> localVarResponse = VerifyCustomerAddressWithHttpInfo(verifyCustomerAddressRequest);
-            logger.Debug("CALLING API \"VerifyCustomerAddress\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1AddressVerificationsPost201Response> localVarResponse = VerifyCustomerAddressWithHttpInfo(verifyCustomerAddressRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -445,8 +430,7 @@ namespace CyberSource.Api
             // verify the required parameter 'verifyCustomerAddressRequest' is set
             if (verifyCustomerAddressRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'verifyCustomerAddressRequest' when calling VerificationApi->VerifyCustomerAddress");
-                throw new ApiException(400, "Missing required parameter 'verifyCustomerAddressRequest' when calling VerificationApi->VerifyCustomerAddress");
+                                 throw new ApiException(400, "Missing required parameter 'verifyCustomerAddressRequest' when calling VerificationApi->VerifyCustomerAddress");
             }
 
             var localVarPath = $"/risk/v1/address-verifications";
@@ -482,14 +466,12 @@ namespace CyberSource.Api
                 localVarPostBody = verifyCustomerAddressRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -504,8 +486,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("VerifyCustomerAddress", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -522,10 +503,8 @@ namespace CyberSource.Api
         /// <returns>Task of RiskV1AddressVerificationsPost201Response</returns>
         public async System.Threading.Tasks.Task<RiskV1AddressVerificationsPost201Response> VerifyCustomerAddressAsync (VerifyCustomerAddressRequest verifyCustomerAddressRequest)
         {
-            logger.Debug("CALLING API \"VerifyCustomerAddressAsync\" STARTED");
-            ApiResponse<RiskV1AddressVerificationsPost201Response> localVarResponse = await VerifyCustomerAddressAsyncWithHttpInfo(verifyCustomerAddressRequest);
-            logger.Debug("CALLING API \"VerifyCustomerAddressAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<RiskV1AddressVerificationsPost201Response> localVarResponse = await VerifyCustomerAddressAsyncWithHttpInfo(verifyCustomerAddressRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -540,8 +519,7 @@ namespace CyberSource.Api
             // verify the required parameter 'verifyCustomerAddressRequest' is set
             if (verifyCustomerAddressRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'verifyCustomerAddressRequest' when calling VerificationApi->VerifyCustomerAddress");
-                throw new ApiException(400, "Missing required parameter 'verifyCustomerAddressRequest' when calling VerificationApi->VerifyCustomerAddress");
+                                 throw new ApiException(400, "Missing required parameter 'verifyCustomerAddressRequest' when calling VerificationApi->VerifyCustomerAddress");
             }
 
             var localVarPath = $"/risk/v1/address-verifications";
@@ -577,14 +555,12 @@ namespace CyberSource.Api
                 localVarPostBody = verifyCustomerAddressRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -599,8 +575,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("VerifyCustomerAddress", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

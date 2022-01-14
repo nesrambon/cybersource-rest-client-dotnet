@@ -80,11 +80,9 @@ API credentials are different for each environment, so be sure to switch to the 
 
 ### Logging
 
-[![Generic badge](https://img.shields.io/badge/LOGGING-NEW-GREEN.svg)](https://shields.io/)
-
-Since v0.0.1.14, a new logging framework has been introduced in the SDK. This new logging framework makes use of NLog, and standardizes the logging so that it can be integrated with the logging in the client application.
-
-More information about this new logging framework can be found in this file : [Logging.md](Logging.md)
+The base repository uses NLog as a hard dependency instead of using the most common [ILogger interface](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger) allowing consumers to select their own framework.
+Most people do not want NLog as a dependency conflicting with their selected logging library, for this reason, this .NET Standard fork removes NLog completely, you're welcome.
+Errors are already thrown as exceptions so the extra logging (same message) is pointless since the caller can log this.
 
 ## License
 

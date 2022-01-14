@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -98,7 +98,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class PaymentBatchSummariesApi : IPaymentBatchSummariesApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -117,9 +117,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -140,9 +140,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -180,8 +180,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -223,10 +222,8 @@ namespace CyberSource.Api
         /// <returns>ReportingV3PaymentBatchSummariesGet200Response</returns>
         public ReportingV3PaymentBatchSummariesGet200Response GetPaymentBatchSummary (DateTime? startTime, DateTime? endTime, string organizationId = null, string rollUp = null, string breakdown = null, int? startDayOfWeek = null)
         {
-            logger.Debug("CALLING API \"GetPaymentBatchSummary\" STARTED");
-            ApiResponse<ReportingV3PaymentBatchSummariesGet200Response> localVarResponse = GetPaymentBatchSummaryWithHttpInfo(startTime, endTime, organizationId, rollUp, breakdown, startDayOfWeek);
-            logger.Debug("CALLING API \"GetPaymentBatchSummary\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3PaymentBatchSummariesGet200Response> localVarResponse = GetPaymentBatchSummaryWithHttpInfo(startTime, endTime, organizationId, rollUp, breakdown, startDayOfWeek);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -245,14 +242,12 @@ namespace CyberSource.Api
             // verify the required parameter 'startTime' is set
             if (startTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'startTime' when calling PaymentBatchSummariesApi->GetPaymentBatchSummary");
-                throw new ApiException(400, "Missing required parameter 'startTime' when calling PaymentBatchSummariesApi->GetPaymentBatchSummary");
+                                 throw new ApiException(400, "Missing required parameter 'startTime' when calling PaymentBatchSummariesApi->GetPaymentBatchSummary");
             }
             // verify the required parameter 'endTime' is set
             if (endTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'endTime' when calling PaymentBatchSummariesApi->GetPaymentBatchSummary");
-                throw new ApiException(400, "Missing required parameter 'endTime' when calling PaymentBatchSummariesApi->GetPaymentBatchSummary");
+                                 throw new ApiException(400, "Missing required parameter 'endTime' when calling PaymentBatchSummariesApi->GetPaymentBatchSummary");
             }
 
             var localVarPath = $"/reporting/v3/payment-batch-summaries";
@@ -305,13 +300,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("startDayOfWeek", Configuration.ApiClient.ParameterToString(startDayOfWeek)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                                                              
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -325,8 +314,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetPaymentBatchSummary", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -348,10 +336,8 @@ namespace CyberSource.Api
         /// <returns>Task of ReportingV3PaymentBatchSummariesGet200Response</returns>
         public async System.Threading.Tasks.Task<ReportingV3PaymentBatchSummariesGet200Response> GetPaymentBatchSummaryAsync (DateTime? startTime, DateTime? endTime, string organizationId = null, string rollUp = null, string breakdown = null, int? startDayOfWeek = null)
         {
-            logger.Debug("CALLING API \"GetPaymentBatchSummaryAsync\" STARTED");
-            ApiResponse<ReportingV3PaymentBatchSummariesGet200Response> localVarResponse = await GetPaymentBatchSummaryAsyncWithHttpInfo(startTime, endTime, organizationId, rollUp, breakdown, startDayOfWeek);
-            logger.Debug("CALLING API \"GetPaymentBatchSummaryAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3PaymentBatchSummariesGet200Response> localVarResponse = await GetPaymentBatchSummaryAsyncWithHttpInfo(startTime, endTime, organizationId, rollUp, breakdown, startDayOfWeek);
+                         return localVarResponse.Data;
 
         }
 
@@ -371,14 +357,12 @@ namespace CyberSource.Api
             // verify the required parameter 'startTime' is set
             if (startTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'startTime' when calling PaymentBatchSummariesApi->GetPaymentBatchSummary");
-                throw new ApiException(400, "Missing required parameter 'startTime' when calling PaymentBatchSummariesApi->GetPaymentBatchSummary");
+                                 throw new ApiException(400, "Missing required parameter 'startTime' when calling PaymentBatchSummariesApi->GetPaymentBatchSummary");
             }
             // verify the required parameter 'endTime' is set
             if (endTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'endTime' when calling PaymentBatchSummariesApi->GetPaymentBatchSummary");
-                throw new ApiException(400, "Missing required parameter 'endTime' when calling PaymentBatchSummariesApi->GetPaymentBatchSummary");
+                                 throw new ApiException(400, "Missing required parameter 'endTime' when calling PaymentBatchSummariesApi->GetPaymentBatchSummary");
             }
 
             var localVarPath = $"/reporting/v3/payment-batch-summaries";
@@ -431,13 +415,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("startDayOfWeek", Configuration.ApiClient.ParameterToString(startDayOfWeek)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                                                              
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -451,8 +429,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetPaymentBatchSummary", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -82,7 +82,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class KeyGenerationApi : IKeyGenerationApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -101,9 +101,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -124,9 +124,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -164,8 +164,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -203,10 +202,8 @@ namespace CyberSource.Api
         /// <returns>FlexV1KeysPost200Response</returns>
         public FlexV1KeysPost200Response GeneratePublicKey (string format, GeneratePublicKeyRequest generatePublicKeyRequest)
         {
-            logger.Debug("CALLING API \"GeneratePublicKey\" STARTED");
-            ApiResponse<FlexV1KeysPost200Response> localVarResponse = GeneratePublicKeyWithHttpInfo(format, generatePublicKeyRequest);
-            logger.Debug("CALLING API \"GeneratePublicKey\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<FlexV1KeysPost200Response> localVarResponse = GeneratePublicKeyWithHttpInfo(format, generatePublicKeyRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -221,14 +218,12 @@ namespace CyberSource.Api
             // verify the required parameter 'format' is set
             if (format == null)
             {
-                logger.Error("ApiException : Missing required parameter 'format' when calling KeyGenerationApi->GeneratePublicKey");
-                throw new ApiException(400, "Missing required parameter 'format' when calling KeyGenerationApi->GeneratePublicKey");
+                                 throw new ApiException(400, "Missing required parameter 'format' when calling KeyGenerationApi->GeneratePublicKey");
             }
             // verify the required parameter 'generatePublicKeyRequest' is set
             if (generatePublicKeyRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'generatePublicKeyRequest' when calling KeyGenerationApi->GeneratePublicKey");
-                throw new ApiException(400, "Missing required parameter 'generatePublicKeyRequest' when calling KeyGenerationApi->GeneratePublicKey");
+                                 throw new ApiException(400, "Missing required parameter 'generatePublicKeyRequest' when calling KeyGenerationApi->GeneratePublicKey");
             }
 
             var localVarPath = $"/flex/v1/keys";
@@ -259,8 +254,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("format", Configuration.ApiClient.ParameterToString(format)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            if (generatePublicKeyRequest != null && generatePublicKeyRequest.GetType() != typeof(byte[]))
+                         if (generatePublicKeyRequest != null && generatePublicKeyRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(generatePublicKeyRequest); // http body (model) parameter
             }
@@ -269,14 +263,12 @@ namespace CyberSource.Api
                 localVarPostBody = generatePublicKeyRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -291,8 +283,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GeneratePublicKey", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -310,10 +301,8 @@ namespace CyberSource.Api
         /// <returns>Task of FlexV1KeysPost200Response</returns>
         public async System.Threading.Tasks.Task<FlexV1KeysPost200Response> GeneratePublicKeyAsync (string format, GeneratePublicKeyRequest generatePublicKeyRequest)
         {
-            logger.Debug("CALLING API \"GeneratePublicKeyAsync\" STARTED");
-            ApiResponse<FlexV1KeysPost200Response> localVarResponse = await GeneratePublicKeyAsyncWithHttpInfo(format, generatePublicKeyRequest);
-            logger.Debug("CALLING API \"GeneratePublicKeyAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<FlexV1KeysPost200Response> localVarResponse = await GeneratePublicKeyAsyncWithHttpInfo(format, generatePublicKeyRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -329,14 +318,12 @@ namespace CyberSource.Api
             // verify the required parameter 'format' is set
             if (format == null)
             {
-                logger.Error("ApiException : Missing required parameter 'format' when calling KeyGenerationApi->GeneratePublicKey");
-                throw new ApiException(400, "Missing required parameter 'format' when calling KeyGenerationApi->GeneratePublicKey");
+                                 throw new ApiException(400, "Missing required parameter 'format' when calling KeyGenerationApi->GeneratePublicKey");
             }
             // verify the required parameter 'generatePublicKeyRequest' is set
             if (generatePublicKeyRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'generatePublicKeyRequest' when calling KeyGenerationApi->GeneratePublicKey");
-                throw new ApiException(400, "Missing required parameter 'generatePublicKeyRequest' when calling KeyGenerationApi->GeneratePublicKey");
+                                 throw new ApiException(400, "Missing required parameter 'generatePublicKeyRequest' when calling KeyGenerationApi->GeneratePublicKey");
             }
 
             var localVarPath = $"/flex/v1/keys";
@@ -367,8 +354,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("format", Configuration.ApiClient.ParameterToString(format)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            if (generatePublicKeyRequest != null && generatePublicKeyRequest.GetType() != typeof(byte[]))
+                         if (generatePublicKeyRequest != null && generatePublicKeyRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(generatePublicKeyRequest); // http body (model) parameter
             }
@@ -377,14 +363,12 @@ namespace CyberSource.Api
                 localVarPostBody = generatePublicKeyRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -399,8 +383,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GeneratePublicKey", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

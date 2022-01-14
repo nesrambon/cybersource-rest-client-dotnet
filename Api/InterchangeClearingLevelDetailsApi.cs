@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -86,7 +86,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class InterchangeClearingLevelDetailsApi : IInterchangeClearingLevelDetailsApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -105,9 +105,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -128,9 +128,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -168,8 +168,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -208,10 +207,8 @@ namespace CyberSource.Api
         /// <returns>ReportingV3InterchangeClearingLevelDetailsGet200Response</returns>
         public ReportingV3InterchangeClearingLevelDetailsGet200Response GetInterchangeClearingLevelDetails (DateTime? startTime, DateTime? endTime, string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetInterchangeClearingLevelDetails\" STARTED");
-            ApiResponse<ReportingV3InterchangeClearingLevelDetailsGet200Response> localVarResponse = GetInterchangeClearingLevelDetailsWithHttpInfo(startTime, endTime, organizationId);
-            logger.Debug("CALLING API \"GetInterchangeClearingLevelDetails\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3InterchangeClearingLevelDetailsGet200Response> localVarResponse = GetInterchangeClearingLevelDetailsWithHttpInfo(startTime, endTime, organizationId);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -227,14 +224,12 @@ namespace CyberSource.Api
             // verify the required parameter 'startTime' is set
             if (startTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'startTime' when calling InterchangeClearingLevelDetailsApi->GetInterchangeClearingLevelDetails");
-                throw new ApiException(400, "Missing required parameter 'startTime' when calling InterchangeClearingLevelDetailsApi->GetInterchangeClearingLevelDetails");
+                                 throw new ApiException(400, "Missing required parameter 'startTime' when calling InterchangeClearingLevelDetailsApi->GetInterchangeClearingLevelDetails");
             }
             // verify the required parameter 'endTime' is set
             if (endTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'endTime' when calling InterchangeClearingLevelDetailsApi->GetInterchangeClearingLevelDetails");
-                throw new ApiException(400, "Missing required parameter 'endTime' when calling InterchangeClearingLevelDetailsApi->GetInterchangeClearingLevelDetails");
+                                 throw new ApiException(400, "Missing required parameter 'endTime' when calling InterchangeClearingLevelDetailsApi->GetInterchangeClearingLevelDetails");
             }
 
             var localVarPath = $"/reporting/v3/interchange-clearing-level-details";
@@ -274,10 +269,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                       
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -291,8 +283,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetInterchangeClearingLevelDetails", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -311,10 +302,8 @@ namespace CyberSource.Api
         /// <returns>Task of ReportingV3InterchangeClearingLevelDetailsGet200Response</returns>
         public async System.Threading.Tasks.Task<ReportingV3InterchangeClearingLevelDetailsGet200Response> GetInterchangeClearingLevelDetailsAsync (DateTime? startTime, DateTime? endTime, string organizationId = null)
         {
-            logger.Debug("CALLING API \"GetInterchangeClearingLevelDetailsAsync\" STARTED");
-            ApiResponse<ReportingV3InterchangeClearingLevelDetailsGet200Response> localVarResponse = await GetInterchangeClearingLevelDetailsAsyncWithHttpInfo(startTime, endTime, organizationId);
-            logger.Debug("CALLING API \"GetInterchangeClearingLevelDetailsAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3InterchangeClearingLevelDetailsGet200Response> localVarResponse = await GetInterchangeClearingLevelDetailsAsyncWithHttpInfo(startTime, endTime, organizationId);
+                         return localVarResponse.Data;
 
         }
 
@@ -331,14 +320,12 @@ namespace CyberSource.Api
             // verify the required parameter 'startTime' is set
             if (startTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'startTime' when calling InterchangeClearingLevelDetailsApi->GetInterchangeClearingLevelDetails");
-                throw new ApiException(400, "Missing required parameter 'startTime' when calling InterchangeClearingLevelDetailsApi->GetInterchangeClearingLevelDetails");
+                                 throw new ApiException(400, "Missing required parameter 'startTime' when calling InterchangeClearingLevelDetailsApi->GetInterchangeClearingLevelDetails");
             }
             // verify the required parameter 'endTime' is set
             if (endTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'endTime' when calling InterchangeClearingLevelDetailsApi->GetInterchangeClearingLevelDetails");
-                throw new ApiException(400, "Missing required parameter 'endTime' when calling InterchangeClearingLevelDetailsApi->GetInterchangeClearingLevelDetails");
+                                 throw new ApiException(400, "Missing required parameter 'endTime' when calling InterchangeClearingLevelDetailsApi->GetInterchangeClearingLevelDetails");
             }
 
             var localVarPath = $"/reporting/v3/interchange-clearing-level-details";
@@ -378,10 +365,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("organizationId", Configuration.ApiClient.ParameterToString(organizationId)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                       
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -395,8 +379,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetInterchangeClearingLevelDetails", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

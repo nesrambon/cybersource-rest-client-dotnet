@@ -5,7 +5,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -56,7 +56,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class OAuthApi : IOAuthApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -75,9 +75,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -98,9 +98,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -138,8 +138,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -174,10 +173,8 @@ namespace CyberSource.Api
         /// <returns>AccessTokenResponse</returns>
         public AccessTokenResponse PostAccessTokenRequest(CreateAccessTokenRequest createAccessTokenRequest)
         {
-            logger.Debug("CALLING API \"PostAccessTokenRequest\" STARTED");
-            ApiResponse<AccessTokenResponse> localVarResponse = PostAccessTokenRequestWithHttpInfo(createAccessTokenRequest);
-            logger.Debug("CALLING API \"PostAccessTokenRequest\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<AccessTokenResponse> localVarResponse = PostAccessTokenRequestWithHttpInfo(createAccessTokenRequest);
+                         return localVarResponse.Data;
         }
 
         
@@ -189,8 +186,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createAccessTokenRequest' is set
             if (createAccessTokenRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createAccessTokenRequest' when calling OAuthApi->PostAccessTokenRequest");
-                throw new ApiException(400, "Missing required parameter 'createAccessTokenRequest' when calling OAuthApi->PostAccessTokenRequest");
+                                 throw new ApiException(400, "Missing required parameter 'createAccessTokenRequest' when calling OAuthApi->PostAccessTokenRequest");
             }
 
             var localVarPath = $"/oauth2/v3/token";
@@ -226,14 +222,12 @@ namespace CyberSource.Api
                 localVarPostBody = createAccessTokenRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -248,8 +242,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PostAccessTokenRequest", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -263,10 +256,8 @@ namespace CyberSource.Api
         /// <returns>Task of AccessTokenResponse</returns>
         public async System.Threading.Tasks.Task<AccessTokenResponse> PostAccessTokenRequestAsync(CreateAccessTokenRequest createAccessTokenRequest)
         {
-            logger.Debug("CALLING API \"PostAccessTokenRequestAsync\" STARTED");
-            ApiResponse<AccessTokenResponse> localVarResponse = await PostAccessTokenRequestAsyncWithHttpInfo(createAccessTokenRequest);
-            logger.Debug("CALLING API \"PostAccessTokenRequestAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<AccessTokenResponse> localVarResponse = await PostAccessTokenRequestAsyncWithHttpInfo(createAccessTokenRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -279,8 +270,7 @@ namespace CyberSource.Api
             // verify the required parameter 'createAccessTokenRequest' is set
             if (createAccessTokenRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'createAccessTokenRequest' when calling OAuthApi->PostAccessTokenRequest");
-                throw new ApiException(400, "Missing required parameter 'createAccessTokenRequest' when calling OAuthApi->PostAccessTokenRequest");
+                                 throw new ApiException(400, "Missing required parameter 'createAccessTokenRequest' when calling OAuthApi->PostAccessTokenRequest");
             }
 
             var localVarPath = $"/oauth2/v3/token";
@@ -316,14 +306,12 @@ namespace CyberSource.Api
                 localVarPostBody = createAccessTokenRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -338,8 +326,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("PostAccessTokenRequest", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

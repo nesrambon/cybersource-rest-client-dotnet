@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -124,7 +124,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class TaxesApi : ITaxesApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -143,9 +143,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -166,9 +166,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -206,8 +206,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -244,10 +243,8 @@ namespace CyberSource.Api
         /// <returns>VasV2PaymentsPost201Response</returns>
         public VasV2PaymentsPost201Response CalculateTax (TaxRequest taxRequest)
         {
-            logger.Debug("CALLING API \"CalculateTax\" STARTED");
-            ApiResponse<VasV2PaymentsPost201Response> localVarResponse = CalculateTaxWithHttpInfo(taxRequest);
-            logger.Debug("CALLING API \"CalculateTax\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<VasV2PaymentsPost201Response> localVarResponse = CalculateTaxWithHttpInfo(taxRequest);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -261,8 +258,7 @@ namespace CyberSource.Api
             // verify the required parameter 'taxRequest' is set
             if (taxRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'taxRequest' when calling TaxesApi->CalculateTax");
-                throw new ApiException(400, "Missing required parameter 'taxRequest' when calling TaxesApi->CalculateTax");
+                                 throw new ApiException(400, "Missing required parameter 'taxRequest' when calling TaxesApi->CalculateTax");
             }
 
             var localVarPath = $"/vas/v2/tax";
@@ -298,14 +294,12 @@ namespace CyberSource.Api
                 localVarPostBody = taxRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -320,8 +314,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CalculateTax", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -338,10 +331,8 @@ namespace CyberSource.Api
         /// <returns>Task of VasV2PaymentsPost201Response</returns>
         public async System.Threading.Tasks.Task<VasV2PaymentsPost201Response> CalculateTaxAsync (TaxRequest taxRequest)
         {
-            logger.Debug("CALLING API \"CalculateTaxAsync\" STARTED");
-            ApiResponse<VasV2PaymentsPost201Response> localVarResponse = await CalculateTaxAsyncWithHttpInfo(taxRequest);
-            logger.Debug("CALLING API \"CalculateTaxAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<VasV2PaymentsPost201Response> localVarResponse = await CalculateTaxAsyncWithHttpInfo(taxRequest);
+                         return localVarResponse.Data;
 
         }
 
@@ -356,8 +347,7 @@ namespace CyberSource.Api
             // verify the required parameter 'taxRequest' is set
             if (taxRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'taxRequest' when calling TaxesApi->CalculateTax");
-                throw new ApiException(400, "Missing required parameter 'taxRequest' when calling TaxesApi->CalculateTax");
+                                 throw new ApiException(400, "Missing required parameter 'taxRequest' when calling TaxesApi->CalculateTax");
             }
 
             var localVarPath = $"/vas/v2/tax";
@@ -393,14 +383,12 @@ namespace CyberSource.Api
                 localVarPostBody = taxRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -415,8 +403,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("CalculateTax", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -433,10 +420,8 @@ namespace CyberSource.Api
         /// <returns>VasV2TaxVoid200Response</returns>
         public VasV2TaxVoid200Response VoidTax (VoidTaxRequest voidTaxRequest, string id)
         {
-            logger.Debug("CALLING API \"VoidTax\" STARTED");
-            ApiResponse<VasV2TaxVoid200Response> localVarResponse = VoidTaxWithHttpInfo(voidTaxRequest, id);
-            logger.Debug("CALLING API \"VoidTax\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<VasV2TaxVoid200Response> localVarResponse = VoidTaxWithHttpInfo(voidTaxRequest, id);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -451,14 +436,12 @@ namespace CyberSource.Api
             // verify the required parameter 'voidTaxRequest' is set
             if (voidTaxRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'voidTaxRequest' when calling TaxesApi->VoidTax");
-                throw new ApiException(400, "Missing required parameter 'voidTaxRequest' when calling TaxesApi->VoidTax");
+                                 throw new ApiException(400, "Missing required parameter 'voidTaxRequest' when calling TaxesApi->VoidTax");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling TaxesApi->VoidTax");
-                throw new ApiException(400, "Missing required parameter 'id' when calling TaxesApi->VoidTax");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling TaxesApi->VoidTax");
             }
 
             var localVarPath = $"/vas/v2/tax/{id}";
@@ -489,8 +472,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (voidTaxRequest != null && voidTaxRequest.GetType() != typeof(byte[]))
+                         if (voidTaxRequest != null && voidTaxRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(voidTaxRequest); // http body (model) parameter
             }
@@ -499,14 +481,12 @@ namespace CyberSource.Api
                 localVarPostBody = voidTaxRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -521,8 +501,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("VoidTax", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -540,10 +519,8 @@ namespace CyberSource.Api
         /// <returns>Task of VasV2TaxVoid200Response</returns>
         public async System.Threading.Tasks.Task<VasV2TaxVoid200Response> VoidTaxAsync (VoidTaxRequest voidTaxRequest, string id)
         {
-            logger.Debug("CALLING API \"VoidTaxAsync\" STARTED");
-            ApiResponse<VasV2TaxVoid200Response> localVarResponse = await VoidTaxAsyncWithHttpInfo(voidTaxRequest, id);
-            logger.Debug("CALLING API \"VoidTaxAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<VasV2TaxVoid200Response> localVarResponse = await VoidTaxAsyncWithHttpInfo(voidTaxRequest, id);
+                         return localVarResponse.Data;
 
         }
 
@@ -559,14 +536,12 @@ namespace CyberSource.Api
             // verify the required parameter 'voidTaxRequest' is set
             if (voidTaxRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'voidTaxRequest' when calling TaxesApi->VoidTax");
-                throw new ApiException(400, "Missing required parameter 'voidTaxRequest' when calling TaxesApi->VoidTax");
+                                 throw new ApiException(400, "Missing required parameter 'voidTaxRequest' when calling TaxesApi->VoidTax");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling TaxesApi->VoidTax");
-                throw new ApiException(400, "Missing required parameter 'id' when calling TaxesApi->VoidTax");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling TaxesApi->VoidTax");
             }
 
             var localVarPath = $"/vas/v2/tax/{id}";
@@ -597,8 +572,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (voidTaxRequest != null && voidTaxRequest.GetType() != typeof(byte[]))
+                         if (voidTaxRequest != null && voidTaxRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(voidTaxRequest); // http body (model) parameter
             }
@@ -607,14 +581,12 @@ namespace CyberSource.Api
                 localVarPostBody = voidTaxRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -629,8 +601,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("VoidTax", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

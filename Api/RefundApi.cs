@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -128,7 +128,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class RefundApi : IRefundApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -147,9 +147,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -170,9 +170,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -210,8 +210,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -249,10 +248,8 @@ namespace CyberSource.Api
         /// <returns>PtsV2PaymentsRefundPost201Response</returns>
         public PtsV2PaymentsRefundPost201Response RefundCapture (RefundCaptureRequest refundCaptureRequest, string id)
         {
-            logger.Debug("CALLING API \"RefundCapture\" STARTED");
-            ApiResponse<PtsV2PaymentsRefundPost201Response> localVarResponse = RefundCaptureWithHttpInfo(refundCaptureRequest, id);
-            logger.Debug("CALLING API \"RefundCapture\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsRefundPost201Response> localVarResponse = RefundCaptureWithHttpInfo(refundCaptureRequest, id);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -267,14 +264,12 @@ namespace CyberSource.Api
             // verify the required parameter 'refundCaptureRequest' is set
             if (refundCaptureRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'refundCaptureRequest' when calling RefundApi->RefundCapture");
-                throw new ApiException(400, "Missing required parameter 'refundCaptureRequest' when calling RefundApi->RefundCapture");
+                                 throw new ApiException(400, "Missing required parameter 'refundCaptureRequest' when calling RefundApi->RefundCapture");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling RefundApi->RefundCapture");
-                throw new ApiException(400, "Missing required parameter 'id' when calling RefundApi->RefundCapture");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling RefundApi->RefundCapture");
             }
 
             var localVarPath = $"/pts/v2/captures/{id}/refunds";
@@ -305,8 +300,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (refundCaptureRequest != null && refundCaptureRequest.GetType() != typeof(byte[]))
+                         if (refundCaptureRequest != null && refundCaptureRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(refundCaptureRequest); // http body (model) parameter
             }
@@ -315,14 +309,12 @@ namespace CyberSource.Api
                 localVarPostBody = refundCaptureRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -337,8 +329,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("RefundCapture", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -356,10 +347,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV2PaymentsRefundPost201Response</returns>
         public async System.Threading.Tasks.Task<PtsV2PaymentsRefundPost201Response> RefundCaptureAsync (RefundCaptureRequest refundCaptureRequest, string id)
         {
-            logger.Debug("CALLING API \"RefundCaptureAsync\" STARTED");
-            ApiResponse<PtsV2PaymentsRefundPost201Response> localVarResponse = await RefundCaptureAsyncWithHttpInfo(refundCaptureRequest, id);
-            logger.Debug("CALLING API \"RefundCaptureAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsRefundPost201Response> localVarResponse = await RefundCaptureAsyncWithHttpInfo(refundCaptureRequest, id);
+                         return localVarResponse.Data;
 
         }
 
@@ -375,14 +364,12 @@ namespace CyberSource.Api
             // verify the required parameter 'refundCaptureRequest' is set
             if (refundCaptureRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'refundCaptureRequest' when calling RefundApi->RefundCapture");
-                throw new ApiException(400, "Missing required parameter 'refundCaptureRequest' when calling RefundApi->RefundCapture");
+                                 throw new ApiException(400, "Missing required parameter 'refundCaptureRequest' when calling RefundApi->RefundCapture");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling RefundApi->RefundCapture");
-                throw new ApiException(400, "Missing required parameter 'id' when calling RefundApi->RefundCapture");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling RefundApi->RefundCapture");
             }
 
             var localVarPath = $"/pts/v2/captures/{id}/refunds";
@@ -413,8 +400,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (refundCaptureRequest != null && refundCaptureRequest.GetType() != typeof(byte[]))
+                         if (refundCaptureRequest != null && refundCaptureRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(refundCaptureRequest); // http body (model) parameter
             }
@@ -423,14 +409,12 @@ namespace CyberSource.Api
                 localVarPostBody = refundCaptureRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -445,8 +429,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("RefundCapture", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -463,10 +446,8 @@ namespace CyberSource.Api
         /// <returns>PtsV2PaymentsRefundPost201Response</returns>
         public PtsV2PaymentsRefundPost201Response RefundPayment (RefundPaymentRequest refundPaymentRequest, string id)
         {
-            logger.Debug("CALLING API \"RefundPayment\" STARTED");
-            ApiResponse<PtsV2PaymentsRefundPost201Response> localVarResponse = RefundPaymentWithHttpInfo(refundPaymentRequest, id);
-            logger.Debug("CALLING API \"RefundPayment\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsRefundPost201Response> localVarResponse = RefundPaymentWithHttpInfo(refundPaymentRequest, id);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -481,14 +462,12 @@ namespace CyberSource.Api
             // verify the required parameter 'refundPaymentRequest' is set
             if (refundPaymentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'refundPaymentRequest' when calling RefundApi->RefundPayment");
-                throw new ApiException(400, "Missing required parameter 'refundPaymentRequest' when calling RefundApi->RefundPayment");
+                                 throw new ApiException(400, "Missing required parameter 'refundPaymentRequest' when calling RefundApi->RefundPayment");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling RefundApi->RefundPayment");
-                throw new ApiException(400, "Missing required parameter 'id' when calling RefundApi->RefundPayment");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling RefundApi->RefundPayment");
             }
 
             var localVarPath = $"/pts/v2/payments/{id}/refunds";
@@ -519,8 +498,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (refundPaymentRequest != null && refundPaymentRequest.GetType() != typeof(byte[]))
+                         if (refundPaymentRequest != null && refundPaymentRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(refundPaymentRequest); // http body (model) parameter
             }
@@ -529,14 +507,12 @@ namespace CyberSource.Api
                 localVarPostBody = refundPaymentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -551,8 +527,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("RefundPayment", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -570,10 +545,8 @@ namespace CyberSource.Api
         /// <returns>Task of PtsV2PaymentsRefundPost201Response</returns>
         public async System.Threading.Tasks.Task<PtsV2PaymentsRefundPost201Response> RefundPaymentAsync (RefundPaymentRequest refundPaymentRequest, string id)
         {
-            logger.Debug("CALLING API \"RefundPaymentAsync\" STARTED");
-            ApiResponse<PtsV2PaymentsRefundPost201Response> localVarResponse = await RefundPaymentAsyncWithHttpInfo(refundPaymentRequest, id);
-            logger.Debug("CALLING API \"RefundPaymentAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<PtsV2PaymentsRefundPost201Response> localVarResponse = await RefundPaymentAsyncWithHttpInfo(refundPaymentRequest, id);
+                         return localVarResponse.Data;
 
         }
 
@@ -589,14 +562,12 @@ namespace CyberSource.Api
             // verify the required parameter 'refundPaymentRequest' is set
             if (refundPaymentRequest == null)
             {
-                logger.Error("ApiException : Missing required parameter 'refundPaymentRequest' when calling RefundApi->RefundPayment");
-                throw new ApiException(400, "Missing required parameter 'refundPaymentRequest' when calling RefundApi->RefundPayment");
+                                 throw new ApiException(400, "Missing required parameter 'refundPaymentRequest' when calling RefundApi->RefundPayment");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                logger.Error("ApiException : Missing required parameter 'id' when calling RefundApi->RefundPayment");
-                throw new ApiException(400, "Missing required parameter 'id' when calling RefundApi->RefundPayment");
+                                 throw new ApiException(400, "Missing required parameter 'id' when calling RefundApi->RefundPayment");
             }
 
             var localVarPath = $"/pts/v2/payments/{id}/refunds";
@@ -627,8 +598,7 @@ namespace CyberSource.Api
             {
                 localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarPathParams)}");
-            if (refundPaymentRequest != null && refundPaymentRequest.GetType() != typeof(byte[]))
+                         if (refundPaymentRequest != null && refundPaymentRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(refundPaymentRequest); // http body (model) parameter
             }
@@ -637,14 +607,12 @@ namespace CyberSource.Api
                 localVarPostBody = refundPaymentRequest; // byte array
             }
 
-            if (LogUtility.IsMaskingEnabled(logger))
+            if (false)
             {
-                logger.Debug($"HTTP Request Body :\n{LogUtility.MaskSensitiveData(localVarPostBody.ToString())}");
-            }
+                             }
             else
             {
-                logger.Debug($"HTTP Request Body :\n{localVarPostBody}");
-            }
+                             }
 
 
             // make the HTTP request
@@ -659,8 +627,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("RefundPayment", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 

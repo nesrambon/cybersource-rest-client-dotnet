@@ -15,7 +15,7 @@ using System.Linq;
 using RestSharp;
 using CyberSource.Client;
 using CyberSource.Model;
-using NLog;
+
 using AuthenticationSdk.util;
 
 namespace CyberSource.Api
@@ -90,7 +90,7 @@ namespace CyberSource.Api
     /// </summary>
     public partial class NetFundingsApi : INetFundingsApi
     {
-        private static Logger logger;
+        
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -109,9 +109,9 @@ namespace CyberSource.Api
                 Configuration.ApiClient.Configuration = Configuration;
             }
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -132,9 +132,9 @@ namespace CyberSource.Api
 
             Configuration.ApiClient.Configuration = Configuration;
 
-            if (logger == null)
+            if (false)
             {
-                logger = LogManager.GetCurrentClassLogger();
+                
             }
         }
 
@@ -172,8 +172,7 @@ namespace CyberSource.Api
             {
                 if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    logger.Error("InvalidOperationException : Multicast delegate for ExceptionFactory is unsupported.");
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                                         throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
@@ -213,10 +212,8 @@ namespace CyberSource.Api
         /// <returns>ReportingV3NetFundingsGet200Response</returns>
         public ReportingV3NetFundingsGet200Response GetNetFundingDetails (DateTime? startTime, DateTime? endTime, string organizationId = null, string groupName = null)
         {
-            logger.Debug("CALLING API \"GetNetFundingDetails\" STARTED");
-            ApiResponse<ReportingV3NetFundingsGet200Response> localVarResponse = GetNetFundingDetailsWithHttpInfo(startTime, endTime, organizationId, groupName);
-            logger.Debug("CALLING API \"GetNetFundingDetails\" ENDED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3NetFundingsGet200Response> localVarResponse = GetNetFundingDetailsWithHttpInfo(startTime, endTime, organizationId, groupName);
+                         return localVarResponse.Data;
         }
 
         /// <summary>
@@ -233,14 +230,12 @@ namespace CyberSource.Api
             // verify the required parameter 'startTime' is set
             if (startTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'startTime' when calling NetFundingsApi->GetNetFundingDetails");
-                throw new ApiException(400, "Missing required parameter 'startTime' when calling NetFundingsApi->GetNetFundingDetails");
+                                 throw new ApiException(400, "Missing required parameter 'startTime' when calling NetFundingsApi->GetNetFundingDetails");
             }
             // verify the required parameter 'endTime' is set
             if (endTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'endTime' when calling NetFundingsApi->GetNetFundingDetails");
-                throw new ApiException(400, "Missing required parameter 'endTime' when calling NetFundingsApi->GetNetFundingDetails");
+                                 throw new ApiException(400, "Missing required parameter 'endTime' when calling NetFundingsApi->GetNetFundingDetails");
             }
 
             var localVarPath = $"/reporting/v3/net-fundings";
@@ -284,11 +279,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("groupName", Configuration.ApiClient.ParameterToString(groupName)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                                    
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -302,8 +293,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetNetFundingDetails", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
@@ -323,10 +313,8 @@ namespace CyberSource.Api
         /// <returns>Task of ReportingV3NetFundingsGet200Response</returns>
         public async System.Threading.Tasks.Task<ReportingV3NetFundingsGet200Response> GetNetFundingDetailsAsync (DateTime? startTime, DateTime? endTime, string organizationId = null, string groupName = null)
         {
-            logger.Debug("CALLING API \"GetNetFundingDetailsAsync\" STARTED");
-            ApiResponse<ReportingV3NetFundingsGet200Response> localVarResponse = await GetNetFundingDetailsAsyncWithHttpInfo(startTime, endTime, organizationId, groupName);
-            logger.Debug("CALLING API \"GetNetFundingDetailsAsync\" STARTED");
-            return localVarResponse.Data;
+                         ApiResponse<ReportingV3NetFundingsGet200Response> localVarResponse = await GetNetFundingDetailsAsyncWithHttpInfo(startTime, endTime, organizationId, groupName);
+                         return localVarResponse.Data;
 
         }
 
@@ -344,14 +332,12 @@ namespace CyberSource.Api
             // verify the required parameter 'startTime' is set
             if (startTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'startTime' when calling NetFundingsApi->GetNetFundingDetails");
-                throw new ApiException(400, "Missing required parameter 'startTime' when calling NetFundingsApi->GetNetFundingDetails");
+                                 throw new ApiException(400, "Missing required parameter 'startTime' when calling NetFundingsApi->GetNetFundingDetails");
             }
             // verify the required parameter 'endTime' is set
             if (endTime == null)
             {
-                logger.Error("ApiException : Missing required parameter 'endTime' when calling NetFundingsApi->GetNetFundingDetails");
-                throw new ApiException(400, "Missing required parameter 'endTime' when calling NetFundingsApi->GetNetFundingDetails");
+                                 throw new ApiException(400, "Missing required parameter 'endTime' when calling NetFundingsApi->GetNetFundingDetails");
             }
 
             var localVarPath = $"/reporting/v3/net-fundings";
@@ -395,11 +381,7 @@ namespace CyberSource.Api
             {
                 localVarQueryParams.Add("groupName", Configuration.ApiClient.ParameterToString(groupName)); // query parameter
             }
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-            logger.Debug($"HTTP Request Body :\n{LogUtility.ConvertDictionaryToString(localVarQueryParams)}");
-
+                                                    
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -413,8 +395,7 @@ namespace CyberSource.Api
                 Exception exception = ExceptionFactory("GetNetFundingDetails", localVarResponse);
                 if (exception != null)
                 {
-                    logger.Error($"Exception : {exception.Message}");
-                    throw exception;
+                                         throw exception;
                 }
             }
 
