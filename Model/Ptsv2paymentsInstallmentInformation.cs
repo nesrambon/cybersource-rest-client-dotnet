@@ -46,7 +46,9 @@ namespace CyberSource.Model
         /// <param name="GracePeriodDuration">Grace period requested by the customer before the first installment payment is due.  When you include this field in a request, you must also include the grace period duration type field.  The value for this field corresponds to the following data in the TC 33 capture file3: Record: CP01 TCR5, Position: 100-101, Field: Mastercard Grace Period Details.  This field is supported only for Mastercard installment payments in Brazil and Greece. .</param>
         /// <param name="GracePeriodDurationType">Unit for the requested grace period duration.  Possible values: - &#x60;D&#x60;: Days - &#x60;W&#x60;: Weeks - &#x60;M&#x60;: Months  The value for this field corresponds to the following data in the TC 33 capture file3: Record: CP01 TCR5, Position: 99, Field: Mastercard Grace Period Details  This field is supported only for Mastercard installment payments in Brazil and Greece on CyberSource through VisaNet. .</param>
         /// <param name="FirstInstallmentAmount">Amount of the first installment payment. The issuer provides this value when the first installment payment is successful. This field is supported for Mastercard installment payments on CyberSource through VisaNet in all countries except Brazil,Croatia, Georgia, and Greece. The value for this field corresponds to the following data in the TC 33 capture file: - Record: CP01 TCR5 - Position: 23-34 - Field: Amount of Each Installment .</param>
-        public Ptsv2paymentsInstallmentInformation(string Amount = default(string), string Frequency = default(string), string PlanType = default(string), int? Sequence = default(int?), string TotalAmount = default(string), int? TotalCount = default(int?), string FirstInstallmentDate = default(string), string InvoiceData = default(string), string PaymentType = default(string), string EligibilityInquiry = default(string), string GracePeriodDuration = default(string), string GracePeriodDurationType = default(string), string FirstInstallmentAmount = default(string))
+        /// <param name="ValidationIndicator">Standing Instruction/Installment validation indicator. - &#39;1&#39;: Prevalidated - &#39;2&#39;: Not Validated .</param>
+        /// <param name="Identifier">Standing Instruction/Installment identifier. .</param>
+        public Ptsv2paymentsInstallmentInformation(string Amount = default(string), string Frequency = default(string), string PlanType = default(string), int? Sequence = default(int?), string TotalAmount = default(string), int? TotalCount = default(int?), string FirstInstallmentDate = default(string), string InvoiceData = default(string), string PaymentType = default(string), string EligibilityInquiry = default(string), string GracePeriodDuration = default(string), string GracePeriodDurationType = default(string), string FirstInstallmentAmount = default(string), string ValidationIndicator = default(string), string Identifier = default(string))
         {
             this.Amount = Amount;
             this.Frequency = Frequency;
@@ -61,6 +63,8 @@ namespace CyberSource.Model
             this.GracePeriodDuration = GracePeriodDuration;
             this.GracePeriodDurationType = GracePeriodDurationType;
             this.FirstInstallmentAmount = FirstInstallmentAmount;
+            this.ValidationIndicator = ValidationIndicator;
+            this.Identifier = Identifier;
         }
         
         /// <summary>
@@ -155,6 +159,20 @@ namespace CyberSource.Model
         public string FirstInstallmentAmount { get; set; }
 
         /// <summary>
+        /// Standing Instruction/Installment validation indicator. - &#39;1&#39;: Prevalidated - &#39;2&#39;: Not Validated 
+        /// </summary>
+        /// <value>Standing Instruction/Installment validation indicator. - &#39;1&#39;: Prevalidated - &#39;2&#39;: Not Validated </value>
+        [DataMember(Name="validationIndicator", EmitDefaultValue=false)]
+        public string ValidationIndicator { get; set; }
+
+        /// <summary>
+        /// Standing Instruction/Installment identifier. 
+        /// </summary>
+        /// <value>Standing Instruction/Installment identifier. </value>
+        [DataMember(Name="identifier", EmitDefaultValue=false)]
+        public string Identifier { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -175,6 +193,8 @@ namespace CyberSource.Model
             sb.Append("  GracePeriodDuration: ").Append(GracePeriodDuration).Append("\n");
             sb.Append("  GracePeriodDurationType: ").Append(GracePeriodDurationType).Append("\n");
             sb.Append("  FirstInstallmentAmount: ").Append(FirstInstallmentAmount).Append("\n");
+            sb.Append("  ValidationIndicator: ").Append(ValidationIndicator).Append("\n");
+            sb.Append("  Identifier: ").Append(Identifier).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -275,6 +295,16 @@ namespace CyberSource.Model
                     this.FirstInstallmentAmount == other.FirstInstallmentAmount ||
                     this.FirstInstallmentAmount != null &&
                     this.FirstInstallmentAmount.Equals(other.FirstInstallmentAmount)
+                ) && 
+                (
+                    this.ValidationIndicator == other.ValidationIndicator ||
+                    this.ValidationIndicator != null &&
+                    this.ValidationIndicator.Equals(other.ValidationIndicator)
+                ) && 
+                (
+                    this.Identifier == other.Identifier ||
+                    this.Identifier != null &&
+                    this.Identifier.Equals(other.Identifier)
                 );
         }
 
@@ -315,6 +345,10 @@ namespace CyberSource.Model
                     hash = hash * 59 + this.GracePeriodDurationType.GetHashCode();
                 if (this.FirstInstallmentAmount != null)
                     hash = hash * 59 + this.FirstInstallmentAmount.GetHashCode();
+                if (this.ValidationIndicator != null)
+                    hash = hash * 59 + this.ValidationIndicator.GetHashCode();
+                if (this.Identifier != null)
+                    hash = hash * 59 + this.Identifier.GetHashCode();
                 return hash;
             }
         }
@@ -326,76 +360,16 @@ namespace CyberSource.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Amount (string) maxLength
-            if(this.Amount != null && this.Amount.Length >= 12)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Amount, length must be less than or equal to 12.", new [] { "Amount" });
-            }
-
-            // Frequency (string) maxLength
-            if(this.Frequency != null && this.Frequency.Length >= 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Frequency, length must be less than or equal to 1.", new [] { "Frequency" });
-            }
-
-            // PlanType (string) maxLength
-            if(this.PlanType != null && this.PlanType.Length >= 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PlanType, length must be less than or equal to 1.", new [] { "PlanType" });
-            }
-
             // Sequence (int?) maximum
-            if(this.Sequence >= (int?)99)
+            if(this.Sequence > (int?)99)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Sequence, must be a value less than or equal to 99.", new [] { "Sequence" });
             }
 
-            // TotalAmount (string) maxLength
-            if(this.TotalAmount != null && this.TotalAmount.Length >= 12)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TotalAmount, length must be less than or equal to 12.", new [] { "TotalAmount" });
-            }
-
             // TotalCount (int?) maximum
-            if(this.TotalCount >= (int?)99)
+            if(this.TotalCount > (int?)99)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TotalCount, must be a value less than or equal to 99.", new [] { "TotalCount" });
-            }
-
-            // FirstInstallmentDate (string) maxLength
-            if(this.FirstInstallmentDate != null && this.FirstInstallmentDate.Length >= 6)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FirstInstallmentDate, length must be less than or equal to 6.", new [] { "FirstInstallmentDate" });
-            }
-
-            // InvoiceData (string) maxLength
-            if(this.InvoiceData != null && this.InvoiceData.Length >= 20)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InvoiceData, length must be less than or equal to 20.", new [] { "InvoiceData" });
-            }
-
-            // PaymentType (string) maxLength
-            if(this.PaymentType != null && this.PaymentType.Length >= 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PaymentType, length must be less than or equal to 1.", new [] { "PaymentType" });
-            }
-
-            // EligibilityInquiry (string) maxLength
-            if(this.EligibilityInquiry != null && this.EligibilityInquiry.Length >= 9)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EligibilityInquiry, length must be less than or equal to 9.", new [] { "EligibilityInquiry" });
-            }
-
-            // GracePeriodDurationType (string) maxLength
-            if(this.GracePeriodDurationType != null && this.GracePeriodDurationType.Length >= 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for GracePeriodDurationType, length must be less than or equal to 1.", new [] { "GracePeriodDurationType" });
-            }
-
-            // FirstInstallmentAmount (string) maxLength
-            if(this.FirstInstallmentAmount != null && this.FirstInstallmentAmount.Length >= 13)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FirstInstallmentAmount, length must be less than or equal to 13.", new [] { "FirstInstallmentAmount" });
             }
 
             yield break;

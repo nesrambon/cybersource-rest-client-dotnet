@@ -37,6 +37,9 @@ OpenAPI spec version: 0.0.1
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.106.12.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,9 +51,6 @@ OpenAPI spec version: 0.0.1
     <Reference Include="System.Xml" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp">
-        <HintPath>..\packages\RestSharp.106.5.4\lib\net452\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
         <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
@@ -66,7 +66,7 @@ OpenAPI spec version: 0.0.1
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\cybersource-rest-client-dotnet.csproj">
-          <Project>{A741C74D-7866-4DCD-91E2-A2E3617E39C7}</Project>
+          <Project>{EEEF4B0A-4CDE-4CD9-8792-7D77CD862BBC}</Project>
           <Name>cybersource-rest-client-dotnet</Name>
       </ProjectReference>
   </ItemGroup>

@@ -97,20 +97,20 @@ namespace CyberSource.Test
             // TODO unit test for the property 'NetworkTransactionId'
         }
         /// <summary>
+        /// Test the property 'RetrievalReferenceNumber'
+        /// </summary>
+        [Test]
+        public void RetrievalReferenceNumberTest()
+        {
+            // TODO unit test for the property 'RetrievalReferenceNumber'
+        }
+        /// <summary>
         /// Test the property 'ResponseId'
         /// </summary>
         [Test]
         public void ResponseIdTest()
         {
             // TODO unit test for the property 'ResponseId'
-        }
-        /// <summary>
-        /// Test the property 'ProviderTransactionId'
-        /// </summary>
-        [Test]
-        public void ProviderTransactionIdTest()
-        {
-            // TODO unit test for the property 'ProviderTransactionId'
         }
         /// <summary>
         /// Test the property 'ApprovalCode'
