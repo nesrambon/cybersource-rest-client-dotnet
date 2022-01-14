@@ -1,7 +1,7 @@
 ﻿// Decompiled with JetBrains decompiler
 // Type: AuthenticationSdk.util.Cache
-// Assembly: AuthenticationSdk, Version=0.0.0.9, Culture=neutral, PublicKeyToken=null
-// MVID: B31F8FE4-8578-4DB7-AA70-B490E8CCC72C
+// Assembly: AuthenticationSdk, Version=0.0.0.11, Culture=neutral, PublicKeyToken=null
+// MVID: E675A5F6-4D13-4E8E-AD27-25529C4D6414
 
 using System;
 using System.Collections.Generic;
@@ -21,8 +21,8 @@ namespace AuthenticationSdk.util
       try
       {
         ObjectCache objectCache = (ObjectCache) MemoryCache.Default;
-        if (objectCache["certiFromP12File"] is X509Certificate2 x509Certificate2_4)
-          return x509Certificate2_4;
+        if (objectCache["certiFromP12File"] is X509Certificate2 x509Certificate2_1)
+          return x509Certificate2_1;
         CacheItemPolicy policy = new CacheItemPolicy();
         policy.ChangeMonitors.Add((ChangeMonitor) new HostFileChangeMonitor((IList<string>) new List<string>()
         {
@@ -36,7 +36,7 @@ namespace AuthenticationSdk.util
       {
         if (ex.Message.Equals("The specified network password is not correct.\r\n"))
           throw new Exception(Constants.ErrorPrefix + " KeyPassword provided:" + keyPassword + " is incorrect");
-        return (X509Certificate2) null;
+        throw ex;
       }
     }
   }

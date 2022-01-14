@@ -1,7 +1,7 @@
 ﻿// Decompiled with JetBrains decompiler
 // Type: AuthenticationSdk.authentication.http.HttpTokenGenerator
-// Assembly: AuthenticationSdk, Version=0.0.0.9, Culture=neutral, PublicKeyToken=null
-// MVID: B31F8FE4-8578-4DB7-AA70-B490E8CCC72C
+// Assembly: AuthenticationSdk, Version=0.0.0.11, Culture=neutral, PublicKeyToken=null
+// MVID: E675A5F6-4D13-4E8E-AD27-25529C4D6414
 
 using AuthenticationSdk.core;
 using System;
@@ -41,21 +41,7 @@ namespace AuthenticationSdk.authentication.http
     {
       StringBuilder stringBuilder1 = new StringBuilder();
       StringBuilder stringBuilder2 = new StringBuilder();
-      stringBuilder1.Append('\n');
-      stringBuilder1.Append("host");
-      stringBuilder1.Append(": ");
-      stringBuilder1.Append(this._httpToken.HostName);
-      stringBuilder1.Append('\n');
-      stringBuilder1.Append("date");
-      stringBuilder1.Append(": ");
-      stringBuilder1.Append(this._httpToken.GmtDateTime);
-      stringBuilder1.Append('\n');
-      stringBuilder1.Append("(request-target)");
-      stringBuilder1.Append(": ");
-      stringBuilder1.Append(this._httpToken.HttpSignRequestTarget);
-      stringBuilder1.Append('\n');
-      stringBuilder1.Append("v-c-merchant-id");
-      stringBuilder1.Append(": ");
+      stringBuilder1.Append("\nhost: " + this._httpToken.HostName).Append("\ndate: " + this._httpToken.GmtDateTime).Append("\n(request-target): " + this._httpToken.HttpSignRequestTarget).Append("\nv-c-merchant-id: ");
       if (this._httpToken.UseMetaKey)
         stringBuilder1.Append(this._httpToken.PortfolioId);
       else
@@ -63,10 +49,7 @@ namespace AuthenticationSdk.authentication.http
       stringBuilder1.Remove(0, 1);
       byte[] bytes = Encoding.UTF8.GetBytes(stringBuilder1.ToString());
       string base64String = Convert.ToBase64String(new HMACSHA256(Convert.FromBase64String(this._httpToken.MerchantSecretKey)).ComputeHash(bytes));
-      stringBuilder2.Append("keyid=\"" + this._httpToken.MerchantKeyId + "\"");
-      stringBuilder2.Append(", algorithm=\"" + this._httpToken.SignatureAlgorithm + "\"");
-      stringBuilder2.Append(", headers=\"host date (request-target) v-c-merchant-id\"");
-      stringBuilder2.Append(", signature=\"" + base64String + "\"");
+      stringBuilder2.Append("keyid=\"" + this._httpToken.MerchantKeyId + "\"").Append(", algorithm=\"" + this._httpToken.SignatureAlgorithm + "\"").Append(", headers=\"host date (request-target) v-c-merchant-id\"").Append(", signature=\"" + base64String + "\"");
       return stringBuilder2.ToString();
     }
 
@@ -75,25 +58,7 @@ namespace AuthenticationSdk.authentication.http
       StringBuilder stringBuilder1 = new StringBuilder();
       StringBuilder stringBuilder2 = new StringBuilder();
       this._httpToken.Digest = this.GenerateDigest();
-      stringBuilder1.Append('\n');
-      stringBuilder1.Append("host");
-      stringBuilder1.Append(": ");
-      stringBuilder1.Append(this._httpToken.HostName);
-      stringBuilder1.Append('\n');
-      stringBuilder1.Append("date");
-      stringBuilder1.Append(": ");
-      stringBuilder1.Append(this._httpToken.GmtDateTime);
-      stringBuilder1.Append('\n');
-      stringBuilder1.Append("(request-target)");
-      stringBuilder1.Append(": ");
-      stringBuilder1.Append(this._httpToken.HttpSignRequestTarget);
-      stringBuilder1.Append('\n');
-      stringBuilder1.Append("digest");
-      stringBuilder1.Append(": ");
-      stringBuilder1.Append(this._httpToken.Digest);
-      stringBuilder1.Append('\n');
-      stringBuilder1.Append("v-c-merchant-id");
-      stringBuilder1.Append(": ");
+      stringBuilder1.Append("\nhost: " + this._httpToken.HostName).Append("\ndate: " + this._httpToken.GmtDateTime).Append("\n(request-target): " + this._httpToken.HttpSignRequestTarget).Append("\ndigest: " + this._httpToken.Digest).Append("\nv-c-merchant-id: ");
       if (this._httpToken.UseMetaKey)
         stringBuilder1.Append(this._httpToken.PortfolioId);
       else
@@ -101,10 +66,7 @@ namespace AuthenticationSdk.authentication.http
       stringBuilder1.Remove(0, 1);
       byte[] bytes = Encoding.UTF8.GetBytes(stringBuilder1.ToString());
       string base64String = Convert.ToBase64String(new HMACSHA256(Convert.FromBase64String(this._httpToken.MerchantSecretKey)).ComputeHash(bytes));
-      stringBuilder2.Append("keyid=\"" + this._httpToken.MerchantKeyId + "\"");
-      stringBuilder2.Append(", algorithm=\"" + this._httpToken.SignatureAlgorithm + "\"");
-      stringBuilder2.Append(", headers=\"host date (request-target) digest v-c-merchant-id\"");
-      stringBuilder2.Append(", signature=\"" + base64String + "\"");
+      stringBuilder2.Append("keyid=\"" + this._httpToken.MerchantKeyId + "\"").Append(", algorithm=\"" + this._httpToken.SignatureAlgorithm + "\"").Append(", headers=\"host date (request-target) digest v-c-merchant-id\"").Append(", signature=\"" + base64String + "\"");
       return stringBuilder2.ToString();
     }
 

@@ -50,7 +50,7 @@ namespace AuthenticationSdk.authentication.jwt
     {
       DateTime dateTime = DateTime.Now;
       dateTime = dateTime.ToUniversalTime();
-      string payload = "{ \"iat\":\"" + dateTime.ToString("r") + "\"}";
+      string str = "{ \"iat\":\"" + dateTime.ToString("r") + "\"}";
       X509Certificate2 certificate = this._jwtToken.Certificate;
       string base64String = Convert.ToBase64String(certificate.RawData);
       RSA rsaPrivateKey = certificate.GetRSAPrivateKey();
@@ -67,7 +67,7 @@ namespace AuthenticationSdk.authentication.jwt
       };
       RSA rsa = rsaPrivateKey;
       Dictionary<string, object> dictionary2 = dictionary1;
-      return JWT.Encode(payload, (object) rsa, JwsAlgorithm.RS256, (IDictionary<string, object>) dictionary2, (JwtSettings) null);
+      return JWT.Encode(str, (object) rsa, (JwsAlgorithm) 4, (IDictionary<string, object>) dictionary2, (JwtSettings) null);
     }
 
     private string TokenForCategory2()
@@ -84,7 +84,7 @@ namespace AuthenticationSdk.authentication.jwt
       dateTime = dateTime.ToUniversalTime();
       strArray[3] = dateTime.ToString("r");
       strArray[4] = "\"}";
-      string payload = string.Concat(strArray);
+      string str = string.Concat(strArray);
       X509Certificate2 certificate = this._jwtToken.Certificate;
       string base64String = Convert.ToBase64String(certificate.RawData);
       RSA rsaPrivateKey = certificate.GetRSAPrivateKey();
@@ -101,7 +101,7 @@ namespace AuthenticationSdk.authentication.jwt
       };
       RSA rsa = rsaPrivateKey;
       Dictionary<string, object> dictionary2 = dictionary1;
-      return JWT.Encode(payload, (object) rsa, JwsAlgorithm.RS256, (IDictionary<string, object>) dictionary2, (JwtSettings) null);
+      return JWT.Encode(str, (object) rsa, (JwsAlgorithm) 4, (IDictionary<string, object>) dictionary2, (JwtSettings) null);
     }
   }
 }

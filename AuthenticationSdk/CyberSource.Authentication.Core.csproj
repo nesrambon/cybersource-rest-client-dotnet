@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Company>CyberSource (released by BrutalDev)</Company>
-    <Version>0.0.0.9</Version>
+    <Version>0.0.0.11</Version>
     <PublishSingleFile>true</PublishSingleFile>
     <Description>.NET Core port of the official CyberSource.Authentication package.
 https://github.com/CyberSource/cybersource-rest-client-dotnet/issues/14</Description>
@@ -15,7 +15,7 @@ https://github.com/CyberSource/cybersource-rest-client-dotnet/issues/14</Descrip
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="jose-jwt" Version="3.1.1" />
+    <PackageReference Include="jose-jwt" Version="3.2.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
     <PackageReference Include="System.Runtime.Caching" Version="5.0.0" />
   </ItemGroup>

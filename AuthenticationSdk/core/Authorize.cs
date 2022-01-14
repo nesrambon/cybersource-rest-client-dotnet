@@ -30,14 +30,15 @@ namespace AuthenticationSdk.core
           return (HttpToken) null;
 
         Enumerations.ValidateRequestType(this._merchantConfig.RequestType);
+        if (string.IsNullOrEmpty(this._merchantConfig.MerchantId) || string.IsNullOrEmpty(this._merchantConfig.MerchantKeyId) || string.IsNullOrEmpty(this._merchantConfig.MerchantSecretKey))
+          throw new Exception("Missing or Empty Credentials : MerchantID or MerchantKeyID or MerchantSecretKey");
         HttpToken token = (HttpToken) new HttpTokenGenerator(this._merchantConfig).GetToken();
 
         return token;
       }
       catch (Exception ex)
       {
-        ExceptionUtility.Exception(ex.Message, ex.StackTrace);
-        return (HttpToken) null;
+        throw ex;
       }
     }
 
@@ -49,14 +50,15 @@ namespace AuthenticationSdk.core
           return (JwtToken) null;
 
         Enumerations.ValidateRequestType(this._merchantConfig.RequestType);
+        if (string.IsNullOrEmpty(this._merchantConfig.MerchantId) || string.IsNullOrEmpty(this._merchantConfig.KeyAlias) || string.IsNullOrEmpty(this._merchantConfig.KeyPass))
+          throw new Exception("Missing or Empty Credentials : MerchantID or KeyAlias or KeyPassphrase");
         JwtToken token = (JwtToken) new JwtTokenGenerator(this._merchantConfig).GetToken();
         
         return token;
       }
       catch (Exception ex)
       {
-        ExceptionUtility.Exception(ex.Message, ex.StackTrace);
-        return (JwtToken) null;
+        throw ex;
       }
     }
 
@@ -67,13 +69,14 @@ namespace AuthenticationSdk.core
         if (this._merchantConfig == null)
           return (OAuthToken) null;
         Enumerations.ValidateRequestType(this._merchantConfig.RequestType);
+        if (string.IsNullOrEmpty(this._merchantConfig.AccessToken) || string.IsNullOrEmpty(this._merchantConfig.RefreshToken))
+          throw new Exception("Missing or Empty Credentials : AccessToken or RefreshToken");
         OAuthToken token = (OAuthToken) new OAuthTokenGenerator(this._merchantConfig).GetToken();
         return token;
       }
       catch (Exception ex)
       {
-        ExceptionUtility.Exception(ex.Message, ex.StackTrace);
-        return (OAuthToken) null;
+        throw ex;
       }
     }
   }
