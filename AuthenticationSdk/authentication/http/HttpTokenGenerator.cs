@@ -57,7 +57,10 @@ namespace AuthenticationSdk.authentication.http
     {
       StringBuilder stringBuilder1 = new StringBuilder();
       StringBuilder stringBuilder2 = new StringBuilder();
-      this._httpToken.Digest = this.GenerateDigest();
+      if (this._merchantConfig.RequestJsonData != null)
+      {
+        this._httpToken.Digest = this.GenerateDigest();
+      }
       stringBuilder1.Append("\nhost: " + this._httpToken.HostName).Append("\ndate: " + this._httpToken.GmtDateTime).Append("\n(request-target): " + this._httpToken.HttpSignRequestTarget).Append("\ndigest: " + this._httpToken.Digest).Append("\nv-c-merchant-id: ");
       if (this._httpToken.UseMetaKey)
         stringBuilder1.Append(this._httpToken.PortfolioId);
